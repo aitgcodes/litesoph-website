@@ -7,7 +7,7 @@ Setting up your local repository
 
 2. ‘git clone’ this newly forked repo into your local machine.
 
-.. Note::
+.. Warning::
    Don’t directly clone from LITESOPH/litesoph-pipeline.
 
 Setting up test environment
