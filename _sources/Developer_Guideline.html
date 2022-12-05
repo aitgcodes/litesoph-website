@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Guideline &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="litesoph package" href="litesoph/litesoph.html" />
+    <link rel="prev" title="Issues or Bugs!" href="Issues.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Current_Feature.html">Current Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Upcoming_Feature.html">Upcoming Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials/Tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Issues.html">Issues or Bugs!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guideline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-local-repository">Setting up your local repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-test-environment">Setting up test environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conda-environment">Conda environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-venv-environment">Python venv environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coding-standards">Coding Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#litesoph-architecture">LITESOPH Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-of-litesoph">Workflow of LITESOPH:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modules-of-litesoph">Modules of LITESOPH:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.html">litesoph package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Developer Guideline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Developer_Guideline.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-guideline">
+<h1>Developer Guideline<a class="headerlink" href="#developer-guideline" title="Permalink to this headline"></a></h1>
+<section id="setting-up-your-local-repository">
+<h2>Setting up your local repository<a class="headerlink" href="#setting-up-your-local-repository" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Fork the LITESOPH/litesoph-pipeline repo into your github account.</p></li>
+<li><p>‘git clone’ this newly forked repo into your local machine.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don’t directly clone from LITESOPH/litesoph-pipeline.</p>
+</div>
+</section>
+<section id="setting-up-test-environment">
+<h2>Setting up test environment<a class="headerlink" href="#setting-up-test-environment" title="Permalink to this headline"></a></h2>
+<section id="conda-environment">
+<h3>Conda environment<a class="headerlink" href="#conda-environment" title="Permalink to this headline"></a></h3>
+<p>Step-1: Download <a class="reference external" href="https://docs.anaconda.com/anaconda/install/linux/">Anaconda</a> package manager.</p>
+<p>Step-2: Install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/linux/">Anaconda</a> in the HOME directory.</p>
+<p>Step-3: Create new virtual environment(say,test-lite).For this, you can use the following command :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ conda create -n test-lite python=3.7.6
+</pre></div>
+</div>
+<p>Step-4: Activate the test-lite environment. For this, you can use the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ conda activate test-lite
+</pre></div>
+</div>
+<p>Step-5: Install litesoph using the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install -e &lt;path litesoph package&gt;
+</pre></div>
+</div>
+</section>
+<section id="python-venv-environment">
+<h3>Python venv environment<a class="headerlink" href="#python-venv-environment" title="Permalink to this headline"></a></h3>
+<p>Step-1: Check Python version.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ python –version
+</pre></div>
+</div>
+<p>Step-2: If it is &lt;3.7.6 upgrade the Python version to 3.7.6 if possible else use conda environment.</p>
+<p>Step-3: Create new virtual environment (say, test-lite). For this, use the following command:</p>
+<p>Step-4: Activate the test-lite environment. Use the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ source ~/test-lite/bin/activate
+</pre></div>
+</div>
+<p>Step-5: Install litesoph. Use the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install -e &lt;path to litesoph package&gt;
+</pre></div>
+</div>
+</section>
+<section id="coding-standards">
+<h3>Coding Standards<a class="headerlink" href="#coding-standards" title="Permalink to this headline"></a></h3>
+<p>The LITESOPH project adheres to PEP-8 guidelines for writing code in Python.
+Summary of the PEP-8 guidelines and advantages of using this system is explained
+in a clear and concise manner in an article published by <a class="reference external" href="https://realpython.com/python-pep8/">Real Python</a>.
+For more information refer to the original  <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP-8</a> document.</p>
+<hr class="docutils" />
+</section>
+</section>
+<hr class="docutils" />
+<section id="litesoph-architecture">
+<h2>LITESOPH Architecture<a class="headerlink" href="#litesoph-architecture" title="Permalink to this headline"></a></h2>
+<p>The LITESOPH Architecture has the following model.</p>
+<a class="reference internal image-reference" href="_images/LITESOPH_Architecture.png"><img alt="LITESOPH_home" src="_images/LITESOPH_Architecture.png" style="width: 800px;" /></a>
+<section id="workflow-of-litesoph">
+<h3>Workflow of LITESOPH:<a class="headerlink" href="#workflow-of-litesoph" title="Permalink to this headline"></a></h3>
+<p>The overall workflow of LITESOPH is as the following:</p>
+<a class="reference internal image-reference" href="_images/Litesoph_Architecture.png"><img alt="Pre" src="_images/Litesoph_Architecture.png" style="width: 800px;" /></a>
+</section>
+</section>
+<section id="modules-of-litesoph">
+<h2>Modules of LITESOPH:<a class="headerlink" href="#modules-of-litesoph" title="Permalink to this headline"></a></h2>
+<p>The modules of LITESOPH for the LITESOPH-Developer is as the following.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="litesoph/litesoph.html">litesoph package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="litesoph/litesoph.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.gui.html">litesoph.gui package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.actions">litesoph.gui.actions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.gui">litesoph.gui.gui module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.input_validation">litesoph.gui.input_validation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.logpanel">litesoph.gui.logpanel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.menubar">litesoph.gui.menubar module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.navigation">litesoph.gui.navigation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.user_data">litesoph.gui.user_data module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.viewpanel">litesoph.gui.viewpanel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.views">litesoph.gui.views module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui.visual_parameter">litesoph.gui.visual_parameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.gui.html#module-litesoph.gui">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.lsio.html">litesoph.lsio package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.lsio.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.lsio.html#module-litesoph.lsio.IO">litesoph.lsio.IO module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.lsio.html#module-litesoph.lsio.data_types">litesoph.lsio.data_types module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.lsio.html#module-litesoph.lsio">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.post_processing.html">litesoph.post_processing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#module-litesoph.post_processing.fourier">litesoph.post_processing.fourier module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#module-litesoph.post_processing.masking_utls">litesoph.post_processing.masking_utls module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#module-litesoph.post_processing.mo_population">litesoph.post_processing.mo_population module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.post_processing.html#module-litesoph.post_processing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.simulations.html">litesoph.simulations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#module-litesoph.simulations.esmd">litesoph.simulations.esmd module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#module-litesoph.simulations.models">litesoph.simulations.models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#module-litesoph.simulations.project_status">litesoph.simulations.project_status module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.simulations.html#module-litesoph.simulations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.utilities.html">litesoph.utilities package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#module-litesoph.utilities.job_submit">litesoph.utilities.job_submit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#module-litesoph.utilities.plot_spectrum">litesoph.utilities.plot_spectrum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#module-litesoph.utilities.run_local">litesoph.utilities.run_local module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#module-litesoph.utilities.units">litesoph.utilities.units module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.utilities.html#module-litesoph.utilities">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="litesoph/litesoph.visualization.html">litesoph.visualization package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#litesoph-visualization-blend-vedio-module">litesoph.visualization.blend_vedio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#module-litesoph.visualization.spec_plot">litesoph.visualization.spec_plot module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#module-litesoph.visualization.visualize_geometry">litesoph.visualization.visualize_geometry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#litesoph-visualization-vmd-python-module">litesoph.visualization.vmd_python module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph/litesoph.visualization.html#module-litesoph.visualization">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="litesoph/litesoph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="litesoph/litesoph.html#module-litesoph.config">litesoph.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="litesoph/litesoph.html#module-litesoph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Issues.html" class="btn btn-neutral float-left" title="Issues or Bugs!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="litesoph/litesoph.html" class="btn btn-neutral float-right" title="litesoph package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 05 Dec 2022 15:21:21.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
