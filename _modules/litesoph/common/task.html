@@ -10,10 +10,10 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,9 +62,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>litesoph.common.task</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">litesoph.common.task</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -79,18 +83,18 @@
 <span class="kn">from</span> <span class="nn">litesoph.common.data_sturcture.data_classes</span> <span class="kn">import</span> <span class="n">TaskInfo</span>
 
 <div class="viewcode-block" id="TaskError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.TaskError">[docs]</a><span class="k">class</span> <span class="nc">TaskError</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class of error types related to any TASK.&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class of error types related to any TASK.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="TaskSetupError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.TaskSetupError">[docs]</a><span class="k">class</span> <span class="nc">TaskSetupError</span><span class="p">(</span><span class="n">TaskError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculation cannot be performed with the given parameters.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculation cannot be performed with the given parameters.</span>
 
 <span class="sd">    Typically raised before a calculation.&quot;&quot;&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="InputError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.InputError">[docs]</a><span class="k">class</span> <span class="nc">InputError</span><span class="p">(</span><span class="n">TaskSetupError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Raised if inputs given to the calculator were incorrect.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised if inputs given to the calculator were incorrect.</span>
 
 <span class="sd">    Bad input keywords or values, or missing pseudopotentials.</span>
 
@@ -99,7 +103,7 @@
 
 
 <div class="viewcode-block" id="TaskFailed"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.TaskFailed">[docs]</a><span class="k">class</span> <span class="nc">TaskFailed</span><span class="p">(</span><span class="n">TaskError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculation failed unexpectedly.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculation failed unexpectedly.</span>
 
 <span class="sd">    Reasons to raise this error are:</span>
 <span class="sd">      * Calculation did not converge</span>
@@ -111,15 +115,15 @@
 
 
 <div class="viewcode-block" id="ReadError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.ReadError">[docs]</a><span class="k">class</span> <span class="nc">ReadError</span><span class="p">(</span><span class="n">TaskError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Unexpected irrecoverable error while reading calculation results.&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unexpected irrecoverable error while reading calculation results.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="TaskNotImplementedError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.TaskNotImplementedError">[docs]</a><span class="k">class</span> <span class="nc">TaskNotImplementedError</span><span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Raised if a calculator does not implement the requested property.&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised if a calculator does not implement the requested property.&quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="PropertyNotPresent"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.PropertyNotPresent">[docs]</a><span class="k">class</span> <span class="nc">PropertyNotPresent</span><span class="p">(</span><span class="n">TaskError</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Requested property is missing.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Requested property is missing.</span>
 
 <span class="sd">    Maybe it was never calculated, or for some reason was not extracted</span>
 <span class="sd">    with the rest of the results, without being a fatal ReadError.&quot;&quot;&quot;</span></div>
@@ -127,9 +131,10 @@
 
 <div class="viewcode-block" id="Task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task">[docs]</a><span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
 
-    <span class="sd">&quot;&quot;&quot;Base-class for all tasks.&quot;&quot;&quot;</span>
-
-    <span class="n">BASH_filename</span> <span class="o">=</span> <span class="s1">&#39;job_script.sh&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base-class for all tasks.&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">uuid</span>
+    <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    <span class="n">BASH_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ls_job_script_</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1">.sh&#39;</span>
     <span class="n">job_script_first_line</span> <span class="o">=</span> <span class="s2">&quot;#!/bin/bash&quot;</span>
     <span class="n">remote_job_script_last_line</span> <span class="o">=</span> <span class="s2">&quot;touch Done&quot;</span>
 
@@ -165,13 +170,13 @@
 
 <div class="viewcode-block" id="Task.create_template"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.create_template">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">create_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method creates engine input and stores it in the task info.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method creates engine input and stores it in the task info.</span>
 <span class="sd">        Store the engine input in taskinfo.input[&#39;engine_input&#39;][data] </span>
 <span class="sd">        filepath in taskinfo.input[&#39;engine_input&#39;][&#39;path&#39;]&quot;&quot;&quot;</span></div>
     
 <div class="viewcode-block" id="Task.write_input"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.write_input">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">write_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This method creates engine directory and task directory and writes </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method creates engine directory and task directory and writes </span>
 <span class="sd">        the engine input to a file.&quot;&quot;&quot;</span>        </div>
     
 <div class="viewcode-block" id="Task.create_input"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.create_input">[docs]</a>    <span class="k">def</span> <span class="nf">create_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -193,11 +198,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">task_info</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;engine_input&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">txt</span></div>
 
 <div class="viewcode-block" id="Task.check_prerequisite"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.check_prerequisite">[docs]</a>    <span class="k">def</span> <span class="nf">check_prerequisite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot; checks if the input files and required data files for the present task are present&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; checks if the input files and required data files for the present task are present&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span></div>
     
 <div class="viewcode-block" id="Task.create_job_script"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.create_job_script">[docs]</a>    <span class="k">def</span> <span class="nf">create_job_script</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create the bash script to run the job and &quot;touch Done&quot; command to it, to know when the </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the bash script to run the job and &quot;touch Done&quot; command to it, to know when the </span>
 <span class="sd">        command is completed.&quot;&quot;&quot;</span>
         <span class="n">job_script</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -213,7 +218,7 @@
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_script</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Task.add_proper_path"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.add_proper_path">[docs]</a>    <span class="k">def</span> <span class="nf">add_proper_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This replaces the local paths to remote paths in the engine input.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This replaces the local paths to remote paths in the engine input.&quot;&quot;&quot;</span>
         <span class="n">engine_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_info</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;engine_input&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">engine_input</span><span class="p">:</span>
             <span class="k">return</span>
@@ -227,11 +232,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">write_input</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Task.set_submit_local"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.set_submit_local">[docs]</a>    <span class="k">def</span> <span class="nf">set_submit_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sumbit_local</span> <span class="o">=</span> <span class="n">SubmitLocal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submit_local</span> <span class="o">=</span> <span class="n">SubmitLocal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Task.run_job_local"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.run_job_local">[docs]</a>    <span class="k">def</span> <span class="nf">run_job_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">cmd</span><span class="p">):</span>
         <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASH_filename</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sumbit_local</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submit_local</span><span class="o">.</span><span class="n">run_job</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Task.connect_to_network"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.Task.connect_to_network">[docs]</a>    <span class="k">def</span> <span class="nf">connect_to_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">submit_network</span> <span class="o">=</span> <span class="n">SubmitNetwork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
@@ -255,7 +260,7 @@
         <span class="k">return</span> <span class="kc">True</span></div></div>
 
 <div class="viewcode-block" id="write2file"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.write2file">[docs]</a><span class="k">def</span> <span class="nf">write2file</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Write template to a file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write template to a file.</span>
 <span class="sd">    </span>
 <span class="sd">    directroy: str</span>
 <span class="sd">        full path of the directory to write to.</span>
@@ -282,14 +287,14 @@
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">template</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="assemable_job_cmd"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.assemable_job_cmd">[docs]</a><span class="k">def</span> <span class="nf">assemable_job_cmd</span><span class="p">(</span><span class="n">engine_cmd</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">np</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cd_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<div class="viewcode-block" id="assemable_job_cmd"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task.assemable_job_cmd">[docs]</a><span class="k">def</span> <span class="nf">assemable_job_cmd</span><span class="p">(</span><span class="n">job_id</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">engine_cmd</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">np</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cd_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                         <span class="n">mpi_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                         <span class="n">remote</span> <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="n">scheduler_block</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                         <span class="n">module_load_block</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                         <span class="n">extra_block</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">job_script_first_line</span> <span class="o">=</span> <span class="s2">&quot;#!/bin/bash&quot;</span>
-    <span class="n">remote_job_script_last_line</span> <span class="o">=</span> <span class="s2">&quot;touch Done&quot;</span>
+    <span class="n">remote_job_script_last_line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;touch Done_</span><span class="si">{</span><span class="n">job_id</span><span class="si">}</span><span class="s2">&quot;</span>
     
     <span class="n">job_script</span> <span class="o">=</span> <span class="p">[</span><span class="n">job_script_first_line</span><span class="p">]</span>
     
@@ -300,22 +305,24 @@
             <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_load_block</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">cd_path</span><span class="p">:</span>
-        <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cd </span><span class="si">{</span><span class="n">cd_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    
+        <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cd </span><span class="si">{</span><span class="n">cd_path</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">)</span>
+        <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;touch Start_</span><span class="si">{</span><span class="n">job_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        
     <span class="k">if</span> <span class="n">engine_cmd</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">np</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">mpi_path</span><span class="p">:</span>
                 <span class="n">mpi_path</span> <span class="o">=</span> <span class="s1">&#39;mpirun&#39;</span>
             <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mpi_path</span><span class="si">}</span><span class="s1"> -np </span><span class="si">{</span><span class="n">np</span><span class="si">:</span><span class="s1">d</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">engine_cmd</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">engine_cmd</span><span class="p">)</span>
+            <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bash -c &#39;echo $$;  </span><span class="si">{</span><span class="n">engine_cmd</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="c1"># job_script.append(engine_cmd)</span>
 
     <span class="k">if</span> <span class="n">extra_block</span><span class="p">:</span>
         <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">extra_block</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">remote</span><span class="p">:</span>
         <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">remote_job_script_last_line</span><span class="p">)</span>
-
+    
     <span class="n">job_script</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">job_script</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">job_script</span></div>
 
@@ -324,7 +331,7 @@
 
     <span class="n">head_job_script</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">#!/bin/bash</span>
-<span class="s2">#PBS -N </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">#PBS -N </span><span class="si">{</span><span class="n">name</span><span class="si">}</span>
 <span class="s2">#PBS -o output.txt</span>
 <span class="s2">#PBS -e error.txt</span>
 <span class="s2">#PBS -l select=1:ncpus=4:mpiprocs=4</span>
@@ -351,8 +358,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

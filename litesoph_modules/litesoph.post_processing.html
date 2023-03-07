@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>litesoph.post_processing package &mdash; LITESOPH 0.1 documentation</title>
@@ -11,15 +11,13 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="litesoph.post_processing.mo_population_correlation package" href="litesoph.post_processing.mo_population_correlation.html" />
-    <link rel="prev" title="litesoph.gui.models package" href="litesoph.gui.models.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -27,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,10 +63,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Developer_Guideline.html">Developer Guideline</a> &raquo;</li>
-          <li><a href="litesoph.html">litesoph package</a> &raquo;</li>
-      <li>litesoph.post_processing package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">litesoph.post_processing package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/litesoph_modules/litesoph.post_processing.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -75,26 +75,30 @@
            <div itemprop="articleBody">
              
   <section id="litesoph-post-processing-package">
-<h1>litesoph.post_processing package<a class="headerlink" href="#litesoph-post-processing-package" title="Permalink to this headline"></a></h1>
+<h1>litesoph.post_processing package<a class="headerlink" href="#litesoph-post-processing-package" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html">litesoph.post_processing.mo_population_correlation package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#litesoph-post-processing-mo-population-correlation-bandpass-module">litesoph.post_processing.mo_population_correlation.bandpass module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#litesoph-post-processing-mo-population-correlation-dft-mod-module">litesoph.post_processing.mo_population_correlation.dft-mod module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#module-litesoph.post_processing.mo_population_correlation.fourier">litesoph.post_processing.mo_population_correlation.fourier module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#module-litesoph.post_processing.mo_population_correlation.moocc_correlation_plot">litesoph.post_processing.mo_population_correlation.moocc_correlation_plot module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#litesoph-post-processing-mo-population-correlation-population-correlation-module">litesoph.post_processing.mo_population_correlation.population_correlation module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#litesoph-post-processing-mo-population-correlation-test-module">litesoph.post_processing.mo_population_correlation.test module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.mo_population_correlation.html#module-litesoph.post_processing.mo_population_correlation">Module contents</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="litesoph.post_processing.octopus.html">litesoph.post_processing.octopus package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#module-litesoph.post_processing.octopus.binner">litesoph.post_processing.octopus.binner module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#module-litesoph.post_processing.octopus.oct_projections">litesoph.post_processing.octopus.oct_projections module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#module-litesoph.post_processing.octopus.binner">litesoph.post_processing.octopus.binner module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.binner.binit"><code class="docutils literal notranslate"><span class="pre">binit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#module-litesoph.post_processing.octopus.oct_projections">litesoph.post_processing.octopus.oct_projections module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections"><code class="docutils literal notranslate"><span class="pre">Projections</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.denmat"><code class="docutils literal notranslate"><span class="pre">Projections.denmat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.extract"><code class="docutils literal notranslate"><span class="pre">Projections.extract()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.ft_dmat"><code class="docutils literal notranslate"><span class="pre">Projections.ft_dmat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.populations"><code class="docutils literal notranslate"><span class="pre">Projections.populations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.write_dmat"><code class="docutils literal notranslate"><span class="pre">Projections.write_dmat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.write_dmatr"><code class="docutils literal notranslate"><span class="pre">Projections.write_dmatr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph.post_processing.octopus.oct_projections.Projections.write_pop"><code class="docutils literal notranslate"><span class="pre">Projections.write_pop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#litesoph-post-processing-octopus-tddenmat-module">litesoph.post_processing.octopus.tddenmat module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="litesoph.post_processing.octopus.html#module-litesoph.post_processing.octopus">Module contents</a></li>
 </ul>
@@ -103,19 +107,10 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="litesoph-post-processing-fft-pp-plot-module">
-<h2>litesoph.post_processing.FFT_Pp_plot module<a class="headerlink" href="#litesoph-post-processing-fft-pp-plot-module" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-litesoph.post_processing.Pp_Chop">
-<span id="litesoph-post-processing-pp-chop-module"></span><h2>litesoph.post_processing.Pp_Chop module<a class="headerlink" href="#module-litesoph.post_processing.Pp_Chop" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-litesoph.post_processing.Pp_fft">
-<span id="litesoph-post-processing-pp-fft-module"></span><h2>litesoph.post_processing.Pp_fft module<a class="headerlink" href="#module-litesoph.post_processing.Pp_fft" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-litesoph.post_processing.fourier">
-<span id="litesoph-post-processing-fourier-module"></span><h2>litesoph.post_processing.fourier module<a class="headerlink" href="#module-litesoph.post_processing.fourier" title="Permalink to this headline"></a></h2>
+<span id="litesoph-post-processing-fourier-module"></span><h2>litesoph.post_processing.fourier module<a class="headerlink" href="#module-litesoph.post_processing.fourier" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.post_processing.fourier.Fourier">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.fourier.</span></span><span class="sig-name descname"><span class="pre">Fourier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/fourier.html#Fourier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.fourier.Fourier" title="Permalink to this definition"></a></dt>
@@ -149,46 +144,103 @@
 
 </section>
 <section id="module-litesoph.post_processing.masking_utls">
-<span id="litesoph-post-processing-masking-utls-module"></span><h2>litesoph.post_processing.masking_utls module<a class="headerlink" href="#module-litesoph.post_processing.masking_utls" title="Permalink to this headline"></a></h2>
+<span id="litesoph-post-processing-masking-utls-module"></span><h2>litesoph.post_processing.masking_utls module<a class="headerlink" href="#module-litesoph.post_processing.masking_utls" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">MaskedDipoleAnaylsis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim_total_dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">MaskedDipoleAnaylsis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus_region_dms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dm.dat'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.cal_energy_coupling_constant">
-<span class="sig-name descname"><span class="pre">cal_energy_coupling_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeperiodmethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fourier_method'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.cal_energy_coupling_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.cal_energy_coupling_constant" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">cal_energy_coupling_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeperiodmethod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fourier_method'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.cal_energy_coupling_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.cal_energy_coupling_constant" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the envelope for dipole moment data and writes to envelope file,</p>
+<p>Computes time_period(in sec), coupling constant(in ev)from envelope data</p>
+<dl class="field-list simple">
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.extract_dipolemoment_data">
-<span class="sig-name descname"><span class="pre">extract_dipolemoment_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.extract_dipolemoment_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.extract_dipolemoment_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_complement">
+<span class="sig-name descname"><span class="pre">get_dm_complement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_dm_complement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_complement" title="Permalink to this definition"></a></dt>
+<dd><p>Computes dipole moment complement to specific region and writes to file</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_filename">
+<span class="sig-name descname"><span class="pre">get_dm_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_i</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_dm_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_filename" title="Permalink to this definition"></a></dt>
+<dd><p>region_i: int (default gives total dm file name</p>
+<dl class="simple">
+<dt>focus:  True (masked/with mask)</dt><dd><p>False (mask_complement)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_index">
+<span class="sig-name descname"><span class="pre">get_dm_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_i</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_dm_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_dm_index" title="Permalink to this definition"></a></dt>
+<dd><p>region_i: int (default gives total dm file name</p>
+<dl class="simple">
+<dt>focus:  True (masked/with mask)</dt><dd><p>False (mask_complement)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_energy_coupling">
-<span class="sig-name descname"><span class="pre">get_energy_coupling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_energy_coupling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_energy_coupling" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_region_dm_file">
-<span class="sig-name descname"><span class="pre">get_region_dm_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_region_dm_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_region_dm_file" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">get_energy_coupling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.get_energy_coupling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.get_energy_coupling" title="Permalink to this definition"></a></dt>
+<dd><p>Gets energy coupling for passed dipole moment data,</p>
+<p>Writes to coupling data file</p>
+<dl class="field-list simple">
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envelope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.plot" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_focus_axis_env</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.plot" title="Permalink to this definition"></a></dt>
+<dd><p>region_focus_axis_env: input list is of tuples of following</p>
+<dl class="simple">
+<dt>region_index: integer (0<span class="classifier">total,</span></dt><dd><p>1: focus region 1,….)</p>
+</dd>
+</dl>
+<p>focus(dipole moment focus region): bool (None/True/False)</p>
+<dl class="simple">
+<dt>axis(pol vector): list; X: [1,0,0],</dt><dd><p>Y: [0,1,0],
+Z : [0,0,1]</p>
+</dd>
+</dl>
+<p>env(Envelope function): bool</p>
+<dl class="field-list simple">
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.plot_dms">
+<span class="sig-name descname"><span class="pre">plot_dms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envelope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#MaskedDipoleAnaylsis.plot_dms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.MaskedDipoleAnaylsis.plot_dms" title="Permalink to this definition"></a></dt>
+<dd><p>Plots extracted dipole moments: [total, region1, region2…]</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.combine_focus_region_dm">
+<span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">combine_focus_region_dm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region_dm_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#combine_focus_region_dm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.combine_focus_region_dm" title="Permalink to this definition"></a></dt>
+<dd><p>List of arrays for x,y,z components of dipole moments with identical shape</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.complement_dm">
+<span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">complement_dm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_dm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_dm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#complement_dm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.complement_dm" title="Permalink to this definition"></a></dt>
+<dd><p>Input arrays for x,y,z components of dipole moments with identical shape,
+Substracts region dipole momennt from the total</p>
 </dd></dl>
 
 <dl class="py function">
@@ -196,6 +248,18 @@
 <span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">get_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#get_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.get_direction" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.read_dm">
+<span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">read_dm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#read_dm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.read_dm" title="Permalink to this definition"></a></dt>
+<dd><p>Reads single dm file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="litesoph.post_processing.masking_utls.read_multiple_dms">
+<span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.masking_utls.</span></span><span class="sig-name descname"><span class="pre">read_multiple_dms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_dm_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/masking_utls.html#read_multiple_dms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.masking_utls.read_multiple_dms" title="Permalink to this definition"></a></dt>
+<dd><p>Reads multiple dm files and returns the list of array(dmx,dmy,dmz)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -224,7 +288,7 @@
 
 </section>
 <section id="module-litesoph.post_processing.mo_population">
-<span id="litesoph-post-processing-mo-population-module"></span><h2>litesoph.post_processing.mo_population module<a class="headerlink" href="#module-litesoph.post_processing.mo_population" title="Permalink to this headline"></a></h2>
+<span id="litesoph-post-processing-mo-population-module"></span><h2>litesoph.post_processing.mo_population module<a class="headerlink" href="#module-litesoph.post_processing.mo_population" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="litesoph.post_processing.mo_population.calc_population_diff">
 <span class="sig-prename descclassname"><span class="pre">litesoph.post_processing.mo_population.</span></span><span class="sig-name descname"><span class="pre">calc_population_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">homo_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/post_processing/mo_population.html#calc_population_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.post_processing.mo_population.calc_population_diff" title="Permalink to this definition"></a></dt>
@@ -258,23 +322,20 @@
 
 </section>
 <section id="module-litesoph.post_processing">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-litesoph.post_processing" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-litesoph.post_processing" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="litesoph.gui.models.html" class="btn btn-neutral float-left" title="litesoph.gui.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="litesoph.post_processing.mo_population_correlation.html" class="btn btn-neutral float-right" title="litesoph.post_processing.mo_population_correlation package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:43:03.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 17:01:35.
       </span></p>
   </div>
 

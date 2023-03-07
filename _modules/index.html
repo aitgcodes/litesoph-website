@@ -10,10 +10,10 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,8 +62,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Overview: module code</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview: module code</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -103,19 +107,13 @@
 <li><a href="litesoph/engines/nwchem/spectrum_task.html">litesoph.engines.nwchem.spectrum_task</a></li>
 <li><a href="litesoph/engines/nwchem/task_data.html">litesoph.engines.nwchem.task_data</a></li>
 </ul><li><a href="litesoph/engines/octopus.html">litesoph.engines.octopus</a></li>
-<ul><li><a href="litesoph/engines/octopus/gs2oct.html">litesoph.engines.octopus.gs2oct</a></li>
-<li><a href="litesoph/engines/octopus/octopus.html">litesoph.engines.octopus.octopus</a></li>
+<ul><li><a href="litesoph/engines/octopus/octopus.html">litesoph.engines.octopus.octopus</a></li>
 <li><a href="litesoph/engines/octopus/octopus_input.html">litesoph.engines.octopus.octopus_input</a></li>
 <li><a href="litesoph/engines/octopus/octopus_manager.html">litesoph.engines.octopus.octopus_manager</a></li>
 <li><a href="litesoph/engines/octopus/octopus_task.html">litesoph.engines.octopus.octopus_task</a></li>
 <li><a href="litesoph/engines/octopus/task_data.html">litesoph.engines.octopus.task_data</a></li>
 </ul><li><a href="litesoph/gui/defaults_handler.html">litesoph.gui.defaults_handler</a></li>
-<li><a href="litesoph/gui/engine_views.html">litesoph.gui.engine_views</a></li>
-<ul><li><a href="litesoph/gui/engine_views/engine_views_abc.html">litesoph.gui.engine_views.engine_views_abc</a></li>
-<li><a href="litesoph/gui/engine_views/gpaw_views/gs_views.html">litesoph.gui.engine_views.gpaw_views.gs_views</a></li>
-<li><a href="litesoph/gui/engine_views/nwchem_views/gs_views.html">litesoph.gui.engine_views.nwchem_views.gs_views</a></li>
-<li><a href="litesoph/gui/engine_views/octopus_views/gs_views.html">litesoph.gui.engine_views.octopus_views.gs_views</a></li>
-</ul><li><a href="litesoph/gui/gui.html">litesoph.gui.gui</a></li>
+<li><a href="litesoph/gui/gui.html">litesoph.gui.gui</a></li>
 <li><a href="litesoph/gui/input_validation.html">litesoph.gui.input_validation</a></li>
 <li><a href="litesoph/gui/logpanel.html">litesoph.gui.logpanel</a></li>
 <li><a href="litesoph/gui/menubar.html">litesoph.gui.menubar</a></li>
@@ -133,8 +131,6 @@
 <li><a href="litesoph/post_processing/fourier.html">litesoph.post_processing.fourier</a></li>
 <li><a href="litesoph/post_processing/masking_utls.html">litesoph.post_processing.masking_utls</a></li>
 <li><a href="litesoph/post_processing/mo_population.html">litesoph.post_processing.mo_population</a></li>
-<li><a href="litesoph/post_processing/mo_population_correlation/fourier.html">litesoph.post_processing.mo_population_correlation.fourier</a></li>
-<li><a href="litesoph/post_processing/mo_population_correlation/moocc_correlation_plot.html">litesoph.post_processing.mo_population_correlation.moocc_correlation_plot</a></li>
 <li><a href="litesoph/post_processing/octopus/binner.html">litesoph.post_processing.octopus.binner</a></li>
 <li><a href="litesoph/post_processing/octopus/oct_projections.html">litesoph.post_processing.octopus.oct_projections</a></li>
 <li><a href="litesoph/visualization/plot_spectrum.html">litesoph.visualization.plot_spectrum</a></li>
@@ -149,8 +145,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:43:03.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 17:01:35.
       </span></p>
   </div>
 

@@ -10,10 +10,10 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,9 +62,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>litesoph.gui.workflow_controller</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">litesoph.gui.workflow_controller</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -76,25 +80,30 @@
 <span class="kn">from</span> <span class="nn">litesoph.gui.user_data</span> <span class="kn">import</span> <span class="n">get_remote_profile</span><span class="p">,</span> <span class="n">update_proj_list</span><span class="p">,</span> <span class="n">update_remote_profile_list</span>
 
 <span class="kn">from</span> <span class="nn">litesoph.common.task</span> <span class="kn">import</span> <span class="n">Task</span><span class="p">,</span> <span class="n">TaskFailed</span>
+<span class="kn">from</span> <span class="nn">litesoph.common.task_manager</span> <span class="kn">import</span> <span class="n">check_task_completion</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.task_data</span> <span class="kn">import</span> <span class="n">TaskTypes</span> <span class="k">as</span> <span class="n">tt</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.workflow_manager</span> <span class="kn">import</span> <span class="n">WorkflowManager</span><span class="p">,</span> <span class="n">TaskSetupError</span><span class="p">,</span> <span class="n">WorkflowEnded</span>
 <span class="kn">from</span> <span class="nn">litesoph.gui.workflow_navigation</span> <span class="kn">import</span> <span class="n">WorkflowNavigation</span>
 <span class="kn">from</span> <span class="nn">litesoph.gui</span> <span class="kn">import</span> <span class="n">actions</span>
 <span class="kn">from</span> <span class="nn">litesoph.gui.task_controller</span> <span class="kn">import</span> <span class="p">(</span><span class="n">TaskController</span><span class="p">,</span>
-                                            <span class="n">LaserPageController</span><span class="p">,</span>
-                                            <span class="n">PostProcessTaskController</span><span class="p">,</span>
-                                            <span class="n">MaskingPageController</span><span class="p">)</span>
+                                            <span class="n">PostProcessTaskController</span><span class="p">,)</span>
 <span class="kn">from</span> <span class="nn">litesoph.gui</span> <span class="kn">import</span> <span class="n">views</span> <span class="k">as</span> <span class="n">v</span>
+<span class="kn">from</span> <span class="nn">litesoph.common.task_data</span> <span class="kn">import</span> <span class="p">(</span><span class="n">task_dependencies_map</span><span class="p">,</span>
+                                    <span class="n">check_properties_dependencies</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">litesoph.gui</span> <span class="kn">import</span> <span class="n">design</span>
+<span class="kn">from</span> <span class="nn">litesoph.gui</span> <span class="kn">import</span> <span class="n">controllers</span> <span class="k">as</span> <span class="n">ctrl</span>
+<span class="kn">from</span> <span class="nn">litesoph.gui.controllers</span> <span class="kn">import</span> <span class="n">masking_controller</span><span class="p">,</span> <span class="n">td_page</span>
 
 
 <span class="n">task_view_map</span><span class="o">=</span><span class="p">{</span>
     <span class="n">tt</span><span class="o">.</span><span class="n">GROUND_STATE</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">GroundStatePage</span><span class="p">,</span>
-    <span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">TimeDependentPage</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">LaserDesignPage</span><span class="p">],</span>
+    <span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">TimeDependentPage</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">TDPage</span><span class="p">],</span>
     <span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_SPECTRUM</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">PlotSpectraPage</span><span class="p">,</span>
     <span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_AVERAGED_SPECTRUM</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">PlotSpectraPage</span><span class="p">,</span>
     <span class="n">tt</span><span class="o">.</span><span class="n">TCM</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">TcmPage</span><span class="p">,</span> 
     <span class="n">tt</span><span class="o">.</span><span class="n">MO_POPULATION</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">PopulationPage</span><span class="p">,</span>
-    <span class="n">tt</span><span class="o">.</span><span class="n">MASKING</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">MaskingPage</span><span class="p">,</span>
+    <span class="n">tt</span><span class="o">.</span><span class="n">MASKING</span><span class="p">:</span> <span class="n">design</span><span class="o">.</span><span class="n">MaskingPage</span>
+    <span class="c1"># tt.MASKING: v.MaskingPage,</span>
 <span class="p">}</span>
 
 <div class="viewcode-block" id="WorkflowController"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowController">[docs]</a><span class="k">class</span> <span class="nc">WorkflowController</span><span class="p">:</span>
@@ -109,7 +118,7 @@
         
 <div class="viewcode-block" id="WorkflowController.start"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowController.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_manager</span><span class="p">:</span> <span class="n">WorkflowManager</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span> <span class="o">=</span> <span class="n">workflow_manager</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_workflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">user_defined</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_mode_workflow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">task_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workmanager_page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_controller</span><span class="o">.</span><span class="n">workmanager_page</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">()</span>        </div>
         
@@ -117,30 +126,88 @@
 <div class="viewcode-block" id="WorkflowController.show_workmanager_page"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowController.show_workmanager_page">[docs]</a>    <span class="k">def</span> <span class="nf">show_workmanager_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workmanager_page</span><span class="o">.</span><span class="n">_var</span><span class="p">[</span><span class="s1">&#39;select_wf_option&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workmanager_page</span><span class="o">.</span><span class="n">tkraise</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;normal&#39;</span><span class="p">)</span></div>
     
+<div class="viewcode-block" id="WorkflowController.get_task_dependencies"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowController.get_task_dependencies">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">):</span>
+        
+        <span class="c1">#TODO: Function needs to be reimplemented to get only the uuids of </span>
+        <span class="c1"># dependent tasks</span>
+        <span class="n">dependencies_data</span> <span class="o">=</span> <span class="n">task_dependencies_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dependencies_data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
+
+        <span class="n">dependent_tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">dependencies_data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">dependent_tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">dependent_tasks</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span>  <span class="ow">in</span> <span class="n">task</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+        <span class="n">task_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">get_taskinfo</span><span class="p">(</span><span class="n">dependent_tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="n">completed_task_list</span> <span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">task_info</span> <span class="ow">in</span> <span class="n">task_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_task_completion</span><span class="p">(</span><span class="n">task_info</span><span class="p">):</span>
+                <span class="n">completed_task_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_info</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">completed_task_list</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Dependent task:</span><span class="si">{</span><span class="n">dependent_tasks</span><span class="si">}</span><span class="s2"> not done&quot;</span><span class="p">)</span>
+
+        <span class="n">check</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">check_properties_dependencies</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">completed_task_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+        
+        <span class="n">tasks_uuids</span><span class="o">=</span> <span class="p">[</span><span class="n">task_info</span><span class="o">.</span><span class="n">uuid</span> <span class="k">for</span> <span class="n">task_info</span> <span class="ow">in</span> <span class="n">completed_task_list</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tasks_uuids</span></div>
+
 <div class="viewcode-block" id="WorkflowController.start_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowController.start_task">[docs]</a>    <span class="k">def</span> <span class="nf">start_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         
         <span class="n">task_name</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defined_workflow</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_mode_workflow</span><span class="p">:</span>
             <span class="n">task_and_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_task</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">task_and_view</span><span class="p">:</span>
                 <span class="k">return</span> 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="p">:</span>
                 <span class="k">return</span>
-        <span class="n">task_name</span><span class="p">,</span> <span class="n">task_view</span> <span class="o">=</span> <span class="n">task_and_view</span>   
-        <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+        <span class="n">task_name</span><span class="p">,</span> <span class="n">task_view</span> <span class="o">=</span> <span class="n">task_and_view</span>
+        <span class="n">step_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">current_step</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">step_id</span><span class="p">:</span>
+            <span class="n">step_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step_id</span> <span class="o">=</span> <span class="n">step_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">check_block</span><span class="p">(</span><span class="n">block_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">add_block</span><span class="p">(</span><span class="n">block_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                            <span class="n">name</span> <span class="o">=</span><span class="s1">&#39;task mode&#39;</span><span class="p">,</span>
+                                            <span class="n">store_same_task_type</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">TaskSetupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span>
+                                        <span class="n">block_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                        <span class="n">step_id</span><span class="o">=</span> <span class="n">step_id</span><span class="p">,</span>
+                                        <span class="n">dependent_tasks_uuid</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_task_dependencies</span><span class="p">(</span><span class="n">task_name</span><span class="p">))</span>   
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">TaskSetupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">return</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">task_controller</span> <span class="o">=</span> <span class="n">get_task_controller</span><span class="p">(</span><span class="n">task_view</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">task_controller</span><span class="o">.</span><span class="n">set_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="p">,</span> <span class="n">task_view</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_controller</span><span class="o">.</span><span class="n">set_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="p">,</span> <span class="n">task_view</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;disabled&#39;</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">tuple</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 
         <span class="n">simulation_type</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&lt;event&gt;&gt;&#39;</span><span class="p">),</span>
                         <span class="p">(</span><span class="s1">&#39;electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta Pulse&#39;</span><span class="p">,</span><span class="n">v</span><span class="o">.</span><span class="n">TimeDependentPage</span><span class="p">),</span>
-                        <span class="p">(</span><span class="s1">&#39;electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Gaussian Pulse&#39;</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">LaserDesignPage</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Gaussian Pulse&#39;</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">TDPage</span><span class="p">),</span>
                         <span class="p">(</span><span class="s1">&#39;electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Customised Pulse&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&lt;event&gt;&gt;&#39;</span><span class="p">),</span>
                         <span class="p">(</span><span class="s1">&#39;electron+ion&#39;</span><span class="p">,</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&lt;event&gt;&gt;&#39;</span><span class="p">),</span>
                         <span class="p">(</span><span class="s1">&#39;electron+ion&#39;</span><span class="p">,</span> <span class="s1">&#39;Delta Pulse&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&lt;event&gt;&gt;&#39;</span><span class="p">),</span>
@@ -200,7 +267,7 @@
             <span class="k">return</span> <span class="p">(</span><span class="n">tt</span><span class="o">.</span><span class="n">MO_POPULATION</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">PopulationPage</span><span class="p">)</span>
             <span class="c1">#self.main_window.event_generate(actions.SHOW_MO_POPULATION_CORRELATION_PAGE)</span>
         <span class="k">if</span> <span class="n">sub_task</span> <span class="o">==</span> <span class="s2">&quot;Masking&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">tt</span><span class="o">.</span><span class="n">MASKING</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">MaskingPage</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="p">(</span><span class="n">tt</span><span class="o">.</span><span class="n">MASKING</span><span class="p">,</span> <span class="n">design</span><span class="o">.</span><span class="n">MaskingPage</span><span class="p">)</span></div>
             <span class="c1">#self.main_window.event_generate(actions.SHOW_MASKING_PAGE) </span>
 
     
@@ -209,32 +276,21 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_controller</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">project_controller</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
 
+
 <div class="viewcode-block" id="WorkflowModeController.start"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowModeController.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_manager</span><span class="p">:</span> <span class="n">WorkflowManager</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span> <span class="o">=</span> <span class="n">workflow_manager</span>
         <span class="c1"># self.workmanager_page = self.project_controller.workmanager_page</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">)</span>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_task</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">()</span>        </div>
         
 
 <div class="viewcode-block" id="WorkflowModeController.show_workmanager_page"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowModeController.show_workmanager_page">[docs]</a>    <span class="k">def</span> <span class="nf">show_workmanager_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workmanager_page</span><span class="o">.</span><span class="n">_var</span><span class="p">[</span><span class="s1">&#39;select_wf_option&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workmanager_page</span><span class="o">.</span><span class="n">tkraise</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">proceed_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_task</span><span class="p">)</span></div>
     
+
 <div class="viewcode-block" id="WorkflowModeController.start_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowModeController.start_task">[docs]</a>    <span class="k">def</span> <span class="nf">start_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
-        
-        <span class="k">try</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-        <span class="k">except</span> <span class="n">TaskSetupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
-            <span class="k">return</span>
-        <span class="k">except</span> <span class="n">WorkflowEnded</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Info&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;All the tasks in the workflow are completed successfully.&quot;</span><span class="p">)</span>
-            <span class="n">block_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">block_id</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block_id</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="k">return</span>
         
         <span class="n">task_view</span> <span class="o">=</span> <span class="n">task_view_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
@@ -250,15 +306,34 @@
 
         <span class="n">block_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">block_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block_id</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">task_controller</span><span class="o">.</span><span class="n">set_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="p">,</span> <span class="n">task_view</span><span class="p">)</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_controller</span><span class="o">.</span><span class="n">set_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="p">,</span> <span class="n">task_view</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="WorkflowModeController.next_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.WorkflowModeController.next_task">[docs]</a>    <span class="k">def</span> <span class="nf">next_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">TaskSetupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">except</span> <span class="n">WorkflowEnded</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Info&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;All the tasks in the workflow are completed successfully.&quot;</span><span class="p">)</span>
+            <span class="n">block_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_manager</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">block_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workflow_navigation_view</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">block_id</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_task</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="get_task_controller"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.workflow_controller.get_task_controller">[docs]</a><span class="k">def</span> <span class="nf">get_task_controller</span><span class="p">(</span> <span class="n">task_view</span><span class="p">,</span> <span class="n">workflow_controller</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskController</span><span class="p">:</span>
     
-    <span class="k">if</span> <span class="n">task_view</span> <span class="o">==</span> <span class="n">v</span><span class="o">.</span><span class="n">LaserDesignPage</span><span class="p">:</span>
-        <span class="n">task_controller</span> <span class="o">=</span> <span class="n">LaserPageController</span>
-    <span class="k">elif</span> <span class="n">task_view</span> <span class="o">==</span> <span class="n">v</span><span class="o">.</span><span class="n">MaskingPage</span><span class="p">:</span>
-        <span class="n">task_controller</span> <span class="o">=</span> <span class="n">MaskingPageController</span>
+    <span class="k">if</span> <span class="n">task_view</span> <span class="o">==</span> <span class="n">design</span><span class="o">.</span><span class="n">TDPage</span><span class="p">:</span>
+        <span class="n">task_controller</span> <span class="o">=</span> <span class="n">td_page</span><span class="o">.</span><span class="n">TDPageController</span>
+    <span class="k">elif</span> <span class="n">task_view</span> <span class="o">==</span> <span class="n">design</span><span class="o">.</span><span class="n">MaskingPage</span><span class="p">:</span>
+        <span class="n">task_controller</span> <span class="o">=</span> <span class="n">masking_controller</span><span class="o">.</span><span class="n">MaskingPageController</span>
+    <span class="c1"># elif task_view == v.MaskingPage:</span>
+        <span class="c1"># task_controller = MaskingPageController</span>
     <span class="k">elif</span> <span class="n">task_view</span> <span class="ow">in</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">PlotSpectraPage</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">TcmPage</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">PopulationPage</span><span class="p">]:</span>
         <span class="n">task_controller</span> <span class="o">=</span> <span class="n">PostProcessTaskController</span>
     <span class="k">else</span><span class="p">:</span>
@@ -274,8 +349,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

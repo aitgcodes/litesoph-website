@@ -10,10 +10,10 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-        <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,10 +62,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-          <li><a href="../nwchem.html">litesoph.engines.nwchem</a> &raquo;</li>
-      <li>litesoph.engines.nwchem.nwchem_input</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../nwchem.html">litesoph.engines.nwchem</a></li>
+      <li class="breadcrumb-item active">litesoph.engines.nwchem.nwchem_input</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -95,16 +99,24 @@
 <span class="k">def</span> <span class="nf">_get_field</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
     
     <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;      &#39;</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;kick&#39;</span><span class="p">)</span>
-    <span class="n">_lines</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;    </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">]</span>
-    
-    <span class="n">geo_name</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;geo_name&#39;</span><span class="p">,</span> <span class="s1">&#39;system&#39;</span><span class="p">)</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fields</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;kick&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        
+        <span class="n">geo_name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;geo_name&#39;</span><span class="p">,</span> <span class="s1">&#39;system&#39;</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">subkey</span><span class="p">,</span> <span class="n">subval</span> <span class="ow">in</span> <span class="n">val</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">_format_line</span><span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">subval</span><span class="p">))</span>
-    <span class="n">_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
-    <span class="n">_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;excite &quot;</span><span class="si">{</span><span class="n">geo_name</span><span class="si">}</span><span class="s1">&quot; with &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_lines</span>
+        <span class="k">for</span> <span class="n">subkey</span><span class="p">,</span> <span class="n">subval</span> <span class="ow">in</span> <span class="n">field</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">_format_line</span><span class="p">(</span><span class="n">subkey</span><span class="p">,</span> <span class="n">subval</span><span class="p">))</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="s1">&#39;end&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;excite &quot;</span><span class="si">{</span><span class="n">geo_name</span><span class="si">}</span><span class="s1">&quot; with &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">lines</span>
 
 <span class="k">def</span> <span class="nf">_format_block</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">nindent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span> <span class="o">*</span> <span class="n">nindent</span>
@@ -217,12 +229,16 @@
         <span class="n">params</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geo_name</span> <span class="o">=</span> <span class="s1">&#39;system&#39;</span>
 
     <span class="k">if</span> <span class="s1">&#39;rt_tddft&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;rt_tddft&#39;</span><span class="p">][</span><span class="s1">&#39;field&#39;</span><span class="p">][</span><span class="s1">&#39;geo_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geo_name</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rt_tddft&#39;</span><span class="p">][</span><span class="s1">&#39;field&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;rt_tddft&#39;</span><span class="p">][</span><span class="s1">&#39;field&#39;</span><span class="p">]:</span>
+                <span class="n">field</span><span class="p">[</span><span class="s1">&#39;geo_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geo_name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;rt_tddft&#39;</span><span class="p">][</span><span class="s1">&#39;field&#39;</span><span class="p">][</span><span class="s1">&#39;geo_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geo_name</span>
 
     <span class="n">theory</span><span class="p">,</span> <span class="n">task</span> <span class="o">=</span> <span class="n">_get_task</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
     <span class="n">label</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;nwchem&#39;</span><span class="p">)</span>
-    <span class="n">perm</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;perm&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
-    <span class="n">scratch</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;scratch&#39;</span><span class="p">,</span> <span class="n">perm</span><span class="p">))</span>
+    <span class="n">perm</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;perm&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="n">scratch</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;scratch&#39;</span><span class="p">,</span> <span class="n">perm</span><span class="p">)</span>
     <span class="n">restart_kw</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;restart_kw&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">restart_kw</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;restart&#39;</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognised restart keyword: </span><span class="si">{}</span><span class="s2">!&quot;</span>
@@ -253,8 +269,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

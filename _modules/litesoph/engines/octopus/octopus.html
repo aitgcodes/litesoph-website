@@ -10,10 +10,10 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-        <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,10 +62,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-          <li><a href="../octopus.html">litesoph.engines.octopus</a> &raquo;</li>
-      <li>litesoph.engines.octopus.octopus</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../octopus.html">litesoph.engines.octopus</a></li>
+      <li class="breadcrumb-item active">litesoph.engines.octopus.octopus</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -131,7 +135,7 @@
         
         
 <div class="viewcode-block" id="Octopus.read_info"><a class="viewcode-back" href="../../../../litesoph_modules/litesoph.engines.octopus.html#litesoph.engines.octopus.octopus.Octopus.read_info">[docs]</a>    <span class="k">def</span> <span class="nf">read_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info_file</span><span class="p">:</span><span class="n">Path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_unoccupied</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns number of un/occupied states and eigen values&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns number of un/occupied states and eigen values&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">info_file</span><span class="p">:</span>
             <span class="n">info_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;static/info&#39;</span><span class="p">)</span>
@@ -181,7 +185,7 @@
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">occ</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unocc</span><span class="p">,</span> <span class="n">evals</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Octopus.calculate_eigen_difference"><a class="viewcode-back" href="../../../../litesoph_modules/litesoph.engines.octopus.html#litesoph.engines.octopus.octopus.Octopus.calculate_eigen_difference">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_eigen_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Returns eigen values of HOMO,LUMO and all others with HOMO as origin &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns eigen values of HOMO,LUMO and all others with HOMO as origin &quot;&quot;&quot;</span>
 
         <span class="p">[</span><span class="n">num_occupied</span><span class="p">,</span> <span class="n">num_unoccupied</span><span class="p">,</span> <span class="n">eigen_val</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_info</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">num_occupied</span><span class="p">,</span> <span class="n">num_unoccupied</span><span class="p">,</span> <span class="n">eigen_val</span><span class="p">)</span>
@@ -197,7 +201,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Octopus.read_projections"><a class="viewcode-back" href="../../../../litesoph_modules/litesoph.engines.octopus.html#litesoph.engines.octopus.octopus.Octopus.read_projections">[docs]</a>    <span class="k">def</span> <span class="nf">read_projections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">projection_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Reads and stores projections for given arguments</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Reads and stores projections for given arguments</span>
 
 <span class="sd">        Arguments: time_start = start of time steps, time_end = end of time steps</span>
 <span class="sd">                   number_of_proj_(un/)occupied = number of un/occupied states to project,</span>
@@ -256,7 +260,7 @@
         <span class="k">return</span> <span class="p">[</span><span class="n">proj</span><span class="p">,</span><span class="n">popln</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Octopus.compute_ksd"><a class="viewcode-back" href="../../../../litesoph_modules/litesoph.engines.octopus.html#litesoph.engines.octopus.octopus.Octopus.compute_ksd">[docs]</a>    <span class="k">def</span> <span class="nf">compute_ksd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proj</span><span class="p">:</span><span class="n">Projections</span><span class="p">,</span> <span class="n">out_directory</span><span class="p">:</span><span class="n">Path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; arguments: polarization axis for TD simulation&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; arguments: polarization axis for TD simulation&quot;&quot;&quot;</span>
 
         <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -324,8 +328,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

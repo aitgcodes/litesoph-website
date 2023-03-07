@@ -3,12 +3,9 @@ Developer Guideline
 
 Setting up your local repository
 ---------------------------------
-1. Fork the LITESOPH/litesoph-pipeline repo into your github account.
+1. Fork the LITESOPH/litesoph repo into your github account.
 
 2. ‘git clone’ this newly forked repo into your local machine.
-
-.. Warning::
-   Don’t directly clone from LITESOPH/litesoph-pipeline.
 
 Setting up test environment
 ----------------------------
@@ -80,24 +77,16 @@ LITESOPH Architecture
 -----------------------
 The LITESOPH Architecture has the following model.
 
-.. image:: ./Image/LS_Architecture.png
+.. image:: ./Image/litesoph_layers_30_11_22.png
    :width: 800
    :alt: LITESOPH_home
 
-Workflow of LITESOPH:
+User's Navigation for LITESOPH:
 #######################
-The overall workflow of LITESOPH is as the following:
+The User's Navigation for LITESOPH is as the following:
 
-.. image:: ./Image/Litesoph_Architecture.png
+.. image:: ./Image/User-navigation.png
    :width: 800
-   :alt: Pre
+   :alt: Pre      
 
-Modules of LITESOPH: 
------------------------
-The modules of LITESOPH for the LITESOPH-Developer is as the following.
-
-.. toctree::
-   :maxdepth: 4
-
-   litesoph_modules/litesoph
    

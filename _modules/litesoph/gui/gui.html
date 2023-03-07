@@ -10,10 +10,10 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,9 +62,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>litesoph.gui.gui</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">litesoph.gui.gui</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -158,13 +162,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">__on_window_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Manage WM_DELETE_WINDOW protocol.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Manage WM_DELETE_WINDOW protocol.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save_data</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 
 <div class="viewcode-block" id="GUIAPP.quit"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Exit the app if it is ready for quit.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exit the app if it is ready for quit.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__on_window_close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="GUIAPP.setup_bottom_panel"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.setup_bottom_panel">[docs]</a>    <span class="k">def</span> <span class="nf">setup_bottom_panel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -179,19 +183,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ls_manager</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="GUIAPP.update_project_tree"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.update_project_tree">[docs]</a>    <span class="k">def</span> <span class="nf">update_project_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">curent_project_manager</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;here&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">project_tree_view</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curent_project_manager</span><span class="o">.</span><span class="n">project_info</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_project_tree</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="GUIAPP.on_bpanel_button_clicked"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.on_bpanel_button_clicked">[docs]</a>    <span class="k">def</span> <span class="nf">on_bpanel_button_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log_panel</span><span class="o">.</span><span class="n">on_bpanel_button_clicked</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="GUIAPP.set_title"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.set_title">[docs]</a>    <span class="k">def</span> <span class="nf">set_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newtitle</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_title</span> <span class="o">=</span> <span class="n">newtitle</span>
-        <span class="n">default_title</span> <span class="o">=</span> <span class="s1">&#39;LITESOPH - </span><span class="si">{0}</span><span class="s1">&#39;</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">default_title</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">newtitle</span><span class="p">)</span>
+<div class="viewcode-block" id="GUIAPP.set_title"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.set_title">[docs]</a>    <span class="k">def</span> <span class="nf">set_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">workflow_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;LITESOPH&#39;</span>
+
+        <span class="k">if</span> <span class="n">project_name</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">project_name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">title</span>
+
+        <span class="k">if</span> <span class="n">workflow_name</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">workflow_name</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">title</span>
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">main_window</span><span class="o">.</span><span class="n">wm_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_get_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -202,7 +209,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">status_engine</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_refresh_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">_</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;reads and updates the lsconfig object from lsconfig.ini&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;reads and updates the lsconfig object from lsconfig.ini&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ls_manager</span><span class="o">.</span><span class="n">read_lsconfig</span><span class="p">()</span>
 
 <div class="viewcode-block" id="GUIAPP.create_workflow_frames"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.create_workflow_frames">[docs]</a>    <span class="k">def</span> <span class="nf">create_workflow_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -241,7 +248,7 @@
 
 
     <span class="k">def</span> <span class="nf">_bind_event_callbacks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;binds events and specific callback functions&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;binds events and specific callback functions&quot;&quot;&quot;</span>
         <span class="n">event_callbacks</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">actions</span><span class="o">.</span><span class="n">GET_MOLECULE</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_controller</span><span class="o">.</span><span class="n">_on_get_geometry_file</span><span class="p">,</span>
             <span class="n">actions</span><span class="o">.</span><span class="n">VISUALIZE_MOLECULE</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_controller</span><span class="o">.</span><span class="n">_on_visualize</span><span class="p">,</span>
@@ -264,7 +271,6 @@
 
     <span class="k">def</span> <span class="nf">_init_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">show_project_summary</span><span class="p">()</span>
         <span class="n">update_proj_list</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_get_engine</span><span class="p">()</span>
@@ -272,7 +278,7 @@
         
 
     <span class="k">def</span> <span class="nf">_on_open_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;creates dialog to get project path and opens existing project&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;creates dialog to get project path and opens existing project&quot;&quot;&quot;</span>
         <span class="n">project_path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">title</span><span class="o">=</span> <span class="s2">&quot;Select the existing Litesoph Project&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">project_path</span><span class="p">:</span>
             <span class="k">return</span>
@@ -290,7 +296,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">project_window</span><span class="o">.</span><span class="n">button_project</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_on_create_project</span><span class="p">)</span>   </div>
         
     <span class="k">def</span> <span class="nf">_on_create_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new litesoph project&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new litesoph project&quot;&quot;&quot;</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_window</span><span class="p">:</span>
             <span class="k">return</span>
@@ -324,8 +330,9 @@
                 
 
 <div class="viewcode-block" id="GUIAPP.show_project"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.show_project">[docs]</a>    <span class="k">def</span> <span class="nf">show_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_manager</span><span class="p">:</span> <span class="n">ProjectManager</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">project_controller</span><span class="o">.</span><span class="n">open_project</span><span class="p">(</span><span class="n">project_manager</span><span class="p">)</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_controller</span><span class="o">.</span><span class="n">open_project</span><span class="p">(</span><span class="n">project_manager</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">project_manager</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">project_manager</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">label</span><span class="p">)</span></div>
+    
 <div class="viewcode-block" id="GUIAPP.show_project_summary"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.gui.html#litesoph.gui.gui.GUIAPP.show_project_summary">[docs]</a>    <span class="k">def</span> <span class="nf">show_project_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">summary</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls_manager</span><span class="o">.</span><span class="n">get_project_summary</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view_panel</span><span class="o">.</span><span class="n">insert_text</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span></div>
@@ -357,8 +364,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

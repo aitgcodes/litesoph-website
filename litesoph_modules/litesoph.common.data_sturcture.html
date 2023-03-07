@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>litesoph.common.data_sturcture package &mdash; LITESOPH 0.1 documentation</title>
@@ -11,15 +11,13 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="litesoph.engines package" href="litesoph.engines.html" />
-    <link rel="prev" title="litesoph.common package" href="litesoph.common.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -27,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,11 +63,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../Developer_Guideline.html">Developer Guideline</a> &raquo;</li>
-          <li><a href="litesoph.html">litesoph package</a> &raquo;</li>
-          <li><a href="litesoph.common.html">litesoph.common package</a> &raquo;</li>
-      <li>litesoph.common.data_sturcture package</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">litesoph.common.data_sturcture package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/litesoph_modules/litesoph.common.data_sturcture.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,21 +75,100 @@
            <div itemprop="articleBody">
              
   <section id="litesoph-common-data-sturcture-package">
-<h1>litesoph.common.data_sturcture package<a class="headerlink" href="#litesoph-common-data-sturcture-package" title="Permalink to this headline"></a></h1>
+<h1>litesoph.common.data_sturcture package<a class="headerlink" href="#litesoph-common-data-sturcture-package" title="Permalink to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-litesoph.common.data_sturcture.data_classes">
-<span id="litesoph-common-data-sturcture-data-classes-module"></span><h2>litesoph.common.data_sturcture.data_classes module<a class="headerlink" href="#module-litesoph.common.data_sturcture.data_classes" title="Permalink to this headline"></a></h2>
+<span id="litesoph-common-data-sturcture-data-classes-module"></span><h2>litesoph.common.data_sturcture.data_classes module<a class="headerlink" href="#module-litesoph.common.data_sturcture.data_classes" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_same_task_type=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_uuids=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class stores information about a block in a the workflow.
+The block is a collection of tasks.</p>
+<p>name: The name of the block.
+store_same_task_type: true if all tasks in the block are of same type.
+task_type: The type of task if “store_same_task_type” is true else None.
+task_uuids: The list of task ids associated with the task.
+metadata: any optional information about the tasks.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Block.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.clone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Block.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.from_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.metadata" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.store_same_task_type">
+<span class="sig-name descname"><span class="pre">store_same_task_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.store_same_task_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.task_type">
+<span class="sig-name descname"><span class="pre">task_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.task_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.task_uuids">
+<span class="sig-name descname"><span class="pre">task_uuids</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.task_uuids" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Block.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Block.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Block.to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_id:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_uuid:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_uuid:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters:</span> <span class="pre">Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_parameters:</span> <span class="pre">Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next:</span> <span class="pre">Union[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NoneType]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous:</span> <span class="pre">Union[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NoneType]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_parameters=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>This class stores inforamtions about a task in the context of the workflow.</dt><dd><p>Each container can be associated with only on task.</p>
+</dd>
+</dl>
+<p>id: index of the container in the containers list.
+block_id: index of the block which the task belong to.
+task_type: the type of the task it is associated with.
+task_uuid: the uuid of the task it is associated with.
+workflow_uuid: the uuid of the workflow the task is present in.
+parameters: It dictionary that contains the parameters of the task in</p>
+<blockquote>
+<div><p>in context of the workflow.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>env_parameters: stores any miscellaneous information in context with</dt><dd><p>with workflow.</p>
+</dd>
+</dl>
+<p>next : stores uuid of the next task.
+previous : stores uuid of the previous task.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.block_id">
 <span class="sig-name descname"><span class="pre">block_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.block_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_uuid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Container.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.clone" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -112,7 +190,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.next">
-<span class="sig-name descname"><span class="pre">next</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.next" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">next</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.next" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -122,7 +200,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.previous">
-<span class="sig-name descname"><span class="pre">previous</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.previous" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">previous</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.previous" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -135,6 +213,13 @@
 <span class="sig-name descname"><span class="pre">task_uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.task_uuid" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Container.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.to_dict" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Container.workflow_uuid">
 <span class="sig-name descname"><span class="pre">workflow_uuid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Container.workflow_uuid" title="Permalink to this definition"></a></dt>
@@ -144,8 +229,9 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.Info">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">Info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Info" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">Info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#Info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.Info" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for info objects which required unique id.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
@@ -170,11 +256,78 @@
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">ProjectInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path:</span> <span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflows:</span> <span class="pre">List[litesoph.common.data_sturcture.data_classes.WorkflowInfo]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#ProjectInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.data_sturcture.data_classes.Info</span></code></a></p>
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">JobInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submit_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returncode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#JobInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class stores information about a job.</p>
+<p>id: the id of the job
+directory: the directory in which the job is running
+state: state of the job
+submit_mode: whether the job was submitted locally or to a remote machine.
+returncode: return code of the job
+output: Output of the job.
+error: Error of the job</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.directory">
+<span class="sig-name descname"><span class="pre">directory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.directory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.error">
+<span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#JobInfo.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.from_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.output">
+<span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.returncode">
+<span class="sig-name descname"><span class="pre">returncode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.returncode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.JobInfo.submit_mode">
+<span class="sig-name descname"><span class="pre">submit_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.JobInfo.submit_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">ProjectInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflows=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#ProjectInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">Info</span></code></a></p>
+<p>This class stores all the information about a project.</p>
+<p>label: Name of the project.
+path: Path to the project directory.
+description: string describing the project.
+config: configuration used in the project.
+workflows: List of all the workflow_info of workflows in the project.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo.clone">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_info</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#ProjectInfo.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.clone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo.config">
 <span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.config" title="Permalink to this definition"></a></dt>
@@ -199,12 +352,12 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo.path">
-<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.path" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.path" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.ProjectInfo.workflows">
-<span class="sig-name descname"><span class="pre">workflows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo" title="litesoph.common.data_sturcture.data_classes.WorkflowInfo"><span class="pre">litesoph.common.data_sturcture.data_classes.WorkflowInfo</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.workflows" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">workflows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo" title="litesoph.common.data_sturcture.data_classes.WorkflowInfo"><span class="pre">WorkflowInfo</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.ProjectInfo.workflows" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -213,6 +366,7 @@
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.State">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">State</span></span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#State"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.State" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class store the state of jobs, tasks, workflows.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
@@ -233,13 +387,46 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">TaskInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine:</span> <span class="pre">Union[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NoneType]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state:</span> <span class="pre">litesoph.common.data_sturcture.data_classes.State</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path:</span> <span class="pre">Union[pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NoneType]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_data:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine_param:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#TaskInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.data_sturcture.data_classes.Info</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">TaskInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_data=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine_param=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_copy_files=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_copy_files=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_info=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#TaskInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">Info</span></code></a></p>
+<p>This class stores all the information about a task.</p>
+<p>name: Task identifier.
+engine: Which engine to use to run the task.
+state: store information about the state of the task.
+path: path of the workflow directory.
+task_data: it store any miscellaneous information about the task that</p>
+<blockquote>
+<div><p>depends on the engine.</p>
+</div></blockquote>
+<p>param: The input parameters of the task.
+engine_param: The input parameters of the task in the format of the</p>
+<blockquote>
+<div><p>engine used.</p>
+</div></blockquote>
+<p>input: It’s a dictionary store that stores input files generated for the task.
+output: It stores output files generated for by the task.
+local_copy_files: list of relative paths of files to be copied to clone a task.
+remote_copy_files: list of relative paths of files to be copied from the</p>
+<blockquote>
+<div><p>remote machine.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>job_info: containes all the information about submitting and running the job.</dt><dd><p>(This is new feature in development)</p>
+</dd>
+</dl>
+<p>network: contains information about the job that was submitted to network.
+local: contains information about the job that was submitted locally.
+(network and the local variable will be removed once the job_info is incorporated.)</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_info</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#TaskInfo.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.clone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.engine">
-<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.engine" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.engine" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -260,8 +447,18 @@
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.job_info">
+<span class="sig-name descname"><span class="pre">job_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.JobInfo" title="litesoph.common.data_sturcture.data_classes.JobInfo"><span class="pre">JobInfo</span></a></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.job_info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.local">
 <span class="sig-name descname"><span class="pre">local</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.local" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.local_copy_files">
+<span class="sig-name descname"><span class="pre">local_copy_files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.local_copy_files" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -286,12 +483,17 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.path">
-<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.path" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.remote_copy_files">
+<span class="sig-name descname"><span class="pre">remote_copy_files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.remote_copy_files" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.TaskInfo.state">
-<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.State" title="litesoph.common.data_sturcture.data_classes.State"><span class="pre">litesoph.common.data_sturcture.data_classes.State</span></a></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.state" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.State" title="litesoph.common.data_sturcture.data_classes.State"><span class="pre">State</span></a></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.TaskInfo.state" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -303,13 +505,47 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">WorkflowInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path:</span> <span class="pre">pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_name:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine:</span> <span class="pre">Union[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NoneType]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_defined:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param:</span> <span class="pre">Dict[Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps:</span> <span class="pre">List[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">containers:</span> <span class="pre">List[litesoph.common.data_sturcture.data_classes.Container]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state:</span> <span class="pre">litesoph.common.data_sturcture.data_classes.State</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies_map:</span> <span class="pre">Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks:</span> <span class="pre">Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">litesoph.common.data_sturcture.data_classes.TaskInfo]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_step:</span> <span class="pre">list</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#WorkflowInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.data_sturcture.data_classes.Info</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">WorkflowInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_name=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_mode=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">containers=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies_map=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tasks=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_step=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#WorkflowInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Info" title="litesoph.common.data_sturcture.data_classes.Info"><code class="xref py py-class docutils literal notranslate"><span class="pre">Info</span></code></a></p>
+<p>This class store all the information of a workflow.</p>
+<p>label: User given name of the workflow.
+path: Path to workflow directory.
+name: The type of workflow, for example: spectrum, ksd.
+description: string, description about the workflow.
+engine: The engine used in the workflow.
+task_mode: If false, the workflow comes with a defined sequence of tasks.</p>
+<blockquote>
+<div><p>For example, the spectrum workflow is: ground_state -&gt; RT TDDFT -&gt; compute spectrum.
+If true, the user is given full control over the workflow to add any kind of
+task to it.</p>
+</div></blockquote>
+<p>param: any parameters related to the workflow.
+steps: It’s a list of blocks. For example, Averaged Spectrum workflow is:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>block_1(Ground state tasks) -&gt; block_2(RT TDDFT tasks) -&gt; block_3(compute spectrum tasks) -&gt; block_4(compute average spectrum)</dt><dd><dl class="simple">
+<dt>ground_state               rt tddft in x             compute spectrum in x                   compute average</dt><dd><p>rt tddft in y             compute spectrun in y
+rt tddft in z             compute spectrun in z</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>containers: It’s a list of containers. In a workflow, each task is associated with a container,</dt><dd><p>which stores information about the task in context of the workflow.
+Currently, this list is used to navigate one task to another in a workflow.</p>
+</dd>
+<dt>state: It stores information about what tasks are running and what step the workflow is in.</dt><dd><p>(currently this variable is not in use)</p>
+</dd>
+</dl>
+<p>dependencies_map: It’s a dictionary that maps each tasks with the list of tasks that it depend on it.
+tasks: It’s a dictionary that maps that task uuid  with the task_info objects.
+current_step: It’s a list that store the current task the workflow is in.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.containers">
-<span class="sig-name descname"><span class="pre">containers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Container" title="litesoph.common.data_sturcture.data_classes.Container"><span class="pre">litesoph.common.data_sturcture.data_classes.Container</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.containers" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">containers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Container" title="litesoph.common.data_sturcture.data_classes.Container"><span class="pre">Container</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.containers" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -329,7 +565,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.engine">
-<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.engine" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">engine</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.engine" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -356,30 +592,35 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.path">
-<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.path" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.path" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.state">
-<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.State" title="litesoph.common.data_sturcture.data_classes.State"><span class="pre">litesoph.common.data_sturcture.data_classes.State</span></a></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.state" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.State" title="litesoph.common.data_sturcture.data_classes.State"><span class="pre">State</span></a></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.state" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.steps">
-<span class="sig-name descname"><span class="pre">steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.steps" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.Block" title="litesoph.common.data_sturcture.data_classes.Block"><span class="pre">Block</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.steps" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.task_mode">
+<span class="sig-name descname"><span class="pre">task_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.task_mode" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.tasks">
-<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.TaskInfo" title="litesoph.common.data_sturcture.data_classes.TaskInfo"><span class="pre">litesoph.common.data_sturcture.data_classes.TaskInfo</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.tasks" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.WorkflowInfo.user_defined">
-<span class="sig-name descname"><span class="pre">user_defined</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.user_defined" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#litesoph.common.data_sturcture.data_classes.TaskInfo" title="litesoph.common.data_sturcture.data_classes.TaskInfo"><span class="pre">TaskInfo</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.WorkflowInfo.tasks" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.factory_job_info">
+<span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_classes.</span></span><span class="sig-name descname"><span class="pre">factory_job_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_classes.html#factory_job_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_classes.factory_job_info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_classes.factory_state">
@@ -395,11 +636,11 @@
 
 </section>
 <section id="module-litesoph.common.data_sturcture.data_types">
-<span id="litesoph-common-data-sturcture-data-types-module"></span><h2>litesoph.common.data_sturcture.data_types module<a class="headerlink" href="#module-litesoph.common.data_sturcture.data_types" title="Permalink to this headline"></a></h2>
+<span id="litesoph-common-data-sturcture-data-types-module"></span><h2>litesoph.common.data_sturcture.data_types module<a class="headerlink" href="#module-litesoph.common.data_sturcture.data_types" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_types.DataTypes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.data_types.</span></span><span class="sig-name descname"><span class="pre">DataTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/data_types.html#DataTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.data_types.DataTypes" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.data_types.DataTypes.boolean">
@@ -440,11 +681,11 @@
 
 </section>
 <section id="module-litesoph.common.data_sturcture.utils">
-<span id="litesoph-common-data-sturcture-utils-module"></span><h2>litesoph.common.data_sturcture.utils module<a class="headerlink" href="#module-litesoph.common.data_sturcture.utils" title="Permalink to this headline"></a></h2>
+<span id="litesoph-common-data-sturcture-utils-module"></span><h2>litesoph.common.data_sturcture.utils module<a class="headerlink" href="#module-litesoph.common.data_sturcture.utils" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="litesoph.common.data_sturcture.utils.WorkflowInfoEncoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.data_sturcture.utils.</span></span><span class="sig-name descname"><span class="pre">WorkflowInfoEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/data_sturcture/utils.html#WorkflowInfoEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.data_sturcture.utils.WorkflowInfoEncoder" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">JSONEncoder</span></code></p>
 <p>Constructor for JSONEncoder, with sensible defaults.</p>
 <p>If skipkeys is false, then it is a TypeError to attempt
 encoding of keys that are not str, int, float or None.  If
@@ -499,23 +740,20 @@ implement default like this:</p>
 
 </section>
 <section id="module-litesoph.common.data_sturcture">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-litesoph.common.data_sturcture" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-litesoph.common.data_sturcture" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="litesoph.common.html" class="btn btn-neutral float-left" title="litesoph.common package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="litesoph.engines.html" class="btn btn-neutral float-right" title="litesoph.engines package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 

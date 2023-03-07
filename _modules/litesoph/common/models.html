@@ -10,10 +10,10 @@
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -24,11 +24,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> LITESOPH
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            LITESOPH
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,9 +62,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../../index.html">Module code</a> &raquo;</li>
-      <li>litesoph.common.models</li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">litesoph.common.models</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -80,6 +84,7 @@
 <span class="kn">from</span> <span class="nn">litesoph.common.data_sturcture.data_types</span> <span class="kn">import</span> <span class="n">DataTypes</span> <span class="k">as</span>  <span class="n">DT</span>
 <span class="kn">from</span> <span class="nn">litesoph.utilities.units</span> <span class="kn">import</span> <span class="n">autime_to_eV</span><span class="p">,</span> <span class="n">au_to_as</span><span class="p">,</span> <span class="n">as_to_au</span><span class="p">,</span> <span class="n">au_to_fs</span>
 <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">laser_design</span><span class="p">,</span> <span class="n">GaussianPulse</span><span class="p">,</span> <span class="n">DeltaPulse</span>
+<span class="kn">from</span> <span class="nn">litesoph.common.utils</span> <span class="kn">import</span> <span class="n">get_pol_list</span>
 
 <div class="viewcode-block" id="AutoModeModel"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.AutoModeModel">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">AutoModeModel</span><span class="p">:</span>
@@ -174,10 +179,9 @@
             <span class="s1">&#39;rel_eigen&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
             <span class="s1">&#39;extra_states&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="n">DT</span><span class="o">.</span><span class="n">integer</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
         <span class="p">}</span></div>
-    
 
 <div class="viewcode-block" id="LaserDesignModel"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel">[docs]</a><span class="k">class</span> <span class="nc">LaserDesignModel</span><span class="p">:</span>
-
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Laser Design Model with Gaussian Pulse&quot;&quot;&quot;</span>
     <span class="n">laser_input</span> <span class="o">=</span> <span class="p">{</span>
 
         <span class="s2">&quot;strength&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
@@ -198,10 +202,10 @@
         <span class="nb">range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span><span class="p">[</span><span class="s1">&#39;total_time&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="nb">range</span><span class="o">*</span><span class="mf">1e3</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strength</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">strength</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>    
 
 <div class="viewcode-block" id="LaserDesignModel.create_pulse"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel.create_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">create_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; creates gaussian pulse with given inval,fwhm value &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; creates gaussian pulse with given inval,fwhm value &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">GaussianPulse</span>
         <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">laser_design</span>
         <span class="c1">#from litesoph.utilities.units import autime_to_eV, au_to_as, as_to_au</span>
@@ -219,27 +223,27 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">derivative_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LaserDesignModel.write_laser"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel.write_laser">[docs]</a>    <span class="k">def</span> <span class="nf">write_laser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filename</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; writes laser pulse to file &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; writes laser pulse to file &quot;&quot;&quot;</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">pulse</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="LaserDesignModel.plot_time_strength"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel.plot_time_strength">[docs]</a>    <span class="k">def</span> <span class="nf">plot_time_strength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; returns Figure object for (time,strength) in (X,Y) &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; returns Figure object for (time,strength) in (X,Y) &quot;&quot;&quot;</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_t</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">strength_t</span><span class="p">,</span> <span class="s1">&#39;Time (in fs)&#39;</span><span class="p">,</span> <span class="s1">&#39;Pulse Strength (in au)&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
 <div class="viewcode-block" id="LaserDesignModel.plot_time_derivative"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel.plot_time_derivative">[docs]</a>    <span class="k">def</span> <span class="nf">plot_time_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; returns Figure object for (time,derivative) in (X,Y) &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; returns Figure object for (time,derivative) in (X,Y) &quot;&quot;&quot;</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_t</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">derivative_t</span><span class="p">,</span> <span class="s1">&#39;Time (in attosec)&#39;</span><span class="p">,</span> <span class="s1">&#39;Time derivative of pulse strength&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fig</span>    </div>
 
 <div class="viewcode-block" id="LaserDesignModel.plot_strength_derivative"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModel.plot_strength_derivative">[docs]</a>    <span class="k">def</span> <span class="nf">plot_strength_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; returns Figure object for (strength,derivative) in (X,Y) &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; returns Figure object for (strength,derivative) in (X,Y) &quot;&quot;&quot;</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strength_t</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">derivative_t</span><span class="p">,</span> <span class="s1">&#39;Pulse Strength (in au)&#39;</span><span class="p">,</span> <span class="s1">&#39;Time derivative of pulse strength&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fig</span> </div></div>
 
 <div class="viewcode-block" id="plot"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.plot">[docs]</a><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">x_label</span><span class="p">,</span> <span class="n">y_label</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; returns Figure object given x and y data &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; returns Figure object given x and y data &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">matplotlib.figure</span> <span class="kn">import</span> <span class="n">Figure</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -254,259 +258,304 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x_label</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">y_label</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
- 
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> </div>
     <span class="c1"># return figure    </span>
 
-<div class="viewcode-block" id="LaserDesignModelNew"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModelNew">[docs]</a><span class="k">class</span> <span class="nc">LaserDesignModelNew</span><span class="p">:</span>
-
-    <span class="n">laser_input</span> <span class="o">=</span> <span class="p">{</span>
-
-        <span class="s2">&quot;strength&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="s2">&quot;inval&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="c1">#&quot;pol_x&quot;: {&#39;req&#39; : True, &#39;type&#39;: DT.integer},</span>
-        <span class="c1">#&quot;pol_y&quot; : {&#39;req&#39; : True, &#39;type&#39;: DT.integer},</span>
-        <span class="c1">#&quot;pol_z&quot; : {&#39;req&#39; : True, &#39;type&#39;: DT.integer},</span>
-        <span class="s2">&quot;fwhm&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="s2">&quot;frequency&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="s2">&quot;time_step&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="s2">&quot;number_of_steps&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">},</span>
-        <span class="s2">&quot;tin&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;req&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">DT</span><span class="o">.</span><span class="n">decimal</span><span class="p">}</span>
-        
-        <span class="p">}</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">user_input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span> <span class="o">=</span> <span class="n">user_input</span>
-    <span class="c1">#     # # range = int(self.user_input[&#39;number_of_steps&#39;])* float(self.user_input[&#39;time_step&#39;])</span>
-        <span class="c1"># range = self.user_input[&#39;total_time&#39;]</span>
-        <span class="c1"># self.range = range*1e3</span>
-        <span class="c1"># self.freq = self.user_input[&#39;frequency&#39;]</span>
-        <span class="c1"># self.strength = self.user_input[&#39;strength&#39;]</span>
-        
-<div class="viewcode-block" id="LaserDesignModelNew.create_pulse"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignModelNew.create_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">create_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">user_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_input</span>
-        <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">GaussianPulse</span>
-        <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">laser_design</span>
-        <span class="kn">from</span> <span class="nn">litesoph.pre_processing.laser_design</span> <span class="kn">import</span> <span class="n">G_DeltaPulse</span>
-        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-        <span class="c1"># print(user_input)</span>
-        <span class="n">laser_details</span> <span class="o">=</span><span class="p">[]</span>
-        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">laser</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
-
-            <span class="k">if</span> <span class="n">laser</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span> <span class="s1">&#39;Gaussian&#39;</span><span class="p">:</span>
-
-                <span class="n">freq</span><span class="o">=</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span>
-                <span class="n">strength</span> <span class="o">=</span> <span class="n">laser</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>
-                <span class="n">t_total</span><span class="o">=</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;total_time&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1e3</span>
-                <span class="n">in_value</span><span class="o">=</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;inval&#39;</span><span class="p">]</span>
-                <span class="n">t_in</span><span class="o">=</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;tin&#39;</span><span class="p">]</span>
-                <span class="n">F_fwhm</span><span class="o">=</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;fwhm&#39;</span><span class="p">]</span>
-                
-                <span class="sd">&quot;&quot;&quot; creates gaussian pulse with given inval,fwhm value &quot;&quot;&quot;</span>
-                <span class="n">l_design</span> <span class="o">=</span> <span class="n">laser_design</span><span class="p">(</span><span class="n">in_value</span><span class="p">,</span><span class="n">t_in</span><span class="p">,</span><span class="n">F_fwhm</span><span class="p">)</span>
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span>
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">strength</span>
-                <span class="n">sigma</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">autime_to_eV</span><span class="o">/</span><span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-                <span class="n">time0</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;time0&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">au_to_as</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                                 
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span> <span class="s1">&#39;Gaussian&#39;</span>     
-                       
-                
-                <span class="n">delay_array</span><span class="o">=</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mf">1e3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]]</span> 
-
-                <span class="c1"># # ##### probe pulse train Generation  ###############</span>
-                <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="k">for</span>  <span class="n">delay</span> <span class="ow">in</span> <span class="n">delay_array</span><span class="p">:</span>
-
-                        <span class="n">pulse</span><span class="o">=</span><span class="n">GaussianPulse</span><span class="p">(</span><span class="n">strength</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">time0</span><span class="p">)</span><span class="o">+</span><span class="n">delay</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma</span><span class="p">),</span> <span class="s1">&#39;sin&#39;</span><span class="p">)</span>
-                        <span class="n">strength_t</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_total</span><span class="p">)</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span>
-                        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_t</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span><span class="p">,</span><span class="n">strength_t</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-
-                <span class="c1"># ##### Generating Pulse by invoking GaussianPulse function</span>
-                    <span class="n">pulse</span> <span class="o">=</span> <span class="n">GaussianPulse</span><span class="p">(</span><span class="n">strength</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">time0</span><span class="p">),</span><span class="n">freq</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">sigma</span><span class="p">),</span> <span class="s1">&#39;sin&#39;</span><span class="p">)</span>        
-            
-                <span class="c1"># ##Ploting all LASERs in single file#######</span>
-                    <span class="n">time_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_total</span><span class="p">)</span>
-                    <span class="n">strength_t</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_total</span><span class="p">)</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span>
-                    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_t</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span><span class="p">,</span><span class="n">strength_t</span><span class="p">)</span> <span class="c1">#, &#39;Time (in fs)&#39;, &#39;Pulse Strength (in au)&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                               
-                <span class="n">strength</span> <span class="o">=</span> <span class="n">laser</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>
-                <span class="n">l_design</span><span class="o">=</span><span class="p">{}</span>
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">strength</span>
-                <span class="n">time0</span> <span class="o">=</span> <span class="mi">0</span> 
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;time0&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">time0</span>                                
-                <span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">=</span> <span class="s1">&#39;Delta&#39;</span>         
-                
-                <span class="n">delay_array</span><span class="o">=</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mf">1e3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]]</span> 
-
-                <span class="c1"># # ##### Delta probe pulse train Generation  ###############</span>
-                
-                <span class="k">for</span>  <span class="n">delay</span> <span class="ow">in</span> <span class="n">delay_array</span><span class="p">:</span>
-
-                    <span class="n">pulse</span><span class="o">=</span><span class="n">G_DeltaPulse</span><span class="p">(</span><span class="n">strength</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="n">time0</span><span class="p">)</span><span class="o">+</span><span class="n">delay</span><span class="p">)</span>
-                    <span class="n">strength_t</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_total</span><span class="p">)</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span>
-                    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_t</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span><span class="p">,</span><span class="n">strength_t</span><span class="p">)</span>
-                
-            <span class="n">laser_details</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l_design</span><span class="p">)</span>        
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (in fs)&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pulse Strength (in au)&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
-        
-        <span class="c1"># self.derivative_t = self.pulse.derivative(np.arange(self.range)*as_to_au)</span>
-
-    <span class="c1"># def write_laser(self,filename):</span>
-    <span class="c1">#     &quot;&quot;&quot; writes laser pulse to file &quot;&quot;&quot;</span>
-    <span class="c1">#     filename = pathlib.Path(filename) </span>
-    <span class="c1">#     self.pulse.write(filename, np.arange(self.range))</span>
-
-
 <div class="viewcode-block" id="LaserDesignPlotModel"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel">[docs]</a><span class="k">class</span> <span class="nc">LaserDesignPlotModel</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot; laser_inputs: list of laser inputs</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Laser Design Model to handle multiple lasers\n</span>
+<span class="sd">        Currently added laser types: Gaussian, Delta</span>
+<span class="sd">        laser_inputs: list of laser input dictionaries</span>
 <span class="sd">        laser_profile_time: in femtosecond</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laser_inputs</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">laser_profile_time</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">laser_inputs</span>  <span class="o">=</span> <span class="n">laser_inputs</span>
         <span class="k">if</span> <span class="n">laser_profile_time</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">laser_profile_time</span> <span class="o">=</span> <span class="n">laser_profile_time</span>       
-    
-<div class="viewcode-block" id="LaserDesignPlotModel.compute_laser_design_param"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.compute_laser_design_param">[docs]</a>    <span class="k">def</span> <span class="nf">compute_laser_design_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laser_type</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_param</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Calculates laser parameters specific to laser type&quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="n">laser_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">laser_profile_time</span> <span class="o">=</span> <span class="n">laser_profile_time</span>  
 
-        <span class="n">t_in</span><span class="o">=</span><span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;tin&#39;</span><span class="p">]</span>  <span class="c1">#au unit</span>
-        <span class="c1"># delay wrt the time origin of first laser </span>
-        <span class="n">delay_time_fs</span> <span class="o">=</span> <span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;delay_time&#39;</span><span class="p">]</span>          
-        <span class="n">strength_au</span> <span class="o">=</span> <span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="LaserDesignPlotModel.compute_laser_design_param"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.compute_laser_design_param">[docs]</a>    <span class="k">def</span> <span class="nf">compute_laser_design_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laser_type</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_param</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Calculates laser parameters specific to laser pulse shape</span>
+<span class="sd">        \n and returns pulse objects</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            laser_type : gaussian/delta</span>
+<span class="sd">            laser_param : &#39;tag&#39;,&#39;polarization&#39;,&#39;strength&#39;,&#39;tin&#39; (common)</span>
+<span class="sd">                            &#39;inval&#39;,&#39;frequency&#39;,&#39;fwhm&#39; (gaussian type)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Collecting  common laser parameters</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">pol_var</span> <span class="o">=</span> <span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;polarization&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span>
+        <span class="n">pol_list</span> <span class="o">=</span> <span class="n">get_pol_list</span><span class="p">(</span><span class="n">pol_var</span><span class="p">)</span>   
+        <span class="n">strength_au</span> <span class="o">=</span> <span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;strength&#39;</span><span class="p">)</span>    <span class="c1"># in au</span>
+        <span class="n">t_in</span> <span class="o">=</span> <span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tin&#39;</span><span class="p">)</span>                <span class="c1"># in as</span>
 
         <span class="k">if</span> <span class="n">laser_type</span> <span class="o">==</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">:</span>
-            <span class="n">freq_eV</span><span class="o">=</span><span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;frequency&#39;</span><span class="p">]</span>
-            <span class="n">strength_au</span> <span class="o">=</span> <span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;strength&#39;</span><span class="p">]</span>
-            <span class="n">inval</span><span class="o">=</span><span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;inval&#39;</span><span class="p">]</span>
+            <span class="c1"># Collecting parameter specific to Gaussian</span>
+            <span class="n">inval</span><span class="o">=</span><span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;inval&#39;</span><span class="p">)</span>
+            <span class="n">freq_eV</span><span class="o">=</span><span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frequency&#39;</span><span class="p">)</span>     <span class="c1"># in eV</span>
+            <span class="n">fwhm_eV</span><span class="o">=</span><span class="n">laser_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fwhm&#39;</span><span class="p">)</span>          <span class="c1"># in eV  </span>
 
-            <span class="c1"># fwhm in frequency space </span>
-            <span class="n">fwhm_eV</span><span class="o">=</span><span class="n">laser_param</span><span class="p">[</span><span class="s1">&#39;fwhm&#39;</span><span class="p">]</span>
+            <span class="c1"># Calculates fwhm/sigma(in time) and pulse centre/time0(in time)</span>
+            <span class="c1"># creates gaussian pulse with given inval,fwhm value </span>
+            <span class="n">l_design</span> <span class="o">=</span> <span class="n">laser_design</span><span class="p">(</span><span class="n">inval</span><span class="p">,</span><span class="n">t_in</span><span class="p">,</span><span class="n">fwhm_eV</span><span class="p">)</span>
 
-            <span class="c1"># Calculates fwhm/sigma(in time) and pulse centre(in time)</span>
-            <span class="c1"># creates gaussian pulse with given inval,fwhm value &quot;&quot;&quot;</span>
-            <span class="n">t_in_plus_delay</span> <span class="o">=</span> <span class="n">t_in</span> <span class="o">+</span> <span class="n">delay_time_fs</span><span class="o">*</span><span class="mf">1e3</span><span class="o">*</span><span class="n">as_to_au</span>
-            <span class="n">l_design</span> <span class="o">=</span> <span class="n">laser_design</span><span class="p">(</span><span class="n">inval</span><span class="p">,</span><span class="n">t_in_plus_delay</span><span class="p">,</span><span class="n">fwhm_eV</span><span class="p">)</span>
             <span class="n">l_design</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
                 <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> 
-                <span class="c1"># &#39;tin&#39;: t_in,</span>
+                <span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">,</span>
                 <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="n">freq_eV</span><span class="p">,</span>
-                <span class="s1">&#39;strength&#39;</span><span class="p">:</span> <span class="n">strength_au</span>
+                <span class="s1">&#39;strength&#39;</span><span class="p">:</span> <span class="n">strength_au</span><span class="p">,</span>
+                <span class="s1">&#39;polarization&#39;</span><span class="p">:</span> <span class="n">pol_list</span>
                 <span class="p">})</span>
                 
+            <span class="c1"># Unit conversion required for Pulse creation</span>
             <span class="n">sigma_eV</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">autime_to_eV</span><span class="o">/</span><span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
             <span class="n">time0_fs</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">l_design</span><span class="p">[</span><span class="s1">&#39;time0&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">au_to_fs</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> 
+
+            <span class="c1"># GaussianPulse </span>
             <span class="n">pulse</span> <span class="o">=</span> <span class="n">GaussianPulse</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span> <span class="n">strength_au</span><span class="p">,</span>
                                 <span class="n">time0</span><span class="o">=</span> <span class="n">time0_fs</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span><span class="n">frequency</span><span class="o">=</span> <span class="n">freq_eV</span><span class="p">,</span>
                                  <span class="n">sigma</span><span class="o">=</span> <span class="n">sigma_eV</span><span class="p">,</span> <span class="n">sincos</span><span class="o">=</span><span class="s1">&#39;sin&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">pulse</span><span class="p">,</span> <span class="n">l_design</span><span class="p">)</span> 
 
-        <span class="k">elif</span> <span class="n">laser_type</span> <span class="o">==</span> <span class="s2">&quot;delta&quot;</span><span class="p">:</span>  
-            <span class="n">time0</span><span class="o">=</span><span class="n">t_in</span><span class="o">*</span><span class="n">au_to_as</span> <span class="o">+</span> <span class="n">delay_time_fs</span> <span class="o">*</span><span class="mf">1e3</span>
+        <span class="k">elif</span> <span class="n">laser_type</span> <span class="o">==</span> <span class="s2">&quot;delta&quot;</span><span class="p">:</span> 
+            <span class="c1"># Collecting parameter specific to Delta</span>
+            <span class="n">time0</span><span class="o">=</span><span class="n">t_in</span><span class="o">*</span><span class="n">au_to_as</span>
+
+            <span class="c1"># DeltaPulse</span>
             <span class="n">pulse</span> <span class="o">=</span> <span class="n">DeltaPulse</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span> <span class="n">strength_au</span><span class="p">,</span>
             <span class="n">time0</span><span class="o">=</span> <span class="n">time0</span><span class="p">,</span> <span class="n">total_time</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">laser_profile_time</span><span class="p">)</span>
 
             <span class="n">l_design</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;delta&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;delta&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">tag</span><span class="p">,</span> 
             <span class="s2">&quot;strength&quot;</span><span class="p">:</span> <span class="n">strength_au</span><span class="p">,</span>
-            <span class="s2">&quot;time0&quot;</span><span class="p">:</span> <span class="n">time0</span><span class="p">,</span>
+            <span class="s2">&quot;time0&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">time0</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;polarization&#39;</span><span class="p">:</span> <span class="n">pol_list</span>
             <span class="p">}</span> 
-            <span class="k">return</span> <span class="p">(</span><span class="n">pulse</span><span class="p">,</span> <span class="n">l_design</span><span class="p">)</span></div>
-       
+
+        <span class="n">pulse</span><span class="o">.</span><span class="n">laser_input</span> <span class="o">=</span> <span class="n">laser_param</span>                   
+        <span class="n">pulse</span><span class="o">.</span><span class="n">laser_design</span> <span class="o">=</span> <span class="n">l_design</span>
+        <span class="k">return</span> <span class="n">pulse</span></div>
+
 <div class="viewcode-block" id="LaserDesignPlotModel.get_laser_pulse_list"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.get_laser_pulse_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_laser_pulse_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns list of pulse objects for list of laser inputs&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">list_of_pulse</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">list_of_laser_param</span> <span class="o">=</span> <span class="p">[]</span>
-
         <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">laser</span> <span class="ow">in</span> <span class="nb">enumerate</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">laser_inputs</span><span class="p">):</span>
             <span class="n">laser_type</span> <span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
             <span class="n">pulse_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_laser_design_param</span><span class="p">(</span><span class="n">laser_type</span><span class="p">,</span> <span class="n">laser</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">list_of_pulse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulse_info</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">list_of_laser_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulse_info</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list_of_pulse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulse_info</span><span class="p">)</span>
             
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_pulse</span></div>
 
-<div class="viewcode-block" id="LaserDesignPlotModel.get_time_strength"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.get_time_strength">[docs]</a>    <span class="k">def</span> <span class="nf">get_time_strength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_pulse</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots single/multiple lasers given the delay&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="LaserDesignPlotModel.get_laser_param_pulse"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.get_laser_param_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">get_laser_param_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laser_input</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns pulse object for laser</span>
+<span class="sd">        \n laser_input variables: &#39;type&#39;, &#39;time0&#39;&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: Modify this method to decide type if not present</span>
 
-        <span class="k">if</span> <span class="n">list_of_pulse</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pulse_sets</span> <span class="o">=</span> <span class="n">list_of_pulse</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pulse_sets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_laser_pulse</span><span class="p">()</span>
+        <span class="n">laser_type</span> <span class="o">=</span> <span class="n">laser_input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">laser_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span> <span class="s2">&quot;delta&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pulse_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_laser_design_param</span><span class="p">(</span><span class="n">laser_type</span><span class="p">,</span> <span class="n">laser_input</span><span class="p">)</span>            
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_info</span></div></div>
 
-        <span class="n">laser_profile_time_fs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">laser_profile_time</span>
-        <span class="n">laser_profile_time_as</span> <span class="o">=</span> <span class="n">laser_profile_time_fs</span><span class="o">*</span><span class="mf">1e3</span>
-        <span class="n">time_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">laser_profile_time_as</span><span class="p">)</span>
 
-        <span class="n">laser_strengths</span> <span class="o">=</span> <span class="p">[]</span>        
-        <span class="k">for</span> <span class="n">pulse</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pulse_sets</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">pulse</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;delta&quot;</span><span class="p">:</span>
-                <span class="n">strength_value</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">pulse</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">:</span>
-                <span class="n">strength_value</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">(</span><span class="n">time_array</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span>
-            <span class="n">laser_strengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">strength_value</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time_array</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strengths</span> <span class="o">=</span> <span class="n">laser_strengths</span>
+<span class="c1"># ---------------------------Helper Methods for multiple laser pulses---------------------------</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="n">time_array</span><span class="p">,</span><span class="n">laser_strengths</span><span class="p">)</span>     </div>
-                
-<div class="viewcode-block" id="LaserDesignPlotModel.write"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">time_t</span><span class="p">,</span> <span class="n">laser_strengths</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Write the values of the pulse to a file.</span>
+<div class="viewcode-block" id="get_time_strength"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.get_time_strength">[docs]</a><span class="k">def</span> <span class="nf">get_time_strength</span><span class="p">(</span><span class="n">list_of_laser_params</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">laser_profile_time</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots multiple lasers,\n</span>
+<span class="sd">    laser_profile_time(in fs): total time&quot;&quot;&quot;</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        fname</span>
-<span class="sd">            filename</span>
-<span class="sd">        time_t</span>
-<span class="sd">            times in attoseconds</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">time_t</span> <span class="o">=</span> <span class="n">time_t</span> <span class="o">*</span> <span class="n">as_to_au</span>
-        <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%20.10e</span><span class="s1">&#39;</span>
-        <span class="c1"># fmt = &#39;%12.6f&#39;</span>
-        <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:^10}</span><span class="s1">&#39;</span>
+    <span class="n">laser_sets</span> <span class="o">=</span> <span class="n">list_of_laser_params</span>
+    <span class="n">laser_profile_time_as</span> <span class="o">=</span> <span class="n">laser_profile_time</span><span class="o">*</span><span class="mf">1e3</span>    
+    <span class="n">time_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">laser_profile_time_as</span><span class="p">)</span>
+    <span class="n">laser_strengths</span> <span class="o">=</span> <span class="p">[]</span>   
 
-        <span class="c1"># fmt_str = &#39;%12.6f %20.10e %20.10e&#39;</span>
-        <span class="n">fmt_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%12.6f</span><span class="s1">&#39;</span>
-        <span class="n">header_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">laser</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">laser_sets</span><span class="p">):</span>                     
+        <span class="k">if</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;delta&quot;</span><span class="p">:</span> 
+            <span class="n">time0</span> <span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;time0&#39;</span><span class="p">)</span><span class="o">*</span><span class="n">au_to_as</span>
+            <span class="n">pulse</span> <span class="o">=</span> <span class="n">DeltaPulse</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;strength&#39;</span><span class="p">),</span>
+                                <span class="n">time0</span> <span class="o">=</span> <span class="n">time0</span><span class="p">,</span>  
+                                <span class="n">total_time</span><span class="o">=</span><span class="n">laser_profile_time</span><span class="p">)</span>
+            <span class="n">strength_value</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">()</span>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">laser_strengths</span><span class="p">)):</span>
-            <span class="n">fmt_str</span> <span class="o">=</span> <span class="n">fmt_str</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">+</span> <span class="n">fmt</span>
-            <span class="n">header_str</span> <span class="o">=</span> <span class="n">header_str</span><span class="o">+</span><span class="n">header</span>
-        
-        <span class="c1"># Format header_string            </span>
-        <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">time_t</span><span class="p">,</span> <span class="o">*</span><span class="n">laser_strengths</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-                   <span class="n">fmt</span><span class="o">=</span><span class="n">fmt_str</span><span class="p">,</span> 
-                <span class="c1">#    header=header</span>
-                   <span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gaussian&quot;</span><span class="p">:</span> 
+            <span class="n">time0</span> <span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;time0&#39;</span><span class="p">)</span><span class="o">*</span><span class="n">au_to_as</span>                 
+            <span class="n">sigma_eV</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">autime_to_eV</span><span class="o">/</span><span class="n">laser</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">freq_eV</span> <span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;frequency&#39;</span><span class="p">)</span>
+            <span class="n">pulse</span> <span class="o">=</span> <span class="n">GaussianPulse</span><span class="p">(</span><span class="n">strength</span><span class="o">=</span> <span class="n">laser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;strength&#39;</span><span class="p">),</span>
+                                <span class="n">time0</span><span class="o">=</span> <span class="n">time0</span><span class="p">,</span>
+                                <span class="n">frequency</span><span class="o">=</span> <span class="n">freq_eV</span><span class="p">,</span>
+                                <span class="n">sigma</span><span class="o">=</span> <span class="n">sigma_eV</span><span class="p">,</span> 
+                                <span class="n">sincos</span><span class="o">=</span><span class="s1">&#39;sin&#39;</span><span class="p">)</span>              
+            <span class="n">strength_value</span> <span class="o">=</span> <span class="n">pulse</span><span class="o">.</span><span class="n">strength</span><span class="p">(</span><span class="n">time_array</span><span class="o">*</span><span class="n">as_to_au</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LaserDesignPlotModel.plot_laser"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserDesignPlotModel.plot_laser">[docs]</a>    <span class="k">def</span> <span class="nf">plot_laser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">litesoph.visualization.plot_spectrum</span> <span class="kn">import</span> <span class="n">plot_multiple_column</span>
-        <span class="k">if</span> <span class="n">fname</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">strengths</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
-        <span class="n">num_of_lasers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strengths</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span>
+        <span class="n">laser_strengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">strength_value</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="p">(</span><span class="n">time_array</span><span class="p">,</span><span class="n">laser_strengths</span><span class="p">)</span>      </div>
 
-        <span class="n">plot_multiple_column</span><span class="p">(</span><span class="n">data_array</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-        <span class="n">column_list</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">num_of_lasers</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span> <span class="s1">&#39;Time (in fs)&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span> <span class="s1">&#39;Pulse Strength (in au)&#39;</span><span class="p">,</span> <span class="n">xcolumn</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>        
-        <span class="n">column_dict</span> <span class="o">=</span> <span class="n">format_laser_label</span><span class="p">(</span><span class="n">num_of_lasers</span><span class="p">)</span>
-        <span class="p">)</span></div></div>
+<div class="viewcode-block" id="write_lasers"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.write_lasers">[docs]</a><span class="k">def</span> <span class="nf">write_lasers</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">time_t</span><span class="p">,</span> <span class="n">laser_strengths</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write the time (in au)-laser strengths to a file.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fname</span>
+<span class="sd">        filename</span>
+<span class="sd">    time_t</span>
+<span class="sd">        times in attoseconds</span>
+<span class="sd">    laser_strengths</span>
+<span class="sd">        list of laser_strength arrays</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_t</span> <span class="o">=</span> <span class="n">time_t</span> <span class="o">*</span> <span class="n">as_to_au</span>
+
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%20.10e</span><span class="s1">&#39;</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:^20}</span><span class="s1">&#39;</span>
+    <span class="n">fmt_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%12.6f</span><span class="s1">&#39;</span>
+    <span class="n">column_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:^20}</span><span class="s1">&#39;</span>
+    <span class="n">header_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Time(in au)&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Get the format strings</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">laser_strengths</span><span class="p">)):</span>
+        <span class="n">fmt_str</span> <span class="o">=</span> <span class="n">fmt_str</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">+</span> <span class="n">fmt</span>
+        <span class="n">column_str</span> <span class="o">=</span> <span class="n">column_str</span><span class="o">+</span><span class="n">header</span>
+        <span class="n">header_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;pulse&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># Format header_string       </span>
+    <span class="n">header_str</span> <span class="o">=</span> <span class="n">column_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">header_list</span><span class="p">)</span>         
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">time_t</span><span class="p">,</span> <span class="o">*</span><span class="n">laser_strengths</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+                <span class="n">fmt</span><span class="o">=</span><span class="n">fmt_str</span><span class="p">,</span> 
+               <span class="n">header</span><span class="o">=</span><span class="n">header_str</span>
+                <span class="p">)</span></div>
+
+<div class="viewcode-block" id="plot_laser"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.plot_laser">[docs]</a><span class="k">def</span> <span class="nf">plot_laser</span><span class="p">(</span><span class="n">time_arr</span><span class="p">,</span> <span class="n">strength_arr</span><span class="p">,</span><span class="n">fname</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots Strengths as function of time&quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">litesoph.visualization.plot_spectrum</span> <span class="kn">import</span> <span class="n">plot_multiple_column</span>
+    <span class="k">if</span> <span class="n">fname</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">time_arr</span><span class="p">,</span> <span class="o">*</span><span class="n">strength_arr</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="n">num_of_lasers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">strength_arr</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">as_to_au</span><span class="o">*</span><span class="n">au_to_fs</span>
+    <span class="n">plot_multiple_column</span><span class="p">(</span><span class="n">data_array</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">column_list</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">num_of_lasers</span><span class="p">),</span> 
+                        <span class="n">xlabel</span><span class="o">=</span> <span class="s1">&#39;Time (in fs)&#39;</span><span class="p">,</span> 
+                        <span class="n">ylabel</span><span class="o">=</span> <span class="s1">&#39;Pulse Strength (in au)&#39;</span><span class="p">,</span> <span class="n">xcolumn</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>        
+                        <span class="n">column_dict</span> <span class="o">=</span> <span class="n">format_laser_label</span><span class="p">(</span><span class="n">num_of_lasers</span><span class="p">)</span>
+                        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="format_laser_label"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.format_laser_label">[docs]</a><span class="k">def</span> <span class="nf">format_laser_label</span><span class="p">(</span><span class="n">number_of_lasers</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
-    <span class="n">laser_label_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats laser labels with index&quot;&quot;&quot;</span>
+    <span class="n">laser_label_dict</span> <span class="o">=</span> <span class="p">{}</span>    
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_lasers</span><span class="p">):</span>
         <span class="n">laser_label_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="s2">&quot;laser&quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
-
     <span class="k">return</span> <span class="n">laser_label_dict</span></div>
+
+<span class="c1">#--------------------------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="LaserInfo"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo">[docs]</a><span class="k">class</span> <span class="nc">LaserInfo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laser_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">laser_dict</span>
+
+<div class="viewcode-block" id="LaserInfo.add_systems_to_laser_data"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.add_systems_to_laser_data">[docs]</a>    <span class="k">def</span> <span class="nf">add_systems_to_laser_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_tag</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_list</span><span class="p">:</span><span class="nb">list</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">system_key</span> <span class="o">=</span> <span class="n">system_tag</span>
+        <span class="n">system_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tag&#39;</span><span class="p">:</span> <span class="n">system_tag</span><span class="p">,</span>
+                        <span class="s1">&#39;lasers&#39;</span><span class="p">:</span> <span class="n">laser_list</span><span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">system_key</span><span class="p">:</span><span class="n">system_dict</span><span class="p">})</span></div>
+
+<div class="viewcode-block" id="LaserInfo.add_laser"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.add_laser">[docs]</a>    <span class="k">def</span> <span class="nf">add_laser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_key</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_param</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Appends lasers to laser database </span>
+<span class="sd">        or adds to list index, if index is given&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">system_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">existing_lasers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;lasers&#39;</span><span class="p">]</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">existing_lasers</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>  
+                <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">existing_lasers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">laser_param</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">existing_lasers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">laser_param</span>
+                    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;List index:</span><span class="si">{}</span><span class="s1"> is not found&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>     
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;lasers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">existing_lasers</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;lasers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">laser_param</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_systems_to_laser_data</span><span class="p">(</span><span class="n">system_tag</span><span class="o">=</span><span class="n">system_key</span><span class="p">,</span><span class="n">laser_list</span><span class="o">=</span><span class="p">[</span><span class="n">laser_param</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="LaserInfo.add_pulse"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.add_pulse">[docs]</a>    <span class="k">def</span> <span class="nf">add_pulse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_key</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_pulse</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Appends laser pulse object to laser database </span>
+<span class="sd">        or adds to list index, if index is given&quot;&quot;&quot;</span>
+
+        <span class="n">pulse_info</span> <span class="o">=</span> <span class="n">laser_pulse</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">laser_pulses</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;pulses&#39;</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">laser_pulses</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">laser_pulses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pulse_info</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">laser_pulses</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulse_info</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;List index:</span><span class="si">{}</span><span class="s1"> is not found&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;pulses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">laser_pulses</span>
+
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;pulses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pulse_info</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LaserInfo.remove_info"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.remove_info">[docs]</a>    <span class="k">def</span> <span class="nf">remove_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_key</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">laser_index</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes laser details on the given index from laser_database&quot;&quot;&quot;</span>
+        
+        <span class="k">if</span> <span class="n">system_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">laser_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">]</span>
+            <span class="n">lasers</span> <span class="o">=</span> <span class="n">laser_system</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lasers&#39;</span><span class="p">)</span>
+            <span class="n">pulses</span> <span class="o">=</span> <span class="n">laser_system</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pulses&#39;</span><span class="p">)</span>
+
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lasers</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pulses</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">lasers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">laser_index</span><span class="p">)</span>
+                <span class="n">pulses</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">laser_index</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;lasers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lasers</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_key</span><span class="p">][</span><span class="s1">&#39;pulses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pulses</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;List index:</span><span class="si">{}</span><span class="s1"> is not found&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">laser_index</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="LaserInfo.check_laser_exists"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.check_laser_exists">[docs]</a>    <span class="k">def</span> <span class="nf">check_laser_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_tag</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Validates availability of laser/pulse and returns bool&quot;&quot;&quot;</span>
+
+        <span class="n">lasers_exist</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">pulses_exist</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">system_tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">laser_system</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_tag</span><span class="p">]</span>
+            <span class="n">lasers</span> <span class="o">=</span> <span class="n">laser_system</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lasers&#39;</span><span class="p">)</span>
+            <span class="n">pulses</span> <span class="o">=</span> <span class="n">laser_system</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pulses&#39;</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lasers</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pulses</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lasers</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">lasers_exist</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pulses</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pulses_exist</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO: handle this keyerror</span>
+            <span class="k">return</span> <span class="kc">False</span>
+            <span class="c1"># raise KeyError(&quot;{} key is missing&quot;.format(system_tag))            </span>
+
+        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">lasers_exist</span><span class="p">,</span> <span class="n">pulses_exist</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO: add condition to get the false condition</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="LaserInfo.get_number_lasers"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.models.LaserInfo.get_number_lasers">[docs]</a>    <span class="k">def</span> <span class="nf">get_number_lasers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">system_tag</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lasers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">system_tag</span><span class="p">][</span><span class="s1">&#39;lasers&#39;</span><span class="p">]</span>
+            <span class="n">num_lasers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lasers</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">num_lasers</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">return</span> <span class="n">num_lasers</span></div></div>
 </pre></div>
 
            </div>
@@ -516,8 +565,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 06 Dec 2022 10:42:37.
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
       </span></p>
   </div>
 
