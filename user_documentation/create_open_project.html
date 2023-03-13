@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create a new Project &mdash; LITESOPH 0.1 documentation</title>
+  <title>Landing Page &mdash; LITESOPH 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LITESOPH Job Submission, Monitoring and File Management" href="job_submission_monitoring.html" />
-    <link rel="prev" title="Overview" href="overview.html" /> 
+    <link rel="prev" title="User Documentation" href="user_documentation_index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,9 +45,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="user_documentation_index.html">User Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Create a new Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#open-an-existing-project">Open an existing Project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Landing Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-project">Create a new Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-workflow">Create a Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-workflow">New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-from-an-existing-workflow">Clone from an existing Workflow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a></li>
 </ul>
 </li>
@@ -71,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="user_documentation_index.html">User Documentation</a></li>
-      <li class="breadcrumb-item active">Create a new Project</li>
+      <li class="breadcrumb-item active">Landing Page</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/user_documentation/create_open_project.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,18 +85,90 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="create-a-new-project">
-<h1>Create a new Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this heading"></a></h1>
+  <section id="landing-page">
+<h1>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/landing.png"><img alt="landing_page" src="../_images/landing.png" style="width: 800px;" /></a>
+<p><strong>1.</strong> Create LITESOPH Project: Creates new LITESOPH project folder</p>
+<p><strong>2.</strong> Open LITESOPH Project: Opens an existing LITESOPH project folder</p>
+<p><strong>3.</strong> About LITESOPH: Links to the official website page</p>
 </section>
-<section id="open-an-existing-project">
-<h1>Open an existing Project<a class="headerlink" href="#open-an-existing-project" title="Permalink to this heading"></a></h1>
+<section id="create-a-new-project">
+<h1>Create a new Project<a class="headerlink" href="#create-a-new-project" title="Permalink to this heading"></a></h1>
+<a class="reference internal image-reference" href="../_images/create_project.png"><img alt="Create_project_page" src="../_images/create_project.png" style="width: 800px;" /></a>
+<dl class="simple">
+<dt><strong>1.</strong> Create LITESOPH Project:</dt><dd><ul class="simple">
+<li><p>Enter the project name and select the directory.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="create-a-workflow">
+<span id="create-workflow"></span><h1>Create a Workflow<a class="headerlink" href="#create-a-workflow" title="Permalink to this heading"></a></h1>
+<dl class="simple">
+<dt>Available two options are:</dt><dd><ul class="simple">
+<li><p>New Workflow</p></li>
+<li><p>Clone from an existing Workflow</p></li>
+</ul>
+</dd>
+</dl>
+<section id="new-workflow">
+<h2>New Workflow<a class="headerlink" href="#new-workflow" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/create_new_workflow.png"><img alt="create_new_workflow_page" src="../_images/create_new_workflow.png" style="width: 800px;" /></a>
+<p>Creates a new workflow from scratch.</p>
+</section>
+<section id="clone-from-an-existing-workflow">
+<h2>Clone from an existing Workflow<a class="headerlink" href="#clone-from-an-existing-workflow" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/cloning_workflow.png"><img alt="clone_workflow_page" src="../_images/cloning_workflow.png" style="width: 800px;" /></a>
+<p>1.Creates a new workflow from existing workflows.
+2.Select the workflow from available options.
+3.Select the branch point: the tasks upto this point are copied from the existing workflows.
+4.Select the workflow type to proceed with.</p>
+<dl class="simple">
+<dt>LITESOPH calculation is initiated with creating a workflow under current project. This is a chain of tasks defined by</dt><dd><ol class="arabic simple">
+<li><p>Workflow Mode</p></li>
+<li><p>Task Mode</p></li>
+</ol>
+</dd>
+<dt><strong>1.</strong> Menubar</dt><dd><dl class="simple">
+<dt>File: Options:</dt><dd><ul class="simple">
+<li><p>New Workflow : Click to create a new Workflow under current LITESOPH project <a class="reference internal" href="#create-workflow"><span class="std std-ref">Create a Workflow</span></a></p></li>
+<li><p>New Project</p></li>
+<li><p>Open Project</p></li>
+<li><p>Exit</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>2.</strong> Left Panel: Shows the tree view of existing workflows under current LITESOPH project</p>
+<dl class="simple">
+<dt><strong>3.</strong> Central Panel<span class="classifier">Collects general information/options</span></dt><dd><ul class="simple">
+<li><p>Geometry</p></li>
+<li><p>Upload Geometry: Uploads the geometry file in .xyz format</p></li>
+<li><p>View: Visualizes the geometry file using visualization software such as VMD, VESTA</p></li>
+<li><p>System Info</p></li>
+<li><p>Charge</p></li>
+<li><p>Multiplicity</p></li>
+<li><dl class="simple">
+<dt>Select Options</dt><dd><ul>
+<li><p>Workflow Mode: Navigates the users through predefined steps for selected workflow (Link to workflow mode description)</p></li>
+<li><p>Task Mode: Task-wise implementation defined under categories: Pre-processing, Simulation, Post-Processing</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>4.</strong> Right Panel: Shows the generated input and update to users, relavant to the current view in text format.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_documentation_index.html" class="btn btn-neutral float-left" title="User Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="job_submission_monitoring.html" class="btn btn-neutral float-right" title="LITESOPH Job Submission, Monitoring and File Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -100,7 +176,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 13:43:30.
       </span></p>
   </div>
 
