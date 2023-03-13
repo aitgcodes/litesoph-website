@@ -39,14 +39,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/Tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Issues.html">Issues or Bugs!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Developer_Guideline.html">Developer Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -78,21 +76,21 @@
 
 
 
-<div class="viewcode-block" id="TaskTypes"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task_data.TaskTypes">[docs]</a><span class="k">class</span> <span class="nc">TaskTypes</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="TaskTypes"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.task_data.TaskTypes">[docs]</a><span class="k">class</span> <span class="nc">TaskTypes</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
     <span class="n">GROUND_STATE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ground_state&#39;</span>
     <span class="n">RT_TDDFT</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;rt_tddft&#39;</span>
     <span class="n">COMPUTE_SPECTRUM</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;spectrum&#39;</span>
     <span class="n">COMPUTE_AVERAGED_SPECTRUM</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;compute_average_spectrum&#39;</span>
     <span class="n">TCM</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;tcm&#39;</span>
     <span class="n">MO_POPULATION</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mo_population&#39;</span>
-    <span class="n">MASKING</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;masking&#39;</span></div>
+    <span class="n">MASKING</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;masking&#39;</span>
+    <span class="n">COMPUTE_TAS</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;compute_tas&#39;</span></div>
 
+<span class="k">class</span> <span class="nc">TaskParamDB</span><span class="p">:</span>
 
-<div class="viewcode-block" id="TaskParamDB"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task_data.TaskParamDB">[docs]</a><span class="k">class</span> <span class="nc">TaskParamDB</span><span class="p">:</span>
-
-<div class="viewcode-block" id="TaskParamDB.get_template_task_param"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task_data.TaskParamDB.get_template_task_param">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_template_task_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">pass</span></div></div>
+        <span class="k">pass</span>
 
 
 <span class="n">template_ground_state_parameters</span> <span class="o">=</span> <span class="p">{</span> 
@@ -143,7 +141,7 @@
 <span class="p">}</span>
 
 
-<div class="viewcode-block" id="check_properties_dependencies"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.task_data.check_properties_dependencies">[docs]</a><span class="k">def</span> <span class="nf">check_properties_dependencies</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">check_properties_dependencies</span><span class="p">(</span><span class="n">task_name</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
     
     <span class="k">if</span> <span class="n">task_name</span> <span class="o">==</span> <span class="n">TaskTypes</span><span class="o">.</span><span class="n">COMPUTE_SPECTRUM</span><span class="p">:</span>
         <span class="n">laser</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;laser&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -166,7 +164,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">laser</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">masking</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;masking was not choosen in TD simulation&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -177,7 +175,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 

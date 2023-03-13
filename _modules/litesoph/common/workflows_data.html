@@ -39,14 +39,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/Tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Issues.html">Issues or Bugs!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Developer_Guideline.html">Developer Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -82,22 +80,24 @@
 
 
 
-<div class="viewcode-block" id="WorkflowTypes"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflows_data.WorkflowTypes">[docs]</a><span class="k">class</span> <span class="nc">WorkflowTypes</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="WorkflowTypes"><a class="viewcode-back" href="../../../devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes">[docs]</a><span class="k">class</span> <span class="nc">WorkflowTypes</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">TASK_MODE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;task_mode&#39;</span>
     <span class="n">SPECTRUM</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;spectrum&#39;</span>
     <span class="n">AVERAGED_SPECTRUM</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;averaged_spectrum&#39;</span>
     <span class="n">KOHN_SHAM_DECOMPOSITION</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;kohn_sham_decomposition&#39;</span>
     <span class="n">MO_POPULATION_TRACKING</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mo_population_tracking&#39;</span>
-    <span class="n">MASKING</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;masking&#39;</span></div>
+    <span class="n">MASKING</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;masking&#39;</span>
+    <span class="n">PUMP_PROBE</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pump_probe&#39;</span></div>
 
 
 
-<div class="viewcode-block" id="step"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflows_data.step">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">step</span><span class="p">:</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">block_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">task_type</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
-    <span class="n">env_parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span></div>
+    <span class="n">env_parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
 
 
 <span class="n">predefined_workflow</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
@@ -264,6 +264,48 @@
                             <span class="s1">&#39;1&#39;</span> <span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
                             <span class="s1">&#39;2&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">}</span>
     <span class="p">},</span>
+    <span class="s2">&quot;pump_probe&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pump Probe&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;blocks&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ground State&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;store_same_task_type&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;task_type&#39;</span><span class="p">:</span> <span class="n">tt</span><span class="o">.</span><span class="n">GROUND_STATE</span>
+                    <span class="p">},</span> 
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;RT TDDFT&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;store_same_task_type&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;task_type&#39;</span><span class="p">:</span> <span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span>
+                    <span class="p">},</span> 
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Compute Spectrum&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;store_same_task_type&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;task_type&#39;</span><span class="p">:</span> <span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_SPECTRUM</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;RT TDDFT&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;store_same_task_type&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;task_type&#39;</span><span class="p">:</span> <span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Compute TAS&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;store_same_task_type&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;task_type&#39;</span><span class="p">:</span> <span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_TAS</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;End&#39;</span><span class="p">}],</span>
+        <span class="s2">&quot;task_sequence&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="n">step</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span><span class="mi">0</span> <span class="p">,</span> <span class="n">tt</span><span class="o">.</span><span class="n">GROUND_STATE</span><span class="p">),</span>
+                    <span class="n">step</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span><span class="p">,{</span>
+                                            <span class="s1">&#39;properties&#39;</span><span class="p">:[</span><span class="s1">&#39;spectrum&#39;</span><span class="p">],</span>
+                                            <span class="p">}),</span>
+                    <span class="n">step</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_SPECTRUM</span><span class="p">),</span>
+                    <span class="n">step</span><span class="p">(</span><span class="mi">3</span> <span class="p">,</span><span class="mi">3</span> <span class="p">,</span><span class="n">tt</span><span class="o">.</span><span class="n">RT_TDDFT</span><span class="p">,{</span>
+                                        <span class="s1">&#39;properties&#39;</span><span class="p">:[</span><span class="s1">&#39;spectrum&#39;</span><span class="p">],</span>
+                                                <span class="p">},</span> 
+                                                <span class="p">{</span>
+                                                <span class="s1">&#39;laser&#39;</span><span class="p">:</span> <span class="kc">True</span>
+                                                <span class="p">}),</span>
+                    <span class="n">step</span><span class="p">(</span><span class="mi">4</span> <span class="p">,</span><span class="mi">4</span> <span class="p">,</span><span class="n">tt</span><span class="o">.</span><span class="n">COMPUTE_TAS</span><span class="p">)],</span>
+        
+        <span class="s2">&quot;dependency_map&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;0&#39;</span> <span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                            <span class="s1">&#39;1&#39;</span> <span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;2&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;3&#39;</span> <span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;4&#39;</span> <span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 </pre></div>
@@ -276,7 +318,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 

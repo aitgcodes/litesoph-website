@@ -39,14 +39,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/Tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Issues.html">Issues or Bugs!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Developer_Guideline.html">Developer Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -86,20 +84,64 @@
 <span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.task_manager</span> <span class="kn">import</span> <span class="n">check_task_completion</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.decision_tree</span> <span class="kn">import</span> <span class="n">decide_engine</span><span class="p">,</span> <span class="n">EngineDecisionError</span>
-<span class="n">engine_classname</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;gpaw&#39;</span> <span class="p">:</span> <span class="s1">&#39;GPAW&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;nwchem&#39;</span><span class="p">:</span> <span class="s1">&#39;NWChem&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;octopus&#39;</span><span class="p">:</span> <span class="s1">&#39;OCTOPUS&#39;</span>
-<span class="p">}</span>
+<span class="kn">from</span> <span class="nn">litesoph.engines</span> <span class="kn">import</span> <span class="n">engine_classname</span>
 
-<div class="viewcode-block" id="TaskSetupError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.TaskSetupError">[docs]</a><span class="k">class</span> <span class="nc">TaskSetupError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when unable to creating or opening task.&quot;&quot;&quot;</span></div>
 
-<div class="viewcode-block" id="WorkflowEnded"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowEnded">[docs]</a><span class="k">class</span> <span class="nc">WorkflowEnded</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the workflow has ended.&quot;&quot;&quot;</span></div>
+<span class="k">class</span> <span class="nc">TaskSetupError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when unable to creating or opening task.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="WorkflowManager"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager">[docs]</a><span class="k">class</span> <span class="nc">WorkflowManager</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">WorkflowEnded</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the workflow has ended.&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="WorkflowManager"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager">[docs]</a><span class="k">class</span> <span class="nc">WorkflowManager</span><span class="p">:</span>   
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the main interface to edit, modify and run workflows. </span>
+
+<span class="sd">    In litesoph, workflow is modeled as a chain of blocks, where each block contains a list</span>
+<span class="sd">    of simple tasks that the user can create and run.</span>
+
+<span class="sd">    For example, consider the average spectrum workflow.</span>
+<span class="sd">    We represent the average spectrum workflow as a chain of four blocks, where </span>
+<span class="sd">    each block contains the same types of tasks but with different </span>
+<span class="sd">    input parameters.</span>
+<span class="sd">    </span>
+<span class="sd">    ::</span>
+<span class="sd">        </span>
+<span class="sd">            Block-1                  Block-2                  Block-3                  Block-4</span>
+<span class="sd">        |---------------|      |-----------------|      |--------------------|    |----------------|</span>
+<span class="sd">        |               |      |                 |      |                    |    |                |</span>
+<span class="sd">        | 1. ground     |----&gt; |  2. RT-TDDFT- x |-----&gt;| 5.compute-spectra-x|---&gt;| 8. compute     | </span>
+<span class="sd">        |    state      |      |  3. RT-TDDFT- y |      | 6.compute-spectra-y|    | average spectra|</span>
+<span class="sd">        |---------------|      |  4. RT-TDDFT- z |      | 7.compute-spectra-z|    |----------------|</span>
+<span class="sd">                               |-----------------|      |--------------------|  </span>
+<span class="sd">    </span>
+<span class="sd">    The dependenices_map maps how each simple task depends on the previous tasks.</span>
+<span class="sd">    so, for above workflow</span>
+<span class="sd">    ::</span>
+
+<span class="sd">                1 --&gt; None : ground state doesn&#39;t depend on any tasks</span>
+<span class="sd">                2 --&gt; 1    : RT-TDDFT-x dependents on ground state.</span>
+<span class="sd">                3 --&gt; 1    : RT-TDDFT-y dependents on ground state.</span>
+<span class="sd">                4 --&gt; 1    : RT-TDDFT-z dependents on ground state.</span>
+<span class="sd">                5 --&gt; 2    : compute_spectra-x dependents on RT-TDDFT-x.</span>
+<span class="sd">                6 --&gt; 3    : compute_spectra-y dependents on RT-TDDFT-y.</span>
+<span class="sd">                7 --&gt; 4    : compute_spectra-z dependents on RT-TDDFT-z.</span>
+<span class="sd">                8 --&gt; (5, 6, 7) : compute average spectra dependent on compute_spectra-x. </span>
+<span class="sd">                                    compute_spectra-y and compute-spectra-z.</span>
+
+
+<span class="sd">    parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    project_manager: </span>
+<span class="sd">                The class that manages creation and deletion of workflows:</span>
+<span class="sd">    workflow_info: </span>
+<span class="sd">                This objects is used to store all the information about a</span>
+<span class="sd">                workflow.</span>
+<span class="sd">    config: </span>
+<span class="sd">        The configurations used to run the tasks in the workflow.</span>
+
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
                 <span class="n">project_manager</span><span class="p">,</span> 
                 <span class="n">workflow_info</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">,</span> 
@@ -139,7 +181,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">task_uuid</span><span class="p">)</span>
 
         
-<div class="viewcode-block" id="WorkflowManager.choose_default_engine"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.choose_default_engine">[docs]</a>    <span class="k">def</span> <span class="nf">choose_default_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WorkflowManager.choose_default_engine"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.choose_default_engine">[docs]</a>    <span class="k">def</span> <span class="nf">choose_default_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Chooses a default engine for a given workflow type and sets the </span>
+<span class="sd">        engine for the workflow.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">decide_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">engine</span></div>
 
@@ -152,8 +196,8 @@
         <span class="k">return</span> <span class="n">engine_manager</span><span class="p">()</span>
 
     
-<div class="viewcode-block" id="WorkflowManager.get_engine_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_engine_task">[docs]</a>    <span class="k">def</span> <span class="nf">get_engine_task</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Task</span><span class="p">:</span>
-        
+<div class="viewcode-block" id="WorkflowManager.get_engine_task"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_engine_task">[docs]</a>    <span class="k">def</span> <span class="nf">get_engine_task</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Task</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method returns the Task object of the current_task in the workflow.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="p">,</span> 
                             <span class="n">task_dependencies</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_task_dependencies</span><span class="p">())</span></div>
 
@@ -165,8 +209,9 @@
         <span class="k">return</span> <span class="n">task</span>
 
     
-<div class="viewcode-block" id="WorkflowManager.get_taskinfo"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_taskinfo">[docs]</a>    <span class="k">def</span> <span class="nf">get_taskinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TaskInfo</span><span class="p">]:</span>
-
+<div class="viewcode-block" id="WorkflowManager.get_taskinfo"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_taskinfo">[docs]</a>    <span class="k">def</span> <span class="nf">get_taskinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">TaskInfo</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method returns the list of TaskInfo object with the given name</span>
+<span class="sd">        in the workflow.&quot;&quot;&quot;</span>
         <span class="n">task_list</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">task_info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -177,7 +222,8 @@
         <span class="k">return</span> <span class="n">task_list</span></div>
 
     
-<div class="viewcode-block" id="WorkflowManager.check_engine"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.check_engine">[docs]</a>    <span class="k">def</span> <span class="nf">check_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="viewcode-block" id="WorkflowManager.check_engine"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.check_engine">[docs]</a>    <span class="k">def</span> <span class="nf">check_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether a given engine implements the current workflow type&quot;&quot;&quot;</span>
         <span class="n">engine_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_engine_manager</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
         <span class="n">workflow_list</span> <span class="o">=</span> <span class="n">engine_manager</span><span class="o">.</span><span class="n">get_workflow_list</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span> <span class="ow">in</span> <span class="n">workflow_list</span><span class="p">:</span>
@@ -186,8 +232,8 @@
             <span class="k">return</span> <span class="kc">False</span></div>
 
     
-<div class="viewcode-block" id="WorkflowManager.set_engine"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.set_engine">[docs]</a>    <span class="k">def</span> <span class="nf">set_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
-        
+<div class="viewcode-block" id="WorkflowManager.set_engine"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.set_engine">[docs]</a>    <span class="k">def</span> <span class="nf">set_engine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;sets the engine of the workflow&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">task_mode</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">engine</span>
@@ -200,7 +246,9 @@
                 <span class="k">raise</span> <span class="n">EngineDecisionError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;workflow: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span><span class="si">}</span><span class="s1"> is not supported implemented in </span><span class="si">{</span><span class="n">engine</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
     
-<div class="viewcode-block" id="WorkflowManager.get_task_dependencies"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_task_dependencies">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WorkflowManager.get_task_dependencies"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_task_dependencies">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of previous task_infos that the present task in dependent on.&quot;&quot;&quot;</span>
+
         <span class="n">dependices_uuid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">uuid</span><span class="p">)</span>
         <span class="n">depedent_task_infos</span> <span class="o">=</span> <span class="p">[]</span> 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dependices_uuid</span> <span class="p">,</span><span class="nb">str</span><span class="p">):</span>
@@ -214,8 +262,8 @@
 
         <span class="k">return</span> <span class="n">depedent_task_infos</span></div>
 
-<div class="viewcode-block" id="WorkflowManager.next"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        
+<div class="viewcode-block" id="WorkflowManager.next"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method changes the current task to the next task in the workflow.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_step</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -232,11 +280,29 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">task_uuid</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prepare_task</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="WorkflowManager.add_block"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.add_block">[docs]</a>    <span class="k">def</span> <span class="nf">add_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                    <span class="n">block_id</span><span class="p">,</span> 
-                    <span class="n">name</span><span class="p">,</span> <span class="n">store_same_task_type</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="WorkflowManager.add_block"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_block">[docs]</a>    <span class="k">def</span> <span class="nf">add_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+                    <span class="n">block_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+                    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                    <span class="n">store_same_task_type</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                     <span class="n">task_type</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                     <span class="n">metadata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()):</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This method inserts a block into the workflow.</span>
+
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        block_id: </span>
+<span class="sd">            The index where block to be palce in the workflow.</span>
+<span class="sd">        name: </span>
+<span class="sd">            The name of the block.</span>
+<span class="sd">        store_same_task_type: </span>
+<span class="sd">            the variable which indicative if the block contain same type of the tasks.</span>
+<span class="sd">        task_type: </span>
+<span class="sd">            task type if the store_same_task_type is true.</span>
+<span class="sd">        metadata: </span>
+<span class="sd">            This stores information about the tasks in the blocks</span>
+<span class="sd">            in the context of the workflow.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">store_same_task_type</span> <span class="ow">and</span> <span class="n">task_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">TaskSetupError</span><span class="p">(</span><span class="s1">&#39;task_type must be None if store_same_task_type is True.&#39;</span><span class="p">)</span>
@@ -246,12 +312,30 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">block_id</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="WorkflowManager.add_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.add_task">[docs]</a>    <span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="WorkflowManager.add_task"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_task">[docs]</a>    <span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                          <span class="n">block_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
                          <span class="n">step_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                          <span class="n">parameters</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span>
                          <span class="n">env_parameters</span><span class="o">=</span> <span class="nb">dict</span><span class="p">(),</span>
                          <span class="n">dependent_tasks_uuid</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span><span class="o">=</span> <span class="nb">list</span><span class="p">()):</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method adds a task into the workflow.</span>
+<span class="sd">        </span>
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        task_name: </span>
+<span class="sd">            The task type.</span>
+<span class="sd">        block_id: </span>
+<span class="sd">            The index of the block to which the task to be added.</span>
+<span class="sd">        step_id: </span>
+<span class="sd">            The index in the task execution list to where task to be added.</span>
+<span class="sd">        paremeter: </span>
+<span class="sd">            The default input parameters of the task.</span>
+<span class="sd">        env_parameters: </span>
+<span class="sd">            This stores information about the task in the context of the workflow.</span>
+<span class="sd">        dependent_tasks_uuid: </span>
+<span class="sd">            The list of task_uuids to which the task dependents on.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">task_info</span> <span class="o">=</span> <span class="n">factory_task_info</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
         
@@ -288,8 +372,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_dependency</span><span class="p">(</span><span class="n">task_info</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">dependent_tasks_uuid</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="WorkflowManager.add_dependency"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.add_dependency">[docs]</a>    <span class="k">def</span> <span class="nf">add_dependency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+<div class="viewcode-block" id="WorkflowManager.add_dependency"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_dependency">[docs]</a>    <span class="k">def</span> <span class="nf">add_dependency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
                         <span class="n">dependent_tasks_uuid</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span><span class="o">=</span> <span class="nb">list</span><span class="p">()):</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a dependency task list to the given task.&quot;&quot;&quot;</span>
 
         <span class="n">dependent_list</span> <span class="o">=</span><span class="p">[]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dependent_tasks_uuid</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -308,44 +394,53 @@
             <span class="n">dependent_id</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">dependent_list</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dependencies_map</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">task_uuid</span><span class="p">:</span> <span class="n">dependent_id</span><span class="p">})</span></div>
 
-<div class="viewcode-block" id="WorkflowManager.check_block"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.check_block">[docs]</a>    <span class="k">def</span> <span class="nf">check_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">check_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id</span><span class="p">):</span>
         <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="n">block_id</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="n">check</span></div>
+        <span class="k">return</span> <span class="n">check</span>
 
-<div class="viewcode-block" id="WorkflowManager.get_continer_by_task_uuid"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_continer_by_task_uuid">[docs]</a>    <span class="k">def</span> <span class="nf">get_continer_by_task_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_continer_by_task_uuid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">container</span><span class="o">.</span><span class="n">task_uuid</span> <span class="o">==</span> <span class="n">task_uuid</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">container</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;task_uuid:</span><span class="si">{</span><span class="n">task_uuid</span><span class="si">}</span><span class="s1"> not present in containers&#39;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;task_uuid:</span><span class="si">{</span><span class="n">task_uuid</span><span class="si">}</span><span class="s1"> not present in containers&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="WorkflowManager.get_container_index"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_container_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_container_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_container_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_uuid</span><span class="p">):</span>
         <span class="n">container</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_continer_by_task_uuid</span><span class="p">(</span><span class="n">task_uuid</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">container</span><span class="o">.</span><span class="n">id</span></div>
+        <span class="k">return</span> <span class="n">container</span><span class="o">.</span><span class="n">id</span>
         
-<div class="viewcode-block" id="WorkflowManager.get_continer_by_block_id"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_continer_by_block_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_continer_by_block_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_continer_by_block_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">container</span><span class="o">.</span><span class="n">task_uuid</span> <span class="o">==</span> <span class="n">block_id</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">container</span></div>
+                <span class="k">return</span> <span class="n">container</span>
         
-<div class="viewcode-block" id="WorkflowManager.prepare_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.prepare_task">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prepare_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span>
             <span class="n">engine_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_engine_manager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
             <span class="n">param</span> <span class="o">=</span> <span class="n">engine_manager</span><span class="o">.</span><span class="n">get_default_task_param</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_task_dependencies</span><span class="p">())</span>
             <span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_container</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_task_info</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span>
 
-<div class="viewcode-block" id="WorkflowManager.check"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-<div class="viewcode-block" id="WorkflowManager.previous"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.previous">[docs]</a>    <span class="k">def</span> <span class="nf">previous</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">previous</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
     
-<div class="viewcode-block" id="WorkflowManager.clone"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clone_workflow</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">,</span>
+<div class="viewcode-block" id="WorkflowManager.clone"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clone_workflow</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">,</span>
                     <span class="n">branch_point</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkflowInfo</span><span class="p">:</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method clones a new workflow_info from the existing workflow_info.</span>
+<span class="sd">        It clones the task_info from the existing workflow_info and with that it copies all the </span>
+<span class="sd">        input and output files generated from that task into the new directory of the cloned task.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># The concept of the blocks was introduced later then the concept of containers, so </span>
+        <span class="c1"># loop over containers to clone the workflow.</span>
+        <span class="c1"># The better solution might be to loop over blocks instead of containers.</span>
 
         <span class="n">clone_workflow</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
@@ -396,19 +491,20 @@
 
         <span class="k">return</span> <span class="n">clone_workflow</span></div>
             
-<div class="viewcode-block" id="WorkflowManager.get_summary"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.get_summary">[docs]</a>    <span class="k">def</span> <span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
     
-<div class="viewcode-block" id="WorkflowManager.run_next_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.run_next_task">[docs]</a>    <span class="k">def</span> <span class="nf">run_next_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">run_next_task</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-<div class="viewcode-block" id="WorkflowManager.run_block"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.run_block">[docs]</a>    <span class="k">def</span> <span class="nf">run_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">run_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="k">pass</span>
 
-<div class="viewcode-block" id="WorkflowManager.save"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.WorkflowManager.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="WorkflowManager.save"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; saves the workflow_info into the hard drive.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div></div>
 
-<div class="viewcode-block" id="copy_task_files"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.copy_task_files">[docs]</a><span class="k">def</span> <span class="nf">copy_task_files</span><span class="p">(</span><span class="n">source</span> <span class="p">,</span><span class="n">file_list</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">copy_task_files</span><span class="p">(</span><span class="n">source</span> <span class="p">,</span><span class="n">file_list</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
     <span class="n">workflow_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
     <span class="n">destination_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
@@ -423,9 +519,9 @@
         <span class="k">if</span> <span class="n">s_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">s_path</span><span class="p">,</span> <span class="n">d_path</span><span class="p">,</span> <span class="n">dirs_exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">continue</span>
-        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">s_path</span><span class="p">,</span> <span class="n">d_path</span><span class="p">)</span></div>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">s_path</span><span class="p">,</span> <span class="n">d_path</span><span class="p">)</span>
 
-<div class="viewcode-block" id="update_workflowinfo"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.workflow_manager.update_workflowinfo">[docs]</a><span class="k">def</span> <span class="nf">update_workflowinfo</span><span class="p">(</span><span class="n">workflow_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">workflowinfo</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_workflowinfo</span><span class="p">(</span><span class="n">workflow_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">workflowinfo</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">):</span>
     
     <span class="n">blocks</span> <span class="o">=</span> <span class="n">workflow_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blocks&#39;</span><span class="p">)</span>
     <span class="n">task_sequence</span> <span class="o">=</span> <span class="n">workflow_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;task_sequence&#39;</span><span class="p">)</span>
@@ -471,7 +567,7 @@
             <span class="k">for</span> <span class="n">dtask_index</span> <span class="ow">in</span> <span class="n">dependent_tasks</span><span class="p">:</span>
                 <span class="n">dependencies</span><span class="p">[</span><span class="n">taskinfo</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">containers</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">dtask_index</span><span class="p">)]</span><span class="o">.</span><span class="n">task_uuid</span><span class="p">)</span>
 
-        <span class="n">tasks</span><span class="p">[</span><span class="n">taskinfo</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">taskinfo</span></div>
+        <span class="n">tasks</span><span class="p">[</span><span class="n">taskinfo</span><span class="o">.</span><span class="n">uuid</span><span class="p">]</span> <span class="o">=</span> <span class="n">taskinfo</span>
 
 
 </pre></div>
@@ -484,7 +580,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 

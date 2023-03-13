@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUI View Modules &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GUI Control Modules" href="gui_control.html" />
+    <link rel="prev" title="LITESOPH Job Submission, Monitoring and File Management" href="job_submission_monitoring.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="devel.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developer_workflow.html">Development workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devel.html#development-topics">Development topics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="devel.html#code-overview">Code overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">Code Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GUI View Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modules-under-litesoph">Modules under LITESOPH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visual-parameters-modules">Visual Parameters Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gui_control.html">GUI Control Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="devel.html">Development</a></li>
+      <li class="breadcrumb-item active">GUI View Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/devel/gui_view.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gui-view-modules">
+<h1>GUI View Modules<a class="headerlink" href="#gui-view-modules" title="Permalink to this heading"></a></h1>
+<p>Modules for creating a new GUI View Page or updating existing ones.
+Mainly deals with tkinter class and objects. Refer to tkinter for more details.</p>
+<section id="modules-under-litesoph">
+<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Permalink to this heading"></a></h2>
+<p>litesoph/gui/design/template.py</p>
+<p>Includes templated view designs.</p>
+<section id="class-view">
+<span id="view-cls"></span><h3>Class View<a class="headerlink" href="#class-view" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Tkinter Frame template for generic LITESOPH page.</p>
+</div></blockquote>
+<section id="functionalities">
+<h4>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p>Defines a parent frame to hold multiple sub-frames. Includes class methods to create widgets for job submit.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="class-inputframe">
+<h3>Class InputFrame<a class="headerlink" href="#class-inputframe" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Tkinter Frame template for collecting LITESOPH inputs.</p>
+</div></blockquote>
+<section id="parameters">
+<span id="inp-param"></span><h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>master</em>: (ttk.Frame) Parent tkinter frame</p></li>
+<li><p><em>fields</em>: (dict) Nested dictionary for inputs defined by example dictionary</p></li>
+<li><p><em>visible_state</em>: (dict): dictionary with key(defined in fields)-value(initial visible_state boolean)</p></li>
+<li><p><em>padx</em>: (int)</p></li>
+<li><p><em>pady</em>: (int)</p></li>
+<li><p><em>column_minsize</em>: (int)</p></li>
+</ul>
+<p>Definition : <em>fields</em></p>
+<blockquote>
+<div><p>To define a nested dictionary structure with following format</p>
+<p><em>key</em> : string variable assigned for the input parameter</p>
+<p><em>value</em> : dictionary with description of the input parameters and respective widgets.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;tab&quot;</span><span class="p">:</span> <span class="s1">&#39;Tab name assigned for the input key(default: Main)&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s1">&#39;Group name under the tab if applicable&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s1">&#39;Text to display&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s1">&#39;Additional details to the input key&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;widget&quot;</span><span class="p">:</span> <span class="s1">&#39;Type of tkinter widget&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;default_value&quot;</span><span class="p">:</span> <span class="s1">&#39;Default value&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="s1">&#39;List of values (for Combobox widget type)&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s1">&#39;Variable type (assigned from default_value/values if not explicitly defined)&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;visible&quot;</span><span class="p">:</span> <span class="s1">&#39;Boolean for show/hide the input on default view&#39;</span><span class="p">,</span>
+    <span class="s2">&quot;switch_keys&quot;</span><span class="p">:</span> <span class="s1">&#39;Toggle condition for dependencies with preceeding keys defined&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id1">
+<h4>Functionalities<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><blockquote>
+<div><p>Creates single or multiple tabs defined under the Parameters: fields</p>
+</div></blockquote>
+<p>Relevant Methods</p>
+<blockquote>
+<div><ul>
+<li><p>init_widgets( )</p>
+<blockquote>
+<div><p>Method to handle defaults. Sets the default values from fields option, by default.
+Updates defaults from var_values if ignore_state is False</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>fields: dictionary with key and default values</p></li>
+<li><p>ignore_state: boolean to check whether to update the assigned defaults or not</p></li>
+<li><p>var_values: dictionary to update required set of input defaults</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>trace_variables( )</p>
+<blockquote>
+<div><p>Method to trace the events on any update of widgets using switch_keys defined with fields.
+Needs modification for cases beyond simple switch conditions</p>
+</div></blockquote>
+</li>
+<li><p>get_values( )</p>
+<blockquote>
+<div><p>Method to collect selected field values. Returns a dictionary of the same.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Added Tkinter Widgets</p>
+<ul class="simple">
+<li><p>ttk.Combobox</p></li>
+<li><p>ttk.Checkbutton</p></li>
+<li><p>ttk.Entry</p></li>
+<li><p>ttk.SpinBox</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<p>Instructions for creating/modifying GUI frames under LITESOPH inputs</p>
+<section id="creating-a-new-gui-frame">
+<h4>Creating a new GUI frame<a class="headerlink" href="#creating-a-new-gui-frame" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Refer to <a class="reference internal" href="#view-cls"><span class="std std-ref">Class View</span></a> to inherit the LITESOPH defined frames, if applicable. Alternatively, create new tkinter frame as the parent frame.</p></li>
+<li><p>Define the <a class="reference internal" href="#inp-param"><span class="std std-ref">Parameters</span></a> : <em>fields</em>.</p></li>
+<li><p>Initiate the InputFrame class with <a class="reference internal" href="#inp-param"><span class="std std-ref">Parameters</span></a> : <em>fields</em></p></li>
+<li><p>Modify the method trace_variables( ) to add more control to the widgets</p></li>
+<li><p>Use the method get_values() to get the set of selected input parameters</p></li>
+<li><p>The default values gets assigned from Parameters : <em>fields</em>. To customise the defaults, use the method init_widgets( ).</p></li>
+</ol>
+</section>
+<section id="updating-the-existing-frames">
+<h4>Updating the existing frames<a class="headerlink" href="#updating-the-existing-frames" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Update items to <a class="reference internal" href="#inp-param"><span class="std std-ref">Parameters</span></a> : <em>fields</em></p></li>
+<li><p>Cross-check the method trace_variables( ) to consider additional control of widgets</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="visual-parameters-modules">
+<h2>Visual Parameters Modules<a class="headerlink" href="#visual-parameters-modules" title="Permalink to this heading"></a></h2>
+<p>litesoph/gui/visual_parameter.py</p>
+<section id="id2">
+<h3>Functionalities<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><p>Methods for customised font designs, widget attributes</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="job_submission_monitoring.html" class="btn btn-neutral float-left" title="LITESOPH Job Submission, Monitoring and File Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gui_control.html" class="btn btn-neutral float-right" title="GUI Control Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

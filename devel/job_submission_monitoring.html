@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LITESOPH Job Submission, Monitoring and File Management &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GUI View Modules" href="gui_view.html" />
+    <link rel="prev" title="Code Architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="devel.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developer_workflow.html">Development workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devel.html#development-topics">Development topics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="devel.html#code-overview">Code overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">Code Architecture</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LITESOPH Job Submission, Monitoring and File Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functionalities">Functionalities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-functions-and-working">Modules, Functions and Working</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gui_view.html">GUI View Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gui_control.html">GUI Control Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="devel.html">Development</a></li>
+      <li class="breadcrumb-item active">LITESOPH Job Submission, Monitoring and File Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/devel/job_submission_monitoring.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="litesoph-job-submission-monitoring-and-file-management">
+<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Permalink to this heading"></a></h1>
+<p>LITESOPH Job Submission, Monitoring and File Management is a set of modules capable of handling tasks like submission of job to remote machine, tracking the status running job and transferring of files from remote to local machine.</p>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Job Submission module supports queue(qsub, sbatch etc) as well as non-queue(bash) based job submission on remote machine through password and passwordless approach. Passwordless approach is generally used to avoid typing password repeatively for every job submission. It can also help to bypass captcha based login authentication. See <a class="reference internal" href="../FAQs/pwless-ssh.html"><span class="doc">How to enable passwordless SSH?</span></a></p></li>
+<li><p>Monitoring and File Management modules handles the job of tracking the status as well as terminating the  running job on remote machine. File Management module handles the downloading of all files as well as selective transfer the files from remote to local machine via different transfer methods (direct transfer along with compression and split transfer).</p></li>
+</ol>
+</section>
+<section id="functionalities">
+<h2>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Function to submit job at local as well as remote machine</p></li>
+<li><p>Function to check the running status of job submitted at local machine as well as remote machine</p></li>
+<li><p>Function to get the information about files generated by running project at local as well as remote machine.</p></li>
+<li><p>Function to view different files generated by running job at local as well as remote machine.</p></li>
+<li><p>Function to kill running job at remote machine.</p></li>
+<li><p>Function to selectively transfer files with varying methods (direct, compress, split).</p></li>
+</ol>
+</section>
+<section id="modules-functions-and-working">
+<h2>Modules, Functions and Working<a class="headerlink" href="#modules-functions-and-working" title="Permalink to this heading"></a></h2>
+<p>LITESOPH Job Submission, Runtime Query and File Management modules depends on two main Functionalities. Function to make connection with remote machine and execute commands on it via password as well as passwordless login authentication.</p>
+<p>Furthermore, Runtime Query and File Management uses mainly four modules to work:</p>
+<ul class="simple">
+<li><p>Module <strong>litesoph/common/submit.py</strong> handles methods requires to establish connection between local and remote machine, submitting jobs at local and remote machine, and downloading files.</p></li>
+<li><p>Module <strong>litesoph/common/lfm_database.py</strong> defines are all predefined rules, methods and database required for file management and query related Functionalities.</p></li>
+<li><p>Module <strong>litesoph/gui/task_controller.py</strong> handles methods related to runtime query for local as well as remote job submission.</p></li>
+<li><p>Module <strong>litesoph/gui/views.py</strong> handles the GUI for all backend Functionalities related to LITESOPH Job Submission, Runtime Query and File Management.</p></li>
+</ul>
+<ol class="arabic">
+<li><p><strong>Module: litesoph/common/job_submit.py</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>function</em> <strong>execute_cmd_local()</strong>:  execute command locally by using argument command and directory.</p></li>
+<li><p><em>function</em> <strong>execute_cmd_remote()</strong>: execute command on remote machine through local machine shell.</p></li>
+<li><p><em>class</em> <strong>SubmitLocal</strong>: handles local job submission.</p></li>
+<li><p><em>class</em> <strong>SubmitNetwork</strong>: handles remote job submission.</p></li>
+<li><p><em>function</em>  <strong>download_files_from_remote()</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>get the list of files from remote directory</p></li>
+<li><p>convert the list of files into file-metadata-dictionary</p></li>
+<li><p>filter the dictionary into sub-dictionary of priority-levels</p></li>
+<li><p>give each file priority level according to the assigned tags of files</p></li>
+<li><p>classify the files on the basis of priority and transfer priority1 files first</p></li>
+<li><p>determine the method to transfer the files</p></li>
+<li><p>transfer the file</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Module: litesoph/common/lfm_database.py</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>function</em> <strong>lfm_file_info_dict()</strong>: generate a dictionary database of containing metadata information of all the possible files.</p></li>
+<li><p><em>varibles</em>: include python list and dictionary type variables different file tags used for generating master file metadata information.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Module: litesoph/gui/task_controller.py</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>class</em> <strong>TaskController</strong>: handles individual task in a workflow or a task in task mode.</p>
+<blockquote>
+<div><ul>
+<li><p><em>function</em> <strong>_on_run_network_button()</strong> : handles set of functions responsible for job submission and monitoring at remote machine</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>function</em>  <strong>_on_create_remote_job_script()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_save_job_script()</strong></p></li>
+<li><p><em>function</em>  <strong>_run_network()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_check_job_status_remote()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_check_file_status_remote()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_kill_job_remote()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_download_all_files()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_download_specific_file()</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><em>function</em> <strong>_on_run_local_button()</strong> : handles set of functions responsible for job submission and monitoring at local machine</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>function</em>  <strong>_on_create_local_job_script()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_save_job_script()</strong></p></li>
+<li><p><em>function</em>  <strong>_run_local()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_check_job_status_local()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_check_file_status_local()</strong></p></li>
+<li><p><em>function</em>  <strong>_on_view_specific_file_local()</strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Module: litesoph/gui/views.py</strong></p>
+<blockquote>
+<div><ul>
+<li><p><em>class</em> <strong>JobSubPage</strong>: handles job submission GUI page.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>function</em>  <strong>runtime_query_local()</strong>: handles GUI buttons related to runtime query for local job submission</p></li>
+<li><p><em>function</em>  <strong>runtime_query_remote()</strong>: handles GUI buttons related to runtime query for remote job submission</p></li>
+<li><p><em>function</em>  <strong>show_run_local()</strong>: handles GUI buttons related for remote job submission</p></li>
+<li><p><em>function</em>  <strong>show_run_network()</strong>: handles GUI buttons related for remote job submission</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Code Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gui_view.html" class="btn btn-neutral float-right" title="GUI View Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

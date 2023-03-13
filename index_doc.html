@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="About LITESOPH" href="README.html" /> 
+    <link rel="next" title="About LITESOPH" href="about_LITESOPH.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,14 +41,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials/Tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developer_documentation/developer_documentation_index.html">Developer Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Issues.html">Issues or Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -92,105 +90,217 @@ using three engines : <a class="reference external" href="https://wiki.fysik.dtu
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="README.html">About LITESOPH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#example-lsconfig-file">Example lsconfig file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Simulations.html#absorption-spectrum">Absorption Spectrum</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Simulations.html#calculations-of-absorption-spectrum">Calculations of Absorption Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html#working-algorithms-in-litesoph">Working algorithms in LITESOPH</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/spectrum.html">Spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/averaged_spectrum.html">Averaged spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/ksd.html">KSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/mo_population.html">MO population</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/pump_probe.html">Pump-probe</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Simulations.html#kohn-sham-decomposition-ksd">Kohn-Sham Decomposition (KSD)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Simulations.html#molecular-orbital-mo-population">Molecular Orbital (MO) Population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Simulations.html#laser-simulation">LASER Simulation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Simulations.html#laser-masking-to-study-energy-transfer-using-rt-tddft-approach">LASER Masking  <strong>to study energy transfer using RT-TDDFT approach</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/surface_hopping/surface_hopping.html">Trajectory Surface Hopping (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/spin_orbit/spin_orbit.html">Effects of spin-orbit interactions (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/qm_mm/qm_mm.html">Implementation oftestin QM/MM method (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/normal_mode/normal_mode.html">Normal Mode analysis (upcoming)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Simulations.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html#independent-tasks-based">Independent Tasks Based</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html">Ground State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html">RT-TDDFT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#delta-kick-inputs">Delta kick Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design-tools">Laser Design tools</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design">Laser design</a></li>
+<li class="toctree-l5"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#masking">Masking</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials/Tutorials.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials/Tutorials.html#welcome-to-litesoph">Welcome to LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials/Tutorials.html#modes">Modes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/predefined.html">Predefined Workflow Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Upload_Geometry/Upload_Geometry.html">Upload Geometry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Charge/Charge.html">Charge</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Multiplicity/Multiplicity.html">Multiplicity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Select-option/Select-option.html">Select Option</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Environment/Environment.html">Environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Workflow.html">Workflow</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/Spectrum.html">Spectrum</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/GS/GS.html">Ground State</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/GS/GS.html#basic">Basic</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/GS/GS.html#convergence">Convergence</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/GS/GS.html#advanced">Advanced</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#properties">Properties</a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/RT-TDDFT/RT-TDDFT.html">RT-TDDFT</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/RT-TDDFT/RT-TDDFT.html#delta-kick-inputs">Delta kick Inputs</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/RT-TDDFT/RT-TDDFT.html#properties">Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Spectrum/Compute-Spectrum/Compute-Spectrum.html">Compute Spectrum</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Averaged-Spectrum/Averaged-Spectrum.html">Averaged Spectrum</a></li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/KSD.html">Kohn Sham Decomposition</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/GS/GS.html">Ground State</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/GS/GS.html#basic">Basic</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/GS/GS.html#convergence">Convergence</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/GS/GS.html#advanced">Advanced</a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/RT-TDDFT/RT-TDDFT.html">RT-TDDFT</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/RT-TDDFT/RT-TDDFT.html#delta-kick-inputs">Delta kick Inputs</a></li>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/RT-TDDFT/RT-TDDFT.html#properties">Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/Compute-Spectrum/Compute-Spectrum.html">Compute Spectrum</a></li>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/KSD/Compute-KSD/Compute-KSD.html">Compute KSD</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/MO/MO.html">Molecular Orbital (MO) Population</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/MO/Compute%20MO/Compute%20MO.html">Compute MO Population</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Predefined%20Workflow%20Mode/Workflow/Masking/Masking.html">Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/compute_spectrum/compute_spectrum.html">Compute Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/post_processing_and_visualization/post_processing_and_visualization.html">Post processing and visualization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/post_processing_and_visualization/dipole_moment_analysis.html">Dipole moment analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/post_processing_and_visualization/compute_tas.html">Compute TAS</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials/Task%20Mode/Task%20Mode.html">Task Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Job_type.html">Job Type</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Preprocessing/Preprocessing.html">Preprocessing Jobs</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Preprocessing/Sub_Task/Sub_Task.html">Sub Task</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Simulations.html">Simulations</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Sub_Task/Sub_Task.html">Sub Task</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Sub_Task/Sub_Task.html#electrons">Electrons</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Sub_Task/GP/GP.html">Goussian Pulse</a><ul>
-<li class="toctree-l9"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Sub_Task/GP/GP.html#litesoph-input-for-laser-design">LITESOPH Input for LASER Design</a></li>
-<li class="toctree-l9"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Simulations/Sub_Task/GP/GP.html#extra-simulation-inputs">Extra Simulation Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html#workflows-based">Workflows Based</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/spectrum/spectrum.html">Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/ksd/ksd.html">KSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/laser_masking/laser_masking.html">Laser-Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/pump_probe/pump_probe.html">Pump-probe</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="user_documentation/user_documentation_index.html">User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_documentation/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_documentation/create_open_project.html">Create a new Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_documentation/create_open_project.html#open-an-existing-project">Open an existing Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_documentation/job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/job_submission_monitoring.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/job_submission_monitoring.html#features-and-functionalities">Features and Functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/job_submission_monitoring.html#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Postprocessing/Postprocessing.html">Postprocessing Jobs</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="Tutorials/Task%20Mode/Job_type/Postprocessing/Sub_Task/Sub_Task.html">Sub Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel/devel.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="devel/developer_workflow.html">Development workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="devel/developer_workflow.html#setting-up-your-local-repository">Setting up your local repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devel/developer_workflow.html#setting-up-your-development-environment">Setting up your development environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/developer_workflow.html#conda-environment">Conda environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/developer_workflow.html#python-venv-environment">Python venv environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/developer_workflow.html#coding-standards">Coding Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="devel/devel.html#development-topics">Development topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="devel/engine.html">Adding new engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/engine.html#description-of-base-classes">Description of base-classes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/engine.html#the-engine-base-classes">The Engine base-classes</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/engine.html#litesoph.engines.engine_classname"><code class="docutils literal notranslate"><span class="pre">engine_classname</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager"><code class="docutils literal notranslate"><span class="pre">EngineManager</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_task()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_default_task_param"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_default_task_param()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task_list"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_task_list()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_workflow_list"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_workflow_list()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.check_task"><code class="docutils literal notranslate"><span class="pre">EngineManager.check_task()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/task.html">Adding new task</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/task.html#description-of-base-classes">Description of base-classes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/task.html#the-task-base-classes">The Task base-classes</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.create_template"><code class="docutils literal notranslate"><span class="pre">Task.create_template()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.write_input"><code class="docutils literal notranslate"><span class="pre">Task.write_input()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.create_job_script"><code class="docutils literal notranslate"><span class="pre">Task.create_job_script()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.add_proper_path"><code class="docutils literal notranslate"><span class="pre">Task.add_proper_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes"><code class="docutils literal notranslate"><span class="pre">TaskTypes</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._generate_next_value_()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._member_type_</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/workflow.html">Adding new workflow type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._generate_next_value_()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._member_type_</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.predefined_workflow"><code class="docutils literal notranslate"><span class="pre">predefined_workflow</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="devel/devel.html#code-overview">Code overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="devel/architecture.html">Code Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager"><code class="docutils literal notranslate"><span class="pre">LSManager</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.new_project"><code class="docutils literal notranslate"><span class="pre">LSManager.new_project()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.open_project"><code class="docutils literal notranslate"><span class="pre">LSManager.open_project()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.read_config"><code class="docutils literal notranslate"><span class="pre">LSManager.read_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager"><code class="docutils literal notranslate"><span class="pre">ProjectManager</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.clone_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.clone_workflow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.get_workflow_info"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_workflow_info()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.list"><code class="docutils literal notranslate"><span class="pre">ProjectManager.list()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.list_available_workflows"><code class="docutils literal notranslate"><span class="pre">ProjectManager.list_available_workflows()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.new_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.new_workflow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.open_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.open_workflow()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.remove"><code class="docutils literal notranslate"><span class="pre">ProjectManager.remove()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.start_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.start_workflow()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager"><code class="docutils literal notranslate"><span class="pre">WorkflowManager</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_block"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_block()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_dependency"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_dependency()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_task"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_task()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.check_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.check_engine()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.choose_default_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.choose_default_engine()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.clone"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.clone()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_engine_task"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_engine_task()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_task_dependencies"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_task_dependencies()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_taskinfo"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_taskinfo()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.next"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.next()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.save"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.save()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.set_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.set_engine()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.ProjectInfo"><code class="docutils literal notranslate"><span class="pre">ProjectInfo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.WorkflowInfo"><code class="docutils literal notranslate"><span class="pre">WorkflowInfo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.TaskInfo"><code class="docutils literal notranslate"><span class="pre">TaskInfo</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/job_submission_monitoring.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/job_submission_monitoring.html#functionalities">Functionalities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/job_submission_monitoring.html#modules-functions-and-working">Modules, Functions and Working</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/gui_view.html">GUI View Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/gui_view.html#modules-under-litesoph">Modules under LITESOPH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_view.html#class-view">Class View</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_view.html#functionalities">Functionalities</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_view.html#class-inputframe">Class InputFrame</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_view.html#parameters">Parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_view.html#id1">Functionalities</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_view.html#usage">Usage</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_view.html#creating-a-new-gui-frame">Creating a new GUI frame</a></li>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_view.html#updating-the-existing-frames">Updating the existing frames</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/gui_view.html#visual-parameters-modules">Visual Parameters Modules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_view.html#id2">Functionalities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/gui_control.html">GUI Control Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="devel/gui_control.html#features-and-functionalities">Features and Functionalities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="devel/gui_control.html#modules-under-litesoph">Modules under LITESOPH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_control.html#class-taskcontroller">Class TaskController</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_control.html#relevant-methods">Relevant Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="devel/gui_control.html#usage">Usage</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_control.html#defining-a-taskcontroller">Defining a TaskController</a></li>
+<li class="toctree-l6"><a class="reference internal" href="devel/gui_control.html#remarks">Remarks</a></li>
 </ul>
 </li>
 </ul>
@@ -202,8 +312,7 @@ using three engines : <a class="reference external" href="https://wiki.fysik.dtu
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developer_documentation/developer_documentation_index.html">Developer Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Issues.html">Issues or Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
 </ul>
 </div>
 </section>
@@ -213,14 +322,14 @@ using three engines : <a class="reference external" href="https://wiki.fysik.dtu
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="README.html" class="btn btn-neutral float-right" title="About LITESOPH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about_LITESOPH.html" class="btn btn-neutral float-right" title="About LITESOPH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 07 Mar 2023 18:38:07.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 

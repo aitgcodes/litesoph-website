@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LITESOPH Job Submission, Monitoring and File Management &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development" href="../devel/devel.html" />
+    <link rel="prev" title="Create a new Project" href="create_open_project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="user_documentation_index.html">User Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_open_project.html">Create a new Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_open_project.html#open-an-existing-project">Open an existing Project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LITESOPH Job Submission, Monitoring and File Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features-and-functionalities">Features and Functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="user_documentation_index.html">User Documentation</a></li>
+      <li class="breadcrumb-item active">LITESOPH Job Submission, Monitoring and File Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/user_documentation/job_submission_monitoring.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="litesoph-job-submission-monitoring-and-file-management">
+<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>LITESOPH Job Submission, Monitoring and File Management is a set of modules capable of handling tasks like submission of job to remote machine, tracking the status running job and transferring of files from remote to local machine.</p>
+</section>
+<section id="features-and-functionalities">
+<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Job Submission module supports queue(qsub, sbatch etc) as well as non-queue(bash) based job submission on remote machine through password and passwordless approach. Passwordless approach is generally used to avoid typing password repeatively for every job submission. It can also help to bypass captcha based login authentication. See <a class="reference internal" href="../FAQs/pwless-ssh.html"><span class="doc">How to enable passwordless SSH?</span></a></p></li>
+<li><p>Monitoring and File Management modules handles the job of tracking the status as well as terminating the  running job on remote machine. File Management module handles the downloading of all files as well as selective transfer the files from remote to local machine via different transfer methods (direct transfer along with compression and split transfer).</p></li>
+</ol>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/ls-job-submission.png"><img alt="job_submission_monitoring" src="../_images/ls-job-submission.png" style="width: 1000px;" /></a>
+<p><strong>1 &amp; 2</strong>: Selection between non-queue (bash) and queue (qsub) job submission. User must select <strong>1</strong> for bash based and <strong>2</strong> for queue based job submission.</p>
+<p><strong>3. Host IP address:</strong> requires IP address of remote machine.</p>
+<p><strong>4. Port:</strong> require port number of remote machine.</p>
+<p><strong>5. Username:</strong> require username of remote machine.</p>
+<p><strong>6 &amp; 7:</strong> User can login to remote machine by providing a password using <strong>option 6 (with password)</strong>. Furthermore,
+remote machine which requires captcha authentication for login, passwordless login can be  used by selecting <strong>option 7 (without password)</strong> and entering the <strong>pkey-file</strong> See  <a class="reference internal" href="../FAQs/pwless-ssh.html"><span class="doc">How to enable passwordless SSH?</span></a> for passwordless-ssh activation.</p>
+<p><strong>8. Remote Path:</strong> directory on remote machine under which new litesoph project will be created.</p>
+<p><strong>9. Number of Processors:</strong> require number of processors for running simulation on remote machine.</p>
+<p><strong>10. Submit command:</strong> <em>bash</em> is default when <strong>option 1 (Command line execution)</strong> is selected. But when <strong>option 2 (Submit through queue)</strong>, user must submit the scheduler submit command. e.g. qsub for PBS machines and sbatch for SLURM machines.</p>
+<p><strong>11. Stat command &amp; 12. Kill command</strong> <em>(optional)</em>: If user require to kill running job, user must provide scheduler’s corresponding commands for checking running process and killing process. e.g. qstat, qdel for PBS machines and qstat and scancel for SLURM machines.</p>
+<p><strong>13. Generate Job Script:</strong> to generate job script after entering correct login parameters</p>
+<p><strong>14. Save Job Script:</strong> to save the generated job script</p>
+<p><strong>15. Run Job:</strong> to run the job using saved job script</p>
+<p><strong>16. View Output:</strong> to view the output log of current simulation in remote machine</p>
+<p><strong>17. Job Status Bar:</strong> shows the status of running job (displays <em>Job Done</em> after completion of job)</p>
+<p><strong>18. Job ID:</strong> to enter the job ID requires to kill simulation</p>
+<p><strong>19. Job Status:</strong> checks the status of running job.</p>
+<p><strong>20. Kill Job:</strong> kill running simulation using Job ID.</p>
+<p><strong>21. Refresh:</strong> get the files information of current project on remote machine.</p>
+<p><strong>22. Download All Files:</strong> to downlaod all files from remote machine.</p>
+<p><strong>23. File selection widget:</strong> widget to select relevant files of current project.</p>
+<p><strong>24. Download File:</strong> to download the selected file.</p>
+<p><strong>25. View File:</strong> to download the selected file.</p>
+<p><strong>26. Plot File:</strong> to open litesoph visualisation toolkit.</p>
+<p><strong>27. Back:</strong> get to previous page.</p>
+<p><strong>28. Back to main page:</strong> get back to main page.</p>
+<p><strong>29. Proceed:</strong> to proceed to next task of workflow.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="create_open_project.html" class="btn btn-neutral float-left" title="Create a new Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../devel/devel.html" class="btn btn-neutral float-right" title="Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

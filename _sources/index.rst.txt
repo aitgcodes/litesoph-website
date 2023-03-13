@@ -22,14 +22,12 @@ Contents
 --------
 
 .. toctree::
-   README
-   Current_Feature
-   Upcoming_Feature
-   Simulations
-   Tutorials/Tutorials
-   FAQs/FAQ   
-   developer_documentation/developer_documentation_index
-   Issues
+   about_LITESOPH
+   feature_and_implementations/features_and_implementation     
+   user_documentation/user_documentation_index
+   devel/devel
+   FAQs/FAQ
+   Bugs
    
    
 

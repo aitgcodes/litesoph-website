@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adding new engine &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Adding new task" href="task.html" />
+    <link rel="prev" title="Development workflow" href="developer_workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="devel.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developer_workflow.html">Development workflow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="devel.html#development-topics">Development topics</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding new engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description-of-base-classes">Description of base-classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="task.html">Adding new task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow.html">Adding new workflow type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="devel.html#code-overview">Code overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="devel.html">Development</a></li>
+      <li class="breadcrumb-item active">Adding new engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/devel/engine.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adding-new-engine">
+<span id="id1"></span><h1>Adding new engine<a class="headerlink" href="#adding-new-engine" title="Permalink to this heading"></a></h1>
+<p>The litesoph code base is structured in a modular format, see <a class="reference internal" href="architecture.html#code-overview"><span class="std std-ref">Code Architecture</span></a>, so that
+it is simple and staright-forward to add a new engine or task.</p>
+<p>To integrate an engine into litesoph, a class interface must be
+implemented, which inherits the base class <a class="reference internal" href="#litesoph.common.engine_manager.EngineManager" title="litesoph.common.engine_manager.EngineManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">EngineManager</span></code></a>.
+This interface will handle all the queries regarding the engine coming
+from the workflow manager.</p>
+<p>The step by step procedure to add a new engine to the
+litesoph code base is described below.</p>
+<p>1.  Add engine to the <a class="reference internal" href="#litesoph.engines.engine_classname" title="litesoph.engines.engine_classname"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.engines.engine_classname</span></code></a> dictionary. The key
+should be the name of the engine and the value should be the class name used to define
+the engine manager. For Example, if the engine name is: <code class="docutils literal notranslate"><span class="pre">newengine</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;newengine&#39;</span><span class="p">:</span> <span class="s1">&#39;NewEngine&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">NewEngine</span></code> will be the class name used to define the engine manager</p>
+<p>2.  Create a new directory in <code class="xref py py-mod docutils literal notranslate"><span class="pre">litesoph.engines</span></code> name it as <code class="docutils literal notranslate"><span class="pre">newengine</span></code> and add a new python file
+in this directory and name it as <code class="docutils literal notranslate"><span class="pre">newengine_manager.py</span></code>.</p>
+<p>3.  In the new file <code class="docutils literal notranslate"><span class="pre">newengine_manager.py</span></code> create a new subclass of <a class="reference internal" href="#litesoph.common.engine_manager.EngineManager" title="litesoph.common.engine_manager.EngineManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">EngineManager</span></code></a>
+and name it as <code class="docutils literal notranslate"><span class="pre">NewEngineManager</span></code></p>
+<p>4.  In the class <code class="docutils literal notranslate"><span class="pre">NewEngineManager</span></code> implement all the abstract methods of
+the super class <a class="reference internal" href="#litesoph.common.engine_manager.EngineManager" title="litesoph.common.engine_manager.EngineManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">EngineManager</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>The code for our NWChem interface: <a href="#id2"><span class="problematic" id="id3">:git:`litesoph.engines.newchem.nwchem_manager.py`</span></a></p></li>
+</ul>
+</div>
+<section id="description-of-base-classes">
+<h2>Description of base-classes<a class="headerlink" href="#description-of-base-classes" title="Permalink to this heading"></a></h2>
+<section id="the-engine-base-classes">
+<h3>The Engine base-classes<a class="headerlink" href="#the-engine-base-classes" title="Permalink to this heading"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="litesoph.engines.engine_classname">
+<span class="sig-prename descclassname"><span class="pre">litesoph.engines.</span></span><span class="sig-name descname"><span class="pre">engine_classname</span></span><a class="headerlink" href="#litesoph.engines.engine_classname" title="Permalink to this definition"></a></dt>
+<dd><p>alias of {‘gpaw’: ‘GPAW’, ‘nwchem’: ‘NWChem’, ‘octopus’: ‘OCTOPUS’}</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.engine_manager.</span></span><span class="sig-name descname"><span class="pre">EngineManager</span></span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for all litesoph engines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Name</strong> – name of the engine.</p></li>
+<li><p><strong>implemented_tasks</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – list of task identifiers of the tasks that are implemented.</p></li>
+<li><p><strong>implemented_workflows</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – list of workflow identifiers of the workflows that are implemented.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager.get_task">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependent_task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager.get_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager.get_task" title="Permalink to this definition"></a></dt>
+<dd><p>This class checks if a task is implemented and if it is implemented
+it returns the task object else raises a TaskNotImplementedError.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager.get_default_task_param">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_default_task_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependent_task</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager.get_default_task_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager.get_default_task_param" title="Permalink to this definition"></a></dt>
+<dd><p>This mentods return the default parameters for a given particular task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager.get_task_list">
+<span class="sig-name descname"><span class="pre">get_task_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager.get_task_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager.get_task_list" title="Permalink to this definition"></a></dt>
+<dd><p>This method returns the list of implemented tasks in this engine</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager.get_workflow_list">
+<span class="sig-name descname"><span class="pre">get_workflow_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager.get_workflow_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager.get_workflow_list" title="Permalink to this definition"></a></dt>
+<dd><p>This method returns the list of implemented tasks in this engine</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="litesoph.common.engine_manager.EngineManager.check_task">
+<span class="sig-name descname"><span class="pre">check_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/engine_manager.html#EngineManager.check_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.engine_manager.EngineManager.check_task" title="Permalink to this definition"></a></dt>
+<dd><p>This method checks if a given task is implemented in this engine if not
+it  raises a TaskNotImplementedError</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="developer_workflow.html" class="btn btn-neutral float-left" title="Development workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="task.html" class="btn btn-neutral float-right" title="Adding new task" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RT-TDDFT &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script>window.MathJax = {"tex": {"macros": {"br": "{\\mathbf r}", "bk": "{\\mathbf k}", "bG": "{\\mathbf G}"}}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Compute Spectrum" href="../compute_spectrum/compute_spectrum.html" />
+    <link rel="prev" title="Ground State" href="../gs/gs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../features_and_implementation.html">Features implementation (Theory)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../features_and_implementation.html#working-algorithms-in-litesoph">Working algorithms in LITESOPH</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../features_and_implementation.html#independent-tasks-based">Independent Tasks Based</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gs/gs.html">Ground State</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RT-TDDFT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#delta-kick-inputs">Delta kick Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#laser-design-tools">Laser Design tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../compute_spectrum/compute_spectrum.html">Compute Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing_and_visualization/post_processing_and_visualization.html">Post processing and visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../features_and_implementation.html#workflows-based">Workflows Based</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../features_and_implementation.html">Features implementation (Theory)</a></li>
+          <li class="breadcrumb-item"><a href="../independent_tasks.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">RT-TDDFT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rt-tddft">
+<span id="id1"></span><h1>RT-TDDFT<a class="headerlink" href="#rt-tddft" title="Permalink to this heading"></a></h1>
+<p>The RT-TDDFT calculations can be performed starting with external perturbations, such as, Delta pulse and laser pulse. For the input parameters
+of delta pulse, see <a class="reference internal" href="#delta-kick"><span class="std std-ref">Delta kick Inputs</span></a>. For the input parameters of laser pulse, see <a class="reference internal" href="#laser-design-tools"><span class="std std-ref">Laser Design tools</span></a>.</p>
+<section id="delta-kick-inputs">
+<span id="delta-kick"></span><h2>Delta kick Inputs<a class="headerlink" href="#delta-kick-inputs" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/Delta-kick.png"><img alt="delta_kick" src="../../../_images/Delta-kick.png" style="width: 800px;" /></a>
+<p><strong>1. Laser Strength in a.u (E0):</strong> Strength of the delta kick electric field to be applied. This excites all the electronic degrees of freedom at
+the begining.</p>
+<p><strong>2. Time steps (in attosecond):</strong> Time steps for the dynamics of the Kohn-Sham euations.</p>
+<p><strong>3. Number of Steps:</strong> Total number of steps to be run for the dynamics. Total time is (Number of Steps*time steps)</p>
+<p><strong>4. Frequency of data collection:</strong> Number of times the data will be printed. Vale <span class="math notranslate nohighlight">\(1\)</span> indicates that data will be collected at each time steps.</p>
+<p><strong>5. Polarisation Direction:</strong> Direction of the applied external electric field.</p>
+</section>
+<section id="laser-design-tools">
+<span id="id2"></span><h2>Laser Design tools<a class="headerlink" href="#laser-design-tools" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/laser_design.png"><img alt="laser_design_page" src="../../../_images/laser_design.png" style="width: 800px;" /></a>
+<section id="laser-design">
+<span id="id3"></span><h3>Laser design<a class="headerlink" href="#laser-design" title="Permalink to this heading"></a></h3>
+<p><strong>1. Type of Laser:</strong> Available options are Gaussian pulse and Delta pulse.</p>
+<p><strong>2. Laser Tag:</strong> Applicable only in the case of Pump-Probe analysis. Choose either pump or probe for laser design.</p>
+<p>For the parameters of Delta kick, refer to <a class="reference internal" href="#delta-kick"><span class="std std-ref">Delta kick Inputs</span></a>.</p>
+<p>For the parameters of Gaussian pulse, see below.</p>
+<blockquote>
+<div><p><strong>1. Time Origin in as:</strong> Laser delay time from initialization of simulation in atto-seconds.</p>
+<p><strong>2. Relative strength at time origin, 10e-:</strong> Electric field strength at the starting time of the laser.</p>
+<p><strong>3. Peak Strength in au:</strong> Intensity of laser in au.</p>
+<p><strong>4. Full Width Half Max (FWHM in eV):</strong> FWHM of the Gaussian pulse.</p>
+<p><strong>5. Frequency (in eV):</strong> Frequency of the Gaussian pulse.</p>
+<p><strong>6. Polarization Direction:</strong> Direction of the applied laser.</p>
+</div></blockquote>
+<p><strong>Add</strong> and <strong>Save</strong> the lasers and view the laser using <strong>Plot</strong>.</p>
+<a class="reference internal image-reference" href="../../../_images/plot_laser.png"><img alt="laser_design_page" src="../../../_images/plot_laser.png" style="width: 800px;" /></a>
+<p><strong>Finalise</strong> the laser which will be used for further simualtions.</p>
+</section>
+<section id="masking">
+<span id="id4"></span><h3>Masking<a class="headerlink" href="#masking" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/masking.png"><img alt="laser_design_page" src="../../../_images/masking.png" style="width: 800px;" /></a>
+<p>Select the added lasers for which masking is to be applied. Under masking, check the <strong>Masked Electric Field</strong>. Use the following input parameters
+for masking.</p>
+<p><strong>1. Mask Type:</strong> Types of mask used as boundary to separated the masked and illuminated regions. Available options are <strong>plane</strong> and <strong>sphere</strong>.</p>
+<p><strong>2. Boundary Type:</strong> Smearing type at the mask boundary. Available options are <strong>abrupt</strong> and <strong>smooth</strong>.</p>
+<p><strong>3. Axis:</strong> Direction along which the boundary is placed.</p>
+<p><strong>4. Origin:</strong> Cut-off distance in fractional units beyond which the part of the system will be masked.</p>
+<p><strong>Save</strong> the masking details after including the above parameters.</p>
+</section>
+</section>
+<section id="properties">
+<span id="id5"></span><h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/properties.png"><img alt="Spectrum" src="../../../_images/properties.png" style="width: 800px;" /></a>
+<p><strong>1. Observables to extract:</strong> Choose the operation to be performed.</p>
+<p>For Spectrum Calculation choose <strong>Absorption Spectrum</strong>.</p>
+<p>For KSD calculation choose <strong>Absorption Spectrum</strong> and <strong>Kohn Sham Decomposition</strong>.</p>
+<p>For MO population calculation choose <strong>Absorption Spectrum</strong>, <strong>Kohn Sham Decomposition</strong> and <strong>Population Correlation</strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../gs/gs.html" class="btn btn-neutral float-left" title="Ground State" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../compute_spectrum/compute_spectrum.html" class="btn btn-neutral float-right" title="Compute Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

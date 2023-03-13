@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUI Control Modules &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="../FAQs/FAQ.html" />
+    <link rel="prev" title="GUI View Modules" href="gui_view.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="devel.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="developer_workflow.html">Development workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devel.html#development-topics">Development topics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="devel.html#code-overview">Code overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="architecture.html">Code Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gui_view.html">GUI View Modules</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GUI Control Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features-and-functionalities">Features and Functionalities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-under-litesoph">Modules under LITESOPH</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="devel.html">Development</a></li>
+      <li class="breadcrumb-item active">GUI Control Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/devel/gui_control.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gui-control-modules">
+<h1>GUI Control Modules<a class="headerlink" href="#gui-control-modules" title="Permalink to this heading"></a></h1>
+<p>Modules to control the GUI view for particular task.
+Binds different tkinter events with required class methods.</p>
+<section id="features-and-functionalities">
+<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Permalink to this heading"></a></h2>
+<p>This module is responsible for managing overall functionality of GUI.
+Interacts with LITESOPH manager and views modules.
+Contains attributes and methods related to control logic, user interface events.</p>
+</section>
+<section id="modules-under-litesoph">
+<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>GUIApp : Main Application control class</p></li>
+<li><p>ProjectController: Base Class assigned for handling LITESOPH project</p></li>
+<li><p>WorkFlowController: Base Class assigned for handling workflow under LITESOPH project</p></li>
+<li><p>TaskController: Base Class defined for single Task related actions.</p></li>
+</ul>
+<section id="class-taskcontroller">
+<h3>Class TaskController<a class="headerlink" href="#class-taskcontroller" title="Permalink to this heading"></a></h3>
+<p>litesoph/gui/taskcontroller.py</p>
+<p>Base Controller Class to assemble common functions and attributes required for handling LITESOPH defined tasks.
+Acts on assigned GUI view to control and regulate the flow of tkinter events.</p>
+<section id="relevant-methods">
+<h4>Relevant Methods<a class="headerlink" href="#relevant-methods" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>set_task( )</dt><dd><p>Method to handle all functions under a GUI frame.
+Assigns particular view and binds respective tkinter events to functions.
+Includes method related to default set of view and parameters.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<p>Instructions for adding control logic to GUI frames.</p>
+<section id="defining-a-taskcontroller">
+<h4>Defining a TaskController<a class="headerlink" href="#defining-a-taskcontroller" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>Sub class of TaskController is assigned to activate the working of GUI Frame</p></li>
+<li><p>Modify the class method set_task( ) depending on the requirement of the current task</p></li>
+<li><p>Bind the TaskController Sub-class to the task-view mapping under WorkFlowController</p></li>
+</ol>
+</section>
+<section id="remarks">
+<h4>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p>Sub-class of TaskController is only required in the case of LITESOPH interfaced tasks.
+Alternatively, new frame can be handled by independent or controller object under TaskController.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gui_view.html" class="btn btn-neutral float-left" title="GUI View Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../FAQs/FAQ.html" class="btn btn-neutral float-right" title="Frequently Asked Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

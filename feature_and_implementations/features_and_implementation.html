@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features implementation (Theory) &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="algorithm/algorithm.html" />
+    <link rel="prev" title="About LITESOPH" href="../about_LITESOPH.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Features implementation (Theory)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#working-algorithms-in-litesoph">Working algorithms in LITESOPH</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/surface_hopping/surface_hopping.html">Trajectory Surface Hopping (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/spin_orbit/spin_orbit.html">Effects of spin-orbit interactions (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/qm_mm/qm_mm.html">Implementation oftestin QM/MM method (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm/normal_mode/normal_mode.html">Normal Mode analysis (upcoming)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#independent-tasks-based">Independent Tasks Based</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/gs/gs.html">Ground State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html">RT-TDDFT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/compute_spectrum/compute_spectrum.html">Compute Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/post_processing_and_visualization/post_processing_and_visualization.html">Post processing and visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflows-based">Workflows Based</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="workflow/spectrum/spectrum.html">Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/ksd/ksd.html">KSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/laser_masking/laser_masking.html">Laser-Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="workflow/pump_probe/pump_probe.html">Pump-probe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Features implementation (Theory)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/feature_and_implementations/features_and_implementation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="features-implementation-theory">
+<h1>Features implementation (Theory)<a class="headerlink" href="#features-implementation-theory" title="Permalink to this heading"></a></h1>
+<section id="working-algorithms-in-litesoph">
+<h2>Working algorithms in LITESOPH<a class="headerlink" href="#working-algorithms-in-litesoph" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/spectrum.html">Spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/averaged_spectrum.html">Averaged spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/ksd.html">KSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/mo_population.html">MO population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm/simulations/pump_probe.html">Pump-probe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/surface_hopping/surface_hopping.html">Trajectory Surface Hopping (upcoming)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/spin_orbit/spin_orbit.html">Effects of spin-orbit interactions (upcoming)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/qm_mm/qm_mm.html">Implementation oftestin QM/MM method (upcoming)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithm/normal_mode/normal_mode.html">Normal Mode analysis (upcoming)</a></li>
+</ul>
+</div>
+</section>
+<section id="independent-tasks-based">
+<h2>Independent Tasks Based<a class="headerlink" href="#independent-tasks-based" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="independent_tasks/gs/gs.html">Ground State</a></li>
+<li class="toctree-l1"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html">RT-TDDFT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html#delta-kick-inputs">Delta kick Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html#laser-design-tools">Laser Design tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html#laser-design">Laser design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html#masking">Masking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="independent_tasks/rt_tddft/rt_tddft.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="independent_tasks/compute_spectrum/compute_spectrum.html">Compute Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="independent_tasks/post_processing_and_visualization/post_processing_and_visualization.html">Post processing and visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="independent_tasks/post_processing_and_visualization/dipole_moment_analysis.html">Dipole moment analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="independent_tasks/post_processing_and_visualization/compute_tas.html">Compute TAS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="workflows-based">
+<h2>Workflows Based<a class="headerlink" href="#workflows-based" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/spectrum/spectrum.html">Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/ksd/ksd.html">KSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/laser_masking/laser_masking.html">Laser-Masking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pump_probe/pump_probe.html">Pump-probe</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../about_LITESOPH.html" class="btn btn-neutral float-left" title="About LITESOPH" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algorithm/algorithm.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 10:46:29.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

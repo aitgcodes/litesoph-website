@@ -39,14 +39,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/Tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Issues.html">Issues or Bugs!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Developer_Guideline.html">Developer Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -80,34 +78,52 @@
 <span class="kn">from</span> <span class="nn">litesoph.common.task</span> <span class="kn">import</span> <span class="n">TaskNotImplementedError</span>
 
 
-<div class="viewcode-block" id="EngineManager"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager">[docs]</a><span class="k">class</span> <span class="nc">EngineManager</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for all the engine.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="EngineManager"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager">[docs]</a><span class="k">class</span> <span class="nc">EngineManager</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for all litesoph engines.</span>
+<span class="sd">    </span>
+<span class="sd">    parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Name: </span>
+<span class="sd">        name of the engine.</span>
+<span class="sd">    implemented_tasks: </span>
+<span class="sd">        list of task identifiers of the tasks that are implemented.</span>
+<span class="sd">    implemented_workflows: </span>
+<span class="sd">        list of workflow identifiers of the workflows that are implemented.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="n">NAME</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">implemented_tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="n">implemented_workflows</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="EngineManager.get_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.get_task">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="EngineManager.get_task"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">task_info</span><span class="p">,</span> <span class="n">dependent_task</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This class checks if a task is implemented and if it is implemented</span>
+<span class="sd">        it returns the task object else raises a TaskNotImplementedError.&quot;&quot;&quot;</span>
         <span class="o">...</span></div>
 
-<div class="viewcode-block" id="EngineManager.get_default_task_param"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.get_default_task_param">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="EngineManager.get_default_task_param"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.get_default_task_param">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_default_task_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dependent_task</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This mentods return the default parameters for a given particular task.&quot;&quot;&quot;</span>
         <span class="o">...</span></div>
     
-<div class="viewcode-block" id="EngineManager.get_task_list"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.get_task_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EngineManager.get_task_list"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_task_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method returns the list of implemented tasks in this engine&quot;&quot;&quot;</span>
         <span class="n">task_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">implemented_tasks</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">task_list</span></div>
 
-<div class="viewcode-block" id="EngineManager.get_workflow"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.get_workflow">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="o">...</span></div>
+        <span class="o">...</span>
     
-<div class="viewcode-block" id="EngineManager.get_workflow_list"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.get_workflow_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_workflow_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EngineManager.get_workflow_list"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.get_workflow_list">[docs]</a>    <span class="k">def</span> <span class="nf">get_workflow_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method returns the list of implemented tasks in this engine&quot;&quot;&quot;</span>
         <span class="n">workflow_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">implemented_workflows</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">workflow_list</span></div>
 
-<div class="viewcode-block" id="EngineManager.check_task"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.engine_manager.EngineManager.check_task">[docs]</a>    <span class="k">def</span> <span class="nf">check_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="EngineManager.check_task"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.check_task">[docs]</a>    <span class="k">def</span> <span class="nf">check_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method checks if a given task is implemented in this engine if not</span>
+<span class="sd">        it  raises a TaskNotImplementedError&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">implemented_tasks</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">TaskNotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> is not implemented in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">NAME</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span></div></div>
 </pre></div>
@@ -120,7 +136,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 

@@ -39,14 +39,12 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../README.html">About LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Current_Feature.html">Current Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Upcoming_Feature.html">Upcoming Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Tutorials/Tutorials.html">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../FAQ.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Issues.html">Issues or Bugs!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../Developer_Guideline.html">Developer Guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features implementation (Theory)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
 </ul>
 
         </div>
@@ -89,11 +87,16 @@
 <span class="kn">from</span> <span class="nn">litesoph.common.project_manager</span> <span class="kn">import</span> <span class="n">ProjectManager</span>
 
 
-<div class="viewcode-block" id="ProjectSetupError"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.ProjectSetupError">[docs]</a><span class="k">class</span> <span class="nc">ProjectSetupError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when unable to create new project.&quot;&quot;&quot;</span></div>
+<span class="k">class</span> <span class="nc">ProjectSetupError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when unable to create new project.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="LSManager"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager">[docs]</a><span class="k">class</span> <span class="nc">LSManager</span><span class="p">:</span>
+<div class="viewcode-block" id="LSManager"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.ls_manager.LSManager">[docs]</a><span class="k">class</span> <span class="nc">LSManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is the main interface to the litesoph backend.</span>
+<span class="sd">    This class is responsible for creating and managing all the projects in </span>
+<span class="sd">    the litesoph. All the data generated from the project is stored in the </span>
+<span class="sd">    project_info which is serialized into json format and written to the project_data file</span>
+<span class="sd">    in the ./litesoph directory, which is in the project directory.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">project_data_file_relative_path</span> <span class="o">=</span> <span class="n">PROJECT_DATA_FILE_RELATIVE_PATH</span>
@@ -105,13 +108,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">task_objects</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">read_config</span><span class="p">()</span>
 
-<div class="viewcode-block" id="LSManager.read_config"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.read_config">[docs]</a>    <span class="k">def</span> <span class="nf">read_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LSManager.read_config"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.ls_manager.LSManager.read_config">[docs]</a>    <span class="k">def</span> <span class="nf">read_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Reads the lsconfig file and converts it into dict.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config_to_dict</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LSManager.new_project"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.new_project">[docs]</a>    <span class="k">def</span> <span class="nf">new_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">description</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;&quot; Creates Project directory  and instantiates ProjectInfo and project manager</span>
-<span class="sd">         then return project manager. &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="LSManager.new_project"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.ls_manager.LSManager.new_project">[docs]</a>    <span class="k">def</span> <span class="nf">new_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">description</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates Project directory  and instantiates ProjectInfo and project manager</span>
+<span class="sd">         then return project manager. </span>
+<span class="sd">         </span>
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name: </span>
+<span class="sd">            name of the project.</span>
+<span class="sd">        path:</span>
+<span class="sd">            path of the project directory.</span>
+<span class="sd">        description:</span>
+<span class="sd">            description of the project.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            ProjectManager object.&quot;&quot;&quot;</span>
 
         <span class="n">project_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
@@ -139,8 +155,19 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span></div>
 
     
-<div class="viewcode-block" id="LSManager.open_project"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.open_project">[docs]</a>    <span class="k">def</span> <span class="nf">open_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
+<div class="viewcode-block" id="LSManager.open_project"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.ls_manager.LSManager.open_project">[docs]</a>    <span class="k">def</span> <span class="nf">open_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ProjectManager</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Opens a litesoph project.</span>
+<span class="sd">        </span>
+<span class="sd">        parameters</span>
+<span class="sd">        ----------</span>
 
+<span class="sd">        path:</span>
+<span class="sd">            path of the project directory</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            ProjectManager object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">project_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">project_data_file</span> <span class="o">=</span> <span class="n">project_path</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_data_file_relative_path</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">project_data_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
@@ -162,34 +189,34 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">append_project</span><span class="p">(</span><span class="n">project_info</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span></div>
 
-<div class="viewcode-block" id="LSManager.list"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-<div class="viewcode-block" id="LSManager.get_summary"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.get_summary">[docs]</a>    <span class="k">def</span> <span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">get_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">pass</span>
     
-<div class="viewcode-block" id="LSManager.remove"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span></div>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
 
-<div class="viewcode-block" id="LSManager.save"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;project_manager&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">project_manager</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
         <span class="c1"># for project in self.project_list:</span>
         <span class="c1">#     file = project.path / self.project_data_file_relative_path</span>
         <span class="c1">#     with open(file, &#39;w&#39;) as f:</span>
         <span class="c1">#         project.save(f)</span>
 
-<div class="viewcode-block" id="LSManager.get_project_summary"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.get_project_summary">[docs]</a>    <span class="k">def</span> <span class="nf">get_project_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_project_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39; &#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_project</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">summary_of_current_project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_project_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">summary_of_current_project</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_project_data</span><span class="p">)</span>
 
-<div class="viewcode-block" id="LSManager.append_project"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.LSManager.append_project">[docs]</a>    <span class="k">def</span> <span class="nf">append_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_info</span><span class="p">:</span> <span class="n">ProjectInfo</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">append_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_info</span><span class="p">:</span> <span class="n">ProjectInfo</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_list</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">uuid</span> <span class="o">==</span>  <span class="n">project_info</span><span class="o">.</span><span class="n">uuid</span><span class="p">:</span>
                 <span class="k">return</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">project_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">project_info</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">project_info</span><span class="p">)</span>
 
 
     <span class="k">def</span> <span class="nf">_change_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
@@ -197,7 +224,7 @@
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="summary_of_current_project"><a class="viewcode-back" href="../../../litesoph_modules/litesoph.common.html#litesoph.common.ls_manager.summary_of_current_project">[docs]</a><span class="k">def</span> <span class="nf">summary_of_current_project</span><span class="p">(</span><span class="n">project_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">summary_of_current_project</span><span class="p">(</span><span class="n">project_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 
     <span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Summary of all the tasks performed.&quot;</span><span class="p">]</span>
 
@@ -225,7 +252,7 @@
 
     <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">state</span></div>
+    <span class="k">return</span> <span class="n">state</span>
 </pre></div>
 
            </div>
@@ -236,7 +263,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 06 Mar 2023 16:29:56.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 11:25:52.
       </span></p>
   </div>
 
