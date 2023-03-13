@@ -119,7 +119,7 @@ the begining.</p>
 <p>For the parameters of Gaussian pulse, see below.</p>
 <blockquote>
 <div><p><strong>1. Time Origin in as:</strong> Laser delay time from initialization of simulation in atto-seconds.</p>
-<p><strong>2. Relative strength at time origin, 10e-:</strong> Electric field strength at the starting time of the laser.</p>
+<p><strong>2. Relative strength at time origin, 10e-:</strong> Relative Electric field strength at the starting time of the laser.</p>
 <p><strong>3. Peak Strength in au:</strong> Intensity of laser in au.</p>
 <p><strong>4. Full Width Half Max (FWHM in eV):</strong> FWHM of the Gaussian pulse.</p>
 <p><strong>5. Frequency (in eV):</strong> Frequency of the Gaussian pulse.</p>
@@ -134,10 +134,24 @@ the begining.</p>
 <a class="reference internal image-reference" href="../../../_images/masking.png"><img alt="laser_design_page" src="../../../_images/masking.png" style="width: 800px;" /></a>
 <p>Select the added lasers for which masking is to be applied. Under masking, check the <strong>Masked Electric Field</strong>. Use the following input parameters
 for masking.</p>
-<p><strong>1. Mask Type:</strong> Types of mask used as boundary to separated the masked and illuminated regions. Available options are <strong>plane</strong> and <strong>sphere</strong>.</p>
+<dl>
+<dt><strong>1. Mask Type:</strong></dt><dd><p>Types of mask used as boundary to separated the masked and illuminated regions. Available options are :<strong>plane</strong> and <strong>sphere</strong>.</p>
+<p><strong>Plane</strong>: refers to the use of a dividing plane to define the mask.</p>
+<p><strong>Sphere</strong>: refers to the use of a spherical region to illuminate</p>
+</dd>
+</dl>
 <p><strong>2. Boundary Type:</strong> Smearing type at the mask boundary. Available options are <strong>abrupt</strong> and <strong>smooth</strong>.</p>
-<p><strong>3. Axis:</strong> Direction along which the boundary is placed.</p>
-<p><strong>4. Origin:</strong> Cut-off distance in fractional units beyond which the part of the system will be masked.</p>
+<p><strong>Mask Specific Parameters</strong></p>
+<p><strong>3. Axis:</strong>
+Applicable for Mask Type: <strong>Plane</strong>. Direction along which the boundary is placed.</p>
+<dl class="simple">
+<dt><strong>4. Origin:</strong></dt><dd><ul class="simple">
+<li><p>Applicable for Mask Type: <strong>Plane</strong>. The location of the dividing plane (in cell parameter units). Only for coordinate &lt; origin, the region is illuminated.</p></li>
+<li><p>Applicable for Mask Type: <strong>Sphere</strong>. Coordinates (in cell parameter units) of the centre of the Sphere used</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>5. Radius:</strong> Applicable for Mask Type: Sphere. Radius (in Angstroms) of the spherical region to be illuminated</p>
 <p><strong>Save</strong> the masking details after including the above parameters.</p>
 </section>
 </section>
@@ -163,7 +177,7 @@ for masking.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 16:22:14.
+      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 16:41:18.
       </span></p>
   </div>
 
