@@ -97,7 +97,7 @@
     <span class="n">implemented_workflows</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="EngineManager.get_task"><a class="viewcode-back" href="../../../devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">task_info</span><span class="p">,</span> <span class="n">dependent_task</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">,</span> <span class="n">task_info</span><span class="p">,</span> <span class="n">dependent_task</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This class checks if a task is implemented and if it is implemented</span>
 <span class="sd">        it returns the task object else raises a TaskNotImplementedError.&quot;&quot;&quot;</span>
         <span class="o">...</span></div>
@@ -136,7 +136,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 16:22:14.
+      <span class="lastupdated">Last updated on Tue, 14 Mar 2023 12:38:39.
       </span></p>
   </div>
 

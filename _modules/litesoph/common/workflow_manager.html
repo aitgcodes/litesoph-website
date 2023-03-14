@@ -78,7 +78,7 @@
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.task</span> <span class="kn">import</span> <span class="n">Task</span>
-<span class="kn">from</span> <span class="nn">litesoph.common.workflows_data</span> <span class="kn">import</span> <span class="n">predefined_workflow</span>
+<span class="kn">from</span> <span class="nn">litesoph.common.workflows_data</span> <span class="kn">import</span> <span class="n">predefined_workflow</span><span class="p">,</span> <span class="n">WorkflowTypes</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.engine_manager</span> <span class="kn">import</span> <span class="n">EngineManager</span>
 <span class="kn">from</span> <span class="nn">litesoph.common.data_sturcture</span> <span class="kn">import</span> <span class="n">TaskInfo</span><span class="p">,</span> <span class="n">WorkflowInfo</span><span class="p">,</span> <span class="n">factory_task_info</span><span class="p">,</span> <span class="n">Container</span><span class="p">,</span> <span class="n">Block</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
@@ -166,7 +166,7 @@
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_step</span><span class="p">:</span>
             
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span> <span class="o">==</span> <span class="s1">&#39;task_mode&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span> <span class="o">==</span> <span class="n">WorkflowTypes</span><span class="o">.</span><span class="n">TASK_MODE</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">task_mode</span> <span class="o">=</span> <span class="n">workflow_info</span><span class="o">.</span><span class="n">task_mode</span> <span class="o">=</span> <span class="kc">True</span>
             
             <span class="k">else</span><span class="p">:</span>
@@ -205,7 +205,8 @@
     <span class="k">def</span> <span class="nf">_get_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_task_info</span><span class="p">,</span> <span class="n">task_dependencies</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Task</span><span class="p">:</span>
         <span class="n">engine_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_engine_manager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
         <span class="n">current_task_info</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span>
-        <span class="n">task</span> <span class="o">=</span> <span class="n">engine_manager</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">current_task_info</span><span class="p">,</span> <span class="n">task_dependencies</span><span class="p">)</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">engine_manager</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_type</span><span class="p">,</span> 
+                                       <span class="n">current_task_info</span><span class="p">,</span> <span class="n">task_dependencies</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">task</span>
 
     
@@ -580,7 +581,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 13 Mar 2023 16:22:14.
+      <span class="lastupdated">Last updated on Tue, 14 Mar 2023 12:38:39.
       </span></p>
   </div>
 
