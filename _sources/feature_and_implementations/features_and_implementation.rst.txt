@@ -1,19 +1,14 @@
-====================================
-Features implementation (Theory)
-====================================
-
+========
+Features
+========
 
 .. toctree::
 
     algorithm/algorithm.rst
 
-
-
 .. toctree::
 
     independent_tasks/independent_tasks.rst
-
-
 
 .. toctree::
 
@@ -22,7 +17,7 @@ Features implementation (Theory)
     
 .. #. **Simulations of Photo-Induced Properties using LITESOPH**
 
-    - Spectrum
+    - Polarized Spectrum
 
     - Averaged spectrum
 

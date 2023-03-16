@@ -1,4 +1,4 @@
 .. _qm_mm:
 
-Implementation oftestin QM/MM method (upcoming)
+RT-TDDFT with QM/MM method (upcoming)
 ===============================================

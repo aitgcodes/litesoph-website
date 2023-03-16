@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Working algorithms in LITESOPH &mdash; LITESOPH 0.1 documentation</title>
+  <title>Available Features in LITESOPH &mdash; LITESOPH 0.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Simulations of Photo-Induced Properties using LITESOPH" href="simulations/simulations.html" />
-    <link rel="prev" title="Features implementation (Theory)" href="../features_and_implementation.html" /> 
+    <link rel="prev" title="Features" href="../features_and_implementation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,12 +43,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about_LITESOPH.html">About LITESOPH</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../features_and_implementation.html">Features implementation (Theory)</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Working algorithms in LITESOPH</strong></a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../features_and_implementation.html">Features</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Available Features in LITESOPH</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="surface_hopping/surface_hopping.html">Trajectory Surface Hopping (upcoming)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spin_orbit/spin_orbit.html">Effects of spin-orbit interactions (upcoming)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="qm_mm/qm_mm.html">Implementation oftestin QM/MM method (upcoming)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qm_mm/qm_mm.html">RT-TDDFT with QM/MM method (upcoming)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="normal_mode/normal_mode.html">Normal Mode analysis (upcoming)</a></li>
 </ul>
 </li>
@@ -76,8 +76,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../features_and_implementation.html">Features implementation (Theory)</a></li>
-      <li class="breadcrumb-item active"><strong>Working algorithms in LITESOPH</strong></li>
+          <li class="breadcrumb-item"><a href="../features_and_implementation.html">Features</a></li>
+      <li class="breadcrumb-item active"><strong>Available Features in LITESOPH</strong></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/feature_and_implementations/algorithm/algorithm.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,8 +87,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="working-algorithms-in-litesoph">
-<h1><strong>Working algorithms in LITESOPH</strong><a class="headerlink" href="#working-algorithms-in-litesoph" title="Permalink to this heading"></a></h1>
+  <section id="available-features-in-litesoph">
+<h1><strong>Available Features in LITESOPH</strong><a class="headerlink" href="#available-features-in-litesoph" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a><ul>
@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="simulations/simulations.html#kohn-sham-decomposition-ksd">Kohn-Sham Decomposition (KSD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="simulations/simulations.html#molecular-orbital-mo-population">Molecular Orbital (MO) Population</a></li>
 <li class="toctree-l2"><a class="reference internal" href="simulations/simulations.html#laser-simulation">LASER Simulation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="simulations/simulations.html#laser-masking-to-study-energy-transfer-using-rt-tddft-approach">LASER Masking  <strong>to study energy transfer using RT-TDDFT approach</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulations/simulations.html#laser-masking-approach-to-study-energy-transfer-using-rt-tddft-approach"><strong>LASER Masking approach to study energy transfer using RT-TDDFT approach</strong></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="simulations/simulations.html#references">References</a></li>
@@ -104,7 +104,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="surface_hopping/surface_hopping.html">Trajectory Surface Hopping (upcoming)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spin_orbit/spin_orbit.html">Effects of spin-orbit interactions (upcoming)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qm_mm/qm_mm.html">Implementation oftestin QM/MM method (upcoming)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qm_mm/qm_mm.html">RT-TDDFT with QM/MM method (upcoming)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="normal_mode/normal_mode.html">Normal Mode analysis (upcoming)</a></li>
 </ul>
 </div>
@@ -114,7 +114,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../features_and_implementation.html" class="btn btn-neutral float-left" title="Features implementation (Theory)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../features_and_implementation.html" class="btn btn-neutral float-left" title="Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="simulations/simulations.html" class="btn btn-neutral float-right" title="Simulations of Photo-Induced Properties using LITESOPH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -122,7 +122,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Tue, 14 Mar 2023 12:38:39.
+      <span class="lastupdated">Last updated on Thu, 16 Mar 2023 12:02:06.
       </span></p>
   </div>
 

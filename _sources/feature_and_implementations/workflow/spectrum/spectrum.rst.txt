@@ -1,7 +1,10 @@
 .. _spectrum:
 
-Spectrum
-=========
+Polarized Spectrum
+===================
+
+.. note::
+   Compatible Engines: GPAW, NWChem, Octopus
 
 .. image:: ./Spec.png
    :width: 800
