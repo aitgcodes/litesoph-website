@@ -218,7 +218,9 @@
             <span class="k">raise</span> <span class="n">WorkflowSetupError</span><span class="p">(</span><span class="s1">&#39;Create workflow&#39;</span><span class="p">)</span>
 
         <span class="n">workflow_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_workflow_manager</span><span class="p">(</span><span class="n">workflow_type</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">workflow_type</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">workflow_type</span> 
+        <span class="k">if</span> <span class="n">workflow_type</span> <span class="o">==</span> <span class="s1">&#39;task_mode&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">task_mode</span> <span class="o">=</span> <span class="kc">True</span>       
         <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
         <span class="n">workflow_manager</span> <span class="o">=</span> <span class="n">workflow_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">workflow_manager</span></div>
@@ -339,7 +341,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 27 Mar 2023 16:43:18.
+      <span class="lastupdated">Last updated on Sat, 01 Apr 2023 12:17:46.
       </span></p>
   </div>
 

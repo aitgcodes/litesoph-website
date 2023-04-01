@@ -104,6 +104,12 @@
 <p><strong>External fields:</strong> For Pump-Probe calculations, choose the parameters for <strong>External fields</strong> as Electric Field (<strong>Type of fields</strong>) and
 Pump-Probe (<strong>Type of Experiment</strong>). For each Pump-Probe input <strong>Delay time list in fs</strong> separated by space. After that, proceed to
 <strong>Design/Edit Laser</strong>. For laser design, see <a class="reference internal" href="../../independent_tasks/rt_tddft/rt_tddft.html#laser-design"><span class="std std-ref">Laser design</span></a>.</p>
+<p>Click on <strong>Restart Option</strong>, if applicable. Posible options include: increasing number of simulation steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the input parameters will be collected to generate input if <strong>Restart Option</strong> is chosen. Make sure to change <strong>ONLY</strong> the relevant parameters such as: Number of Steps.
+Any modification of External Fields (Laser Design Parameters) should be avoided. For Pump-Probe workflow, all RT-TDDFT simulations should run for same duration.</p>
+</div>
 <p><strong>4.</strong> Run all the RT-TDDFT simulations. The first simulation uses only pump. After that, perform each simulation for each pump-probe pair,
 consecutively.</p>
 <p><strong>5.</strong> For post processing and and visualization of TAS, see <a class="reference internal" href="../../independent_tasks/post_processing_and_visualization/compute_tas.html#compute-tas"><span class="std std-ref">Compute TAS</span></a>.</p>
@@ -121,7 +127,7 @@ consecutively.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 27 Mar 2023 16:43:18.
+      <span class="lastupdated">Last updated on Sat, 01 Apr 2023 12:17:46.
       </span></p>
   </div>
 

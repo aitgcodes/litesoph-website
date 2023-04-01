@@ -139,10 +139,18 @@
 <span class="sd">        The directory in which the job is running</span>
 <span class="sd">    state: </span>
 <span class="sd">        State of the job</span>
+<span class="sd">    job_script:</span>
+<span class="sd">        bash script to run the job</span>
 <span class="sd">    submit_mode: </span>
 <span class="sd">        whether the job was submitted locally or to a remote machine.</span>
-<span class="sd">    returncode: </span>
+<span class="sd">    job_returncode: </span>
 <span class="sd">        return code of the job</span>
+<span class="sd">    submit_returncode:</span>
+<span class="sd">        retrun code of job submitting to remote machine.</span>
+<span class="sd">    submit_output:</span>
+<span class="sd">        output of job submission to remote machine</span>
+<span class="sd">    submit_errors:</span>
+<span class="sd">        errors of job submission to remote machine</span>
 <span class="sd">    output: </span>
 <span class="sd">        Output of the job.</span>
 <span class="sd">    error: </span>
@@ -151,8 +159,12 @@
     <span class="nb">id</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">directory</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">state</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">submit_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">returncode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">job_script</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">submit_mode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="s1">&#39;local&#39;</span><span class="p">)</span>
+    <span class="n">job_returncode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">submit_returncode</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">submit_output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">submit_error</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">output</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">error</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
 
@@ -551,7 +563,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 27 Mar 2023 16:43:18.
+      <span class="lastupdated">Last updated on Sat, 01 Apr 2023 12:17:46.
       </span></p>
   </div>
 
