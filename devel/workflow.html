@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adding new workflow type &mdash; LITESOPH 0.1 documentation</title>
@@ -11,7 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -50,11 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="devel.html#development-topics">Development topics</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="engine.html">Adding new engine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="task.html">Adding new task</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding new workflow type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#litesoph.common.workflows_data.WorkflowTypes"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#litesoph.common.workflows_data.predefined_workflow"><code class="docutils literal notranslate"><span class="pre">predefined_workflow</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding new workflow type</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="devel.html#code-overview">Code overview</a></li>
@@ -93,14 +90,14 @@
 <span id="adding-new-workflow"></span><h1>Adding new workflow type<a class="headerlink" href="#adding-new-workflow-type" title="Permalink to this heading"></a></h1>
 <p>To add a new workflow type, all the tasks in the workflow should already be implemented
 in the code base. see <a class="reference internal" href="task.html#adding-new-task"><span class="std std-ref">Adding new task</span></a>.</p>
-<p>All the workflows in the litesoph are defined in the dictionary <a class="reference internal" href="#litesoph.common.workflows_data.predefined_workflow" title="litesoph.common.workflows_data.predefined_workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.workflows_data.predefined_workflow</span></code></a>.</p>
+<p>All the workflows in the litesoph are defined in the dictionary <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.workflows_data.predefined_workflow</span></code>.</p>
 <p>The step by step procedure to add a new workflow type to the litesoph code
 base is described below.</p>
 <ol class="arabic">
-<li><p>Add the new workflow type identifier in the class <a class="reference internal" href="#litesoph.common.workflows_data.WorkflowTypes" title="litesoph.common.workflows_data.WorkflowTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a>.</p>
+<li><p>Add the new workflow type identifier in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowTypes</span></code>.</p>
 <p>Every workflow types has a unique identifier that is used identify them.
 This identifier is defined in the class
-<a class="reference internal" href="#litesoph.common.workflows_data.WorkflowTypes" title="litesoph.common.workflows_data.WorkflowTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a></p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Class</span> <span class="n">WorkflowTypes</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">enum</span><span class="p">):</span>
     <span class="o">.</span>
     <span class="o">.</span>
@@ -109,9 +106,9 @@ This identifier is defined in the class
 </div>
 <p>This string will be used to identifier the new workflow type</p>
 </li>
-<li><p>Define the new workflow in the dictionary <a class="reference internal" href="#litesoph.common.workflows_data.predefined_workflow" title="litesoph.common.workflows_data.predefined_workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.workflows_data.predefined_workflow</span></code></a>.</p>
+<li><p>Define the new workflow in the dictionary <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.workflows_data.predefined_workflow</span></code>.</p>
 <blockquote>
-<div><p>All the workflow types are defined in the dictionary <a class="reference internal" href="#litesoph.common.workflows_data.predefined_workflow" title="litesoph.common.workflows_data.predefined_workflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">predefined_workflow</span></code></a></p>
+<div><p>All the workflow types are defined in the dictionary <code class="xref py py-class docutils literal notranslate"><span class="pre">predefined_workflow</span></code></p>
 <p>The workflow is defined as an ordered chain of tasks that needs to be completed
 to obtain a desired quantity, like Averaged spectrum of a molecule.
 In litesoph, workflow is modeled as an ordered chain of blocks, where each block
@@ -172,143 +169,10 @@ The averaged spectrum workflow is encoded in the dictionary as follows:</p>
 </pre></div>
 </div>
 <p>This information will be used to build WorkflowInfo objects will be used in executing
-the workflow. see <a class="reference internal" href="architecture.html#litesoph.common.data_sturcture.data_classes.WorkflowInfo" title="litesoph.common.data_sturcture.data_classes.WorkflowInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowInfo</span></code></a></p>
+the workflow. see <code class="xref py py-class docutils literal notranslate"><span class="pre">WorkflowInfo</span></code></p>
 </div></blockquote>
 </li>
 </ol>
-<dl class="py class">
-<dt class="sig sig-object py" id="litesoph.common.workflows_data.WorkflowTypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.workflows_data.</span></span><span class="sig-name descname"><span class="pre">WorkflowTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/workflows_data.html#WorkflowTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.workflows_data.WorkflowTypes" title="Permalink to this definition"></a></dt>
-<dd><p>An enumeration.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.workflows_data.WorkflowTypes._generate_next_value_">
-<span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#litesoph.common.workflows_data.WorkflowTypes._generate_next_value_" title="Permalink to this definition"></a></dt>
-<dd><p>Generate the next value when not given.</p>
-<p>name: the name of the member
-start: the initial start value or None
-count: the number of existing members
-last_value: the last value assigned or None</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="litesoph.common.workflows_data.WorkflowTypes._member_type_">
-<span class="sig-name descname"><span class="pre">_member_type_</span></span><a class="headerlink" href="#litesoph.common.workflows_data.WorkflowTypes._member_type_" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="litesoph.common.workflows_data.predefined_workflow">
-<span class="sig-prename descclassname"><span class="pre">litesoph.common.workflows_data.</span></span><span class="sig-name descname"><span class="pre">predefined_workflow</span></span><a class="headerlink" href="#litesoph.common.workflows_data.predefined_workflow" title="Permalink to this definition"></a></dt>
-<dd><p>alias of {   ‘averaged_spectrum’: {   ‘blocks’: [   {   ‘name’: ‘Ground State’,
-                                               ‘store_same_task_type’: True,
-                                               ‘task_type’: &lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;},
-                                           {   ‘name’: ‘RT TDDFT’,
-                                               ‘store_same_task_type’: True,
-                                               ‘task_type’: &lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;},
-                                           {   ‘name’: ‘Compute Spectrum’,
-                                               ‘store_same_task_type’: True,
-                                               ‘task_type’: &lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;},
-                                           {   ‘name’: ‘Compute Averaged ‘
-                                                       ‘Spectrum’,
-                                               ‘store_same_task_type’: True,
-                                               ‘task_type’: &lt;TaskTypes.COMPUTE_AVERAGED_SPECTRUM: ‘compute_average_spectrum’&gt;},
-                                           {‘name’: ‘End’}],
-                             ‘dependency_map’: {   ‘0’: None,
-                                                   ‘1’: ‘0’,
-                                                   ‘2’: ‘0’,
-                                                   ‘3’: ‘0’,
-                                                   ‘4’: ‘1’,
-                                                   ‘5’: ‘2’,
-                                                   ‘6’: ‘3’,
-                                                   ‘7’: [‘4’, ‘5’, ‘6’]},
-                             ‘name’: ‘Averaged Spectrum’,
-                             ‘task_sequence’: [   step(id=0, block_id=0, task_type=&lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;, parameters={}, env_parameters={}),
-                                                  step(id=1, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘polarization’: [1, 0, 0]}, env_parameters={}),
-                                                  step(id=2, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘polarization’: [0, 1, 0]}, env_parameters={}),
-                                                  step(id=3, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘polarization’: [0, 0, 1]}, env_parameters={}),
-                                                  step(id=4, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={}),
-                                                  step(id=5, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={}),
-                                                  step(id=6, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={}),
-                                                  step(id=7, block_id=3, task_type=&lt;TaskTypes.COMPUTE_AVERAGED_SPECTRUM: ‘compute_average_spectrum’&gt;, parameters={}, env_parameters={})]},
-    ‘kohn_sham_decomposition’: {   ‘blocks’: [   {   ‘name’: ‘Ground State’,
-                                                     ‘store_same_task_type’: True,
-                                                     ‘task_type’: &lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;},
-                                                 {   ‘name’: ‘RT TDDFT’,
-                                                     ‘store_same_task_type’: True,
-                                                     ‘task_type’: &lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;},
-                                                 {   ‘name’: ‘Compute Spectrum’,
-                                                     ‘store_same_task_type’: True,
-                                                     ‘task_type’: &lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;},
-                                                 {   ‘name’: ‘Compute KSD’,
-                                                     ‘store_same_task_type’: True,
-                                                     ‘task_type’: &lt;TaskTypes.TCM: ‘tcm’&gt;},
-                                                 {‘name’: ‘End’}],
-                                   ‘dependency_map’: {   ‘0’: None,
-                                                         ‘1’: ‘0’,
-                                                         ‘2’: ‘1’,
-                                                         ‘3’: [‘0’, ‘1’]},
-                                   ‘name’: ‘Kohn Sham Decomposition’,
-                                   ‘task_sequence’: [   step(id=0, block_id=0, task_type=&lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;, parameters={}, env_parameters={}),
-                                                        step(id=1, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘properties’: [‘spectrum’, ‘ksd’]}, env_parameters={}),
-                                                        step(id=2, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={}),
-                                                        step(id=3, block_id=3, task_type=&lt;TaskTypes.TCM: ‘tcm’&gt;, parameters={}, env_parameters={})]},
-    ‘masking’: {   ‘blocks’: [   {   ‘name’: ‘Ground State’,
-                                     ‘store_same_task_type’: True,
-                                     ‘task_type’: &lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;},
-                                 {   ‘name’: ‘RT TDDFT’,
-                                     ‘store_same_task_type’: True,
-                                     ‘task_type’: &lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;},
-                                 {   ‘name’: ‘Diople Moment Analysis’,
-                                     ‘store_same_task_type’: True,
-                                     ‘task_type’: &lt;TaskTypes.MASKING: ‘masking’&gt;},
-                                 {‘name’: ‘End’}],
-                   ‘dependency_map’: {‘0’: None, ‘1’: ‘0’, ‘2’: ‘1’},
-                   ‘name’: ‘Masking’,
-                   ‘task_sequence’: [   step(id=0, block_id=0, task_type=&lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;, parameters={}, env_parameters={}),
-                                        step(id=1, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘properties’: [‘spectrum’]}, env_parameters={‘laser’: True}),
-                                        step(id=2, block_id=2, task_type=&lt;TaskTypes.MASKING: ‘masking’&gt;, parameters={}, env_parameters={})]},
-    ‘mo_population_tracking’: {   ‘blocks’: [   {   ‘name’: ‘Ground State’,
-                                                    ‘store_same_task_type’: True,
-                                                    ‘task_type’: &lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;},
-                                                {   ‘name’: ‘RT TDDFT’,
-                                                    ‘store_same_task_type’: True,
-                                                    ‘task_type’: &lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;},
-                                                {   ‘name’: ‘Compute Spectrum’,
-                                                    ‘store_same_task_type’: True,
-                                                    ‘task_type’: &lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;},
-                                                {   ‘name’: ‘Compute MO ‘
-                                                            ‘population’,
-                                                    ‘store_same_task_type’: True,
-                                                    ‘task_type’: &lt;TaskTypes.MO_POPULATION: ‘mo_population’&gt;},
-                                                {‘name’: ‘End’}],
-                                  ‘dependency_map’: {   ‘0’: None,
-                                                        ‘1’: ‘0’,
-                                                        ‘2’: ‘1’,
-                                                        ‘3’: [‘0’, ‘1’]},
-                                  ‘name’: ‘MO Population Tracking’,
-                                  ‘task_sequence’: [   step(id=0, block_id=0, task_type=&lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;, parameters={}, env_parameters={}),
-                                                       step(id=1, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={‘properties’: [‘spectrum’, ‘ksd’]}, env_parameters={}),
-                                                       step(id=2, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={}),
-                                                       step(id=3, block_id=3, task_type=&lt;TaskTypes.MO_POPULATION: ‘mo_population’&gt;, parameters={}, env_parameters={})]},
-    ‘spectrum’: {   ‘blocks’: [   {   ‘name’: ‘Ground State’,
-                                      ‘store_same_task_type’: True,
-                                      ‘task_type’: &lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;},
-                                  {   ‘name’: ‘RT TDDFT’,
-                                      ‘store_same_task_type’: True,
-                                      ‘task_type’: &lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;},
-                                  {   ‘name’: ‘Compute Spectrum’,
-                                      ‘store_same_task_type’: True,
-                                      ‘task_type’: &lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;},
-                                  {‘name’: ‘End’}],
-                    ‘dependency_map’: {‘0’: None, ‘1’: ‘0’, ‘2’: ‘1’},
-                    ‘name’: ‘Spectrum’,
-                    ‘task_sequence’: [   step(id=0, block_id=0, task_type=&lt;TaskTypes.GROUND_STATE: ‘ground_state’&gt;, parameters={}, env_parameters={}),
-                                         step(id=1, block_id=1, task_type=&lt;TaskTypes.RT_TDDFT: ‘rt_tddft’&gt;, parameters={}, env_parameters={}),
-                                         step(id=2, block_id=2, task_type=&lt;TaskTypes.COMPUTE_SPECTRUM: ‘spectrum’&gt;, parameters={}, env_parameters={})]}}</p>
-</dd></dl>
-
 </section>
 
 
@@ -323,7 +187,7 @@ last_value: the last value assigned or None</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:54:28.
       </span></p>
   </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to LITESOPH’s Documentation! &mdash; LITESOPH 0.1 documentation</title>
@@ -11,7 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
@@ -183,93 +184,23 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 <li class="toctree-l2"><a class="reference internal" href="devel/devel.html#development-topics">Development topics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="devel/engine.html">Adding new engine</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="devel/engine.html#description-of-base-classes">Description of base-classes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/engine.html#the-engine-base-classes">The Engine base-classes</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="devel/engine.html#litesoph.engines.engine_classname"><code class="docutils literal notranslate"><span class="pre">engine_classname</span></code></a></li>
-<li class="toctree-l6"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager"><code class="docutils literal notranslate"><span class="pre">EngineManager</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_task()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_default_task_param"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_default_task_param()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_task_list"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_task_list()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.get_workflow_list"><code class="docutils literal notranslate"><span class="pre">EngineManager.get_workflow_list()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/engine.html#litesoph.common.engine_manager.EngineManager.check_task"><code class="docutils literal notranslate"><span class="pre">EngineManager.check_task()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l5"><a class="reference internal" href="devel/engine.html#the-engine-base-classes">The Engine base-classes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="devel/task.html">Adding new task</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="devel/task.html#description-of-base-classes">Description of base-classes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/task.html#the-task-base-classes">The Task base-classes</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.create_template"><code class="docutils literal notranslate"><span class="pre">Task.create_template()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.write_input"><code class="docutils literal notranslate"><span class="pre">Task.write_input()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.create_job_script"><code class="docutils literal notranslate"><span class="pre">Task.create_job_script()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.add_proper_path"><code class="docutils literal notranslate"><span class="pre">Task.add_proper_path()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes"><code class="docutils literal notranslate"><span class="pre">TaskTypes</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._generate_next_value_()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._member_type_</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="devel/task.html#the-task-base-classes">The Task base-classes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="devel/workflow.html">Adding new workflow type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._generate_next_value_()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._member_type_</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.predefined_workflow"><code class="docutils literal notranslate"><span class="pre">predefined_workflow</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/workflow.html">Adding new workflow type</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="devel/devel.html#code-overview">Code overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="devel/architecture.html">Code Architecture</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager"><code class="docutils literal notranslate"><span class="pre">LSManager</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.new_project"><code class="docutils literal notranslate"><span class="pre">LSManager.new_project()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.open_project"><code class="docutils literal notranslate"><span class="pre">LSManager.open_project()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.ls_manager.LSManager.read_config"><code class="docutils literal notranslate"><span class="pre">LSManager.read_config()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager"><code class="docutils literal notranslate"><span class="pre">ProjectManager</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.clone_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.clone_workflow()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.get_workflow_info"><code class="docutils literal notranslate"><span class="pre">ProjectManager.get_workflow_info()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.list"><code class="docutils literal notranslate"><span class="pre">ProjectManager.list()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.list_available_workflows"><code class="docutils literal notranslate"><span class="pre">ProjectManager.list_available_workflows()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.new_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.new_workflow()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.open_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.open_workflow()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.remove"><code class="docutils literal notranslate"><span class="pre">ProjectManager.remove()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.project_manager.ProjectManager.start_workflow"><code class="docutils literal notranslate"><span class="pre">ProjectManager.start_workflow()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager"><code class="docutils literal notranslate"><span class="pre">WorkflowManager</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_block"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_block()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_dependency"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_dependency()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.add_task"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.add_task()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.check_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.check_engine()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.choose_default_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.choose_default_engine()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.clone"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.clone()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_engine_task"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_engine_task()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_task_dependencies"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_task_dependencies()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.get_taskinfo"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.get_taskinfo()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.next"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.next()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.save"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.save()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/architecture.html#litesoph.common.workflow_manager.WorkflowManager.set_engine"><code class="docutils literal notranslate"><span class="pre">WorkflowManager.set_engine()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.ProjectInfo"><code class="docutils literal notranslate"><span class="pre">ProjectInfo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.WorkflowInfo"><code class="docutils literal notranslate"><span class="pre">WorkflowInfo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="devel/architecture.html#litesoph.common.data_sturcture.data_classes.TaskInfo"><code class="docutils literal notranslate"><span class="pre">TaskInfo</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="devel/architecture.html">Code Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="devel/job_submission_monitoring.html">LITESOPH Job Submission, Monitoring and File Management</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="devel/job_submission_monitoring.html#features">Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="devel/job_submission_monitoring.html#functionalities">Functionalities</a></li>
@@ -342,7 +273,7 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:54:28.
       </span></p>
   </div>
 

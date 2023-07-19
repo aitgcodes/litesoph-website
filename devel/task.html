@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adding new task &mdash; LITESOPH 0.1 documentation</title>
@@ -11,7 +11,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -93,15 +94,15 @@
 <p>To add a new task to the litesoph, choose an engine that is already
 interfaced with the code base, else see <a class="reference internal" href="engine.html#adding-new-engine"><span class="std std-ref">Adding new engine</span></a>.</p>
 <p>All the tasks in litesoph are classes that inherits
-from the base class <a class="reference internal" href="#litesoph.common.Task" title="litesoph.common.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code></a>.
+from the base class <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code>.
 The task class is responsible for generating input scripts, job scripts,
 running the job, and storing the output generated for that task.</p>
 <p>The step by step procedure to add a new task to the litesoph code
 base is described below.</p>
 <ol class="arabic simple">
-<li><p>Add the new task identifier in the <a class="reference internal" href="#litesoph.common.task_data.TaskTypes" title="litesoph.common.task_data.TaskTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task_data.TaskTypes</span></code></a>.</p></li>
-<li><p>Create your task class by subclassing the <a class="reference internal" href="#litesoph.common.Task" title="litesoph.common.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code></a></p></li>
-<li><p>Implement the abstract methods of the <a class="reference internal" href="#litesoph.common.Task" title="litesoph.common.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code></a></p></li>
+<li><p>Add the new task identifier in the <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task_data.TaskTypes</span></code>.</p></li>
+<li><p>Create your task class by subclassing the <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code></p></li>
+<li><p>Implement the abstract methods of the <code class="xref py py-class docutils literal notranslate"><span class="pre">litesoph.common.task.Task</span></code></p></li>
 <li><p>update the egine manger to account for the new added task. see <a class="reference internal" href="engine.html#adding-new-engine"><span class="std std-ref">Adding new engine</span></a></p></li>
 </ol>
 <div class="admonition seealso">
@@ -114,78 +115,6 @@ base is described below.</p>
 <h2>Description of base-classes<a class="headerlink" href="#description-of-base-classes" title="Permalink to this heading"></a></h2>
 <section id="the-task-base-classes">
 <h3>The Task base-classes<a class="headerlink" href="#the-task-base-classes" title="Permalink to this heading"></a></h3>
-<dl class="py class">
-<dt class="sig sig-object py" id="litesoph.common.Task">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lsconfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependent_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task" title="Permalink to this definition"></a></dt>
-<dd><p>Base-class for all tasks. All the tasks in the litesoph
-inherets from this class. This class is interfaced whith
-SubmitLocal and SubmitNetwork class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lsconfig</strong> – The configuration dictionary the has information about path of
-engine binarys.</p></li>
-<li><p><strong>task_info</strong> (<a class="reference internal" href="architecture.html#litesoph.common.data_sturcture.data_classes.TaskInfo" title="litesoph.common.data_sturcture.data_classes.TaskInfo"><em>TaskInfo</em></a>) – This is the empty TaskInfo object to store all the data
-generated by the task.</p></li>
-<li><p><strong>dependent_tasks</strong> (<em>List</em><em>[</em><a class="reference internal" href="architecture.html#litesoph.common.data_sturcture.data_classes.TaskInfo" title="litesoph.common.data_sturcture.data_classes.TaskInfo"><em>TaskInfo</em></a><em>] </em><em>| </em><em>None</em>) – This is a list of TaskInfo objects of other tasks
-that this task is dependent on.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.Task.create_template">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_template</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task.create_template"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task.create_template" title="Permalink to this definition"></a></dt>
-<dd><p>This method creates engine input and stores it in the task info.
-Store the engine input in taskinfo.input[‘engine_input’][data]
-filepath in taskinfo.input[‘engine_input’][‘path’]</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.Task.write_input">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">write_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task.write_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task.write_input" title="Permalink to this definition"></a></dt>
-<dd><p>This method creates engine directory and task directory and writes
-the engine input to a file.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.Task.create_job_script">
-<span class="sig-name descname"><span class="pre">create_job_script</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task.create_job_script"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task.create_job_script" title="Permalink to this definition"></a></dt>
-<dd><p>Create the bash script to run the job and “touch Done” command to it, to know when the
-command is completed.</p>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.Task.add_proper_path">
-<span class="sig-name descname"><span class="pre">add_proper_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task.add_proper_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task.add_proper_path" title="Permalink to this definition"></a></dt>
-<dd><p>This replaces the local paths to remote paths in the engine input.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.task_data.</span></span><span class="sig-name descname"><span class="pre">TaskTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task_data.html#TaskTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.task_data.TaskTypes" title="Permalink to this definition"></a></dt>
-<dd><p>An enumeration.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes._generate_next_value_">
-<span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#litesoph.common.task_data.TaskTypes._generate_next_value_" title="Permalink to this definition"></a></dt>
-<dd><p>Generate the next value when not given.</p>
-<p>name: the name of the member
-start: the initial start value or None
-count: the number of existing members
-last_value: the last value assigned or None</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes._member_type_">
-<span class="sig-name descname"><span class="pre">_member_type_</span></span><a class="headerlink" href="#litesoph.common.task_data.TaskTypes._member_type_" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 </section>
@@ -202,7 +131,7 @@ last_value: the last value assigned or None</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:54:28.
       </span></p>
   </div>
 
