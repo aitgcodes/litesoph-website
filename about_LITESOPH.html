@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About LITESOPH &mdash; LITESOPH 0.1 documentation</title>
@@ -11,7 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
@@ -46,7 +47,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-installation">Python Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#litesoph-installation">LITESOPH Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-lsconfig-file">Example lsconfig file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
@@ -124,7 +126,8 @@ Before installing this engine, see <a class="reference external" href="https://o
 <div><p><strong>Essentials</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://www.python.org/">python</a> 3.7.6 or later</p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/python/">Python</a> version &gt;= 3.7.6 and &lt; 3.11.0</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/Pillow/">Pillow</a> version &lt;= 9.5.0</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3/library/tkinter.html">tkinter</a></p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/click/">click</a></p></li>
 <li><p><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a></p></li>
@@ -150,16 +153,18 @@ Before installing this engine, see <a class="reference external" href="https://o
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>https://github.com/aitgcodes/litesoph.git
 </pre></div>
 </div>
-<p>Install it using the following command</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>&lt;path-to-litesoph&gt;
+</section>
+<section id="python-installation">
+<h2>Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this heading"></a></h2>
+<p>Use the following command to install python (version &gt;= 3.7.6 and &lt; 3.11) using <a class="reference external" href="https://www.anaconda.com">conda</a> :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">python</span><span class="o">=</span>&lt;version&gt;<span class="w"> </span><span class="c1">#Specify version as per requirements</span>
 </pre></div>
 </div>
 </section>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<section id="litesoph-installation">
+<h2>LITESOPH Installation<a class="headerlink" href="#litesoph-installation" title="Permalink to this heading"></a></h2>
 <p>After installing the above requirements and Engines, you are ready to install LITESOPH using the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>https://github.com/aitgcodes/litesoph.git
-<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>&lt;path-to-litesoph&gt;<span class="w"> </span><span class="c1">#Find the path to litesoph using &quot;which litesoph&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>&lt;path-to-litesoph&gt;<span class="w"> </span><span class="c1">#Find the path to litesoph using &quot;which litesoph&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -226,7 +231,7 @@ Before installing this engine, see <a class="reference external" href="https://o
 
   <div role="contentinfo">
     <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+      <span class="lastupdated">Last updated on Thu, 20 Jul 2023 17:12:33.
       </span></p>
   </div>
 
