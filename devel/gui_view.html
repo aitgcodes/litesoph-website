@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GUI View Modules &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -93,32 +95,32 @@
            <div itemprop="articleBody">
              
   <section id="gui-view-modules">
-<h1>GUI View Modules<a class="headerlink" href="#gui-view-modules" title="Permalink to this heading"></a></h1>
+<h1>GUI View Modules<a class="headerlink" href="#gui-view-modules" title="Link to this heading"></a></h1>
 <p>Modules for creating a new GUI View Page or updating existing ones.
 Mainly deals with tkinter class and objects. Refer to tkinter for more details.</p>
 <section id="modules-under-litesoph">
-<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Permalink to this heading"></a></h2>
+<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Link to this heading"></a></h2>
 <p>litesoph/gui/design/template.py</p>
 <p>Includes templated view designs.</p>
 <section id="class-view">
-<span id="view-cls"></span><h3>Class View<a class="headerlink" href="#class-view" title="Permalink to this heading"></a></h3>
+<span id="view-cls"></span><h3>Class View<a class="headerlink" href="#class-view" title="Link to this heading"></a></h3>
 <blockquote>
 <div><p>Tkinter Frame template for generic LITESOPH page.</p>
 </div></blockquote>
 <section id="functionalities">
-<h4>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this heading"></a></h4>
+<h4>Functionalities<a class="headerlink" href="#functionalities" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Defines a parent frame to hold multiple sub-frames. Includes class methods to create widgets for job submit.</p>
 </div></blockquote>
 </section>
 </section>
 <section id="class-inputframe">
-<h3>Class InputFrame<a class="headerlink" href="#class-inputframe" title="Permalink to this heading"></a></h3>
+<h3>Class InputFrame<a class="headerlink" href="#class-inputframe" title="Link to this heading"></a></h3>
 <blockquote>
 <div><p>Tkinter Frame template for collecting LITESOPH inputs.</p>
 </div></blockquote>
 <section id="parameters">
-<span id="inp-param"></span><h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h4>
+<span id="inp-param"></span><h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>master</em>: (ttk.Frame) Parent tkinter frame</p></li>
@@ -151,7 +153,7 @@ Mainly deals with tkinter class and objects. Refer to tkinter for more details.<
 </div></blockquote>
 </section>
 <section id="id1">
-<h4>Functionalities<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<h4>Functionalities<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
 <blockquote>
 <div><blockquote>
 <div><p>Creates single or multiple tabs defined under the Parameters: fields</p>
@@ -197,10 +199,10 @@ Needs modification for cases beyond simple switch conditions</p>
 </section>
 </section>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
 <p>Instructions for creating/modifying GUI frames under LITESOPH inputs</p>
 <section id="creating-a-new-gui-frame">
-<h4>Creating a new GUI frame<a class="headerlink" href="#creating-a-new-gui-frame" title="Permalink to this heading"></a></h4>
+<h4>Creating a new GUI frame<a class="headerlink" href="#creating-a-new-gui-frame" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p>Refer to <a class="reference internal" href="#view-cls"><span class="std std-ref">Class View</span></a> to inherit the LITESOPH defined frames, if applicable. Alternatively, create new tkinter frame as the parent frame.</p></li>
 <li><p>Define the <a class="reference internal" href="#inp-param"><span class="std std-ref">Parameters</span></a> : <em>fields</em>.</p></li>
@@ -211,7 +213,7 @@ Needs modification for cases beyond simple switch conditions</p>
 </ol>
 </section>
 <section id="updating-the-existing-frames">
-<h4>Updating the existing frames<a class="headerlink" href="#updating-the-existing-frames" title="Permalink to this heading"></a></h4>
+<h4>Updating the existing frames<a class="headerlink" href="#updating-the-existing-frames" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p>Update items to <a class="reference internal" href="#inp-param"><span class="std std-ref">Parameters</span></a> : <em>fields</em></p></li>
 <li><p>Cross-check the method trace_variables( ) to consider additional control of widgets</p></li>
@@ -220,10 +222,10 @@ Needs modification for cases beyond simple switch conditions</p>
 </section>
 </section>
 <section id="visual-parameters-modules">
-<h2>Visual Parameters Modules<a class="headerlink" href="#visual-parameters-modules" title="Permalink to this heading"></a></h2>
+<h2>Visual Parameters Modules<a class="headerlink" href="#visual-parameters-modules" title="Link to this heading"></a></h2>
 <p>litesoph/gui/visual_parameter.py</p>
 <section id="id2">
-<h3>Functionalities<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Functionalities<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <blockquote>
 <div><p>Methods for customised font designs, widget attributes</p>
 </div></blockquote>
@@ -242,8 +244,8 @@ Needs modification for cases beyond simple switch conditions</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:50:10.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 

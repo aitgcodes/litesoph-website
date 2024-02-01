@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GUI Control Modules &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -93,17 +95,17 @@
            <div itemprop="articleBody">
              
   <section id="gui-control-modules">
-<h1>GUI Control Modules<a class="headerlink" href="#gui-control-modules" title="Permalink to this heading"></a></h1>
+<h1>GUI Control Modules<a class="headerlink" href="#gui-control-modules" title="Link to this heading"></a></h1>
 <p>Modules to control the GUI view for particular task.
 Binds different tkinter events with required class methods.</p>
 <section id="features-and-functionalities">
-<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Permalink to this heading"></a></h2>
+<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Link to this heading"></a></h2>
 <p>This module is responsible for managing overall functionality of GUI.
 Interacts with LITESOPH manager and views modules.
 Contains attributes and methods related to control logic, user interface events.</p>
 </section>
 <section id="modules-under-litesoph">
-<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Permalink to this heading"></a></h2>
+<h2>Modules under LITESOPH<a class="headerlink" href="#modules-under-litesoph" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>GUIApp : Main Application control class</p></li>
 <li><p>ProjectController: Base Class assigned for handling LITESOPH project</p></li>
@@ -111,12 +113,12 @@ Contains attributes and methods related to control logic, user interface events.
 <li><p>TaskController: Base Class defined for single Task related actions.</p></li>
 </ul>
 <section id="class-taskcontroller">
-<h3>Class TaskController<a class="headerlink" href="#class-taskcontroller" title="Permalink to this heading"></a></h3>
+<h3>Class TaskController<a class="headerlink" href="#class-taskcontroller" title="Link to this heading"></a></h3>
 <p>litesoph/gui/taskcontroller.py</p>
 <p>Base Controller Class to assemble common functions and attributes required for handling LITESOPH defined tasks.
 Acts on assigned GUI view to control and regulate the flow of tkinter events.</p>
 <section id="relevant-methods">
-<h4>Relevant Methods<a class="headerlink" href="#relevant-methods" title="Permalink to this heading"></a></h4>
+<h4>Relevant Methods<a class="headerlink" href="#relevant-methods" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><dl class="simple">
 <dt>set_task( )</dt><dd><p>Method to handle all functions under a GUI frame.
@@ -129,10 +131,10 @@ Includes method related to default set of view and parameters.</p>
 </section>
 </section>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
 <p>Instructions for adding control logic to GUI frames.</p>
 <section id="defining-a-taskcontroller">
-<h4>Defining a TaskController<a class="headerlink" href="#defining-a-taskcontroller" title="Permalink to this heading"></a></h4>
+<h4>Defining a TaskController<a class="headerlink" href="#defining-a-taskcontroller" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p>Sub class of TaskController is assigned to activate the working of GUI Frame</p></li>
 <li><p>Modify the class method set_task( ) depending on the requirement of the current task</p></li>
@@ -140,7 +142,7 @@ Includes method related to default set of view and parameters.</p>
 </ol>
 </section>
 <section id="remarks">
-<h4>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h4>
+<h4>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h4>
 <blockquote>
 <div><p>Sub-class of TaskController is only required in the case of LITESOPH interfaced tasks.
 Alternatively, new frame can be handled by independent or controller object under TaskController.</p>
@@ -161,8 +163,8 @@ Alternatively, new frame can be handled by independent or controller object unde
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:50:10.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 
