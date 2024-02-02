@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LITESOPH Job Submission, Monitoring and File Management &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -94,17 +96,17 @@
            <div itemprop="articleBody">
              
   <section id="litesoph-job-submission-monitoring-and-file-management">
-<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Permalink to this heading"></a></h1>
+<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Link to this heading"></a></h1>
 <p>LITESOPH Job Submission, Monitoring and File Management is a set of modules capable of handling tasks like submission of job to remote machine, tracking the status running job and transferring of files from remote to local machine.</p>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Job Submission module supports queue (qsub, sbatch etc) as well as non-queue (bash) based job submission on remote machine through password and passwordless approach. Passwordless approach is generally used to avoid typing password repeatively for every job submission. It can also help to bypass captcha based login authentication. See <a class="reference internal" href="../FAQs/pwless-ssh.html"><span class="doc">How to enable passwordless SSH?</span></a></p></li>
 <li><p>Monitoring and File Management modules handles the job of tracking the status as well as terminating the  running job on remote machine. File Management module handles the downloading of all files as well as selective transfer the files from remote to local machine via different transfer methods (direct transfer along with compression and split transfer).</p></li>
 </ol>
 </section>
 <section id="functionalities">
-<h2>Functionalities<a class="headerlink" href="#functionalities" title="Permalink to this heading"></a></h2>
+<h2>Functionalities<a class="headerlink" href="#functionalities" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Function to submit a job at local as well as remote machine</p></li>
 <li><p>Function to check the running status of job submitted at local machine as well as remote machine</p></li>
@@ -115,7 +117,7 @@
 </ol>
 </section>
 <section id="modules-functions-and-working">
-<h2>Modules, Functions and Working<a class="headerlink" href="#modules-functions-and-working" title="Permalink to this heading"></a></h2>
+<h2>Modules, Functions and Working<a class="headerlink" href="#modules-functions-and-working" title="Link to this heading"></a></h2>
 <p>LITESOPH Job Submission, Runtime Query and File Management modules depends on two main Functionalities. Function to make connection with remote machine and execute commands on it via password as well as passwordless login authentication.</p>
 <p>Furthermore, Runtime Query and File Management uses mainly four modules to work:</p>
 <ul class="simple">
@@ -226,8 +228,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:50:10.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 

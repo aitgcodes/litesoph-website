@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LITESOPH Job Submission, Monitoring and File Management &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -89,20 +91,20 @@
            <div itemprop="articleBody">
              
   <section id="litesoph-job-submission-monitoring-and-file-management">
-<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Permalink to this heading"></a></h1>
+<h1>LITESOPH Job Submission, Monitoring and File Management<a class="headerlink" href="#litesoph-job-submission-monitoring-and-file-management" title="Link to this heading"></a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>LITESOPH Job Submission, Monitoring and File Management is a set of modules capable of handling tasks like submission of job to remote machine, tracking the status running job and transferring of files from remote to local machine.</p>
 </section>
 <section id="features-and-functionalities">
-<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Permalink to this heading"></a></h2>
+<h2>Features and Functionalities<a class="headerlink" href="#features-and-functionalities" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Job Submission module supports queue (qsub, sbatch etc) as well as non-queue (bash) based job submission on remote machine through password and passwordless approach. Passwordless approach is generally used to avoid typing password repeatively for every job submission. It can also help to bypass captcha based login authentication. See <a class="reference internal" href="../FAQs/pwless-ssh.html"><span class="doc">How to enable passwordless SSH?</span></a></p></li>
 <li><p>Monitoring and File Management modules handle the job of tracking the status as well as terminating the running job on remote machine. File Management module handles the downloading of all files as well as selective transfer the files from remote to local machine via different transfer methods (direct transfer along with compression and split transfer).</p></li>
 </ol>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../_images/ls-job-submission2.png"><img alt="job_submission_monitoring" src="../_images/ls-job-submission2.png" style="width: 1000px;" /></a>
 <p><strong>1 &amp; 2</strong>: Selection between non-queue (bash) and queue (qsub) job submission. User must select <strong>1</strong> for bash based and <strong>2</strong> for queue based job submission.</p>
 <p><strong>3. Host IP address:</strong> requires IP address of remote machine.</p>
@@ -115,25 +117,26 @@ remote machine which requires captcha authentication for login, passwordless log
 <p><strong>10. Submit command:</strong> <em>bash</em> is default when <strong>option 1 (Command line execution)</strong> is selected. But when <strong>option 2 (Submit through queue)</strong>, user must submit the scheduler submit command. e.g. qsub for PBS machines and sbatch for SLURM machines.</p>
 <p><strong>11. Stat command &amp; 12. Kill command</strong> <em>(optional)</em>: If user require to kill running job, user must provide scheduler’s corresponding commands for checking running process and killing process. e.g. qstat, qdel for PBS machines and qstat and scancel for SLURM machines.</p>
 <p><strong>13. Generate Job Script:</strong> to generate job script after entering correct login parameters</p>
-<p><strong>14. Save Job Script:</strong> to save the generated job script</p>
-<p><strong>15. Run Job:</strong> to run the job using saved job script</p>
-<p><strong>16. View Output:</strong> to view the output log of current simulation in remote machine</p>
-<p><strong>17. Job Status Bar:</strong> shows the status of running job (displays <em>Job Done</em> after completion of job)</p>
-<p><strong>18. Job ID:</strong> to enter the job ID requires to kill simulation</p>
-<p><strong>19. Scratch Space:</strong> maximum space available to run simulation on machine</p>
-<p><strong>20. Tracking Time:</strong> maximum time in minutes to monitor running job</p>
-<p><strong>21. Tracking Frequency:</strong> time interval in minutes to periodically monitor running jobs</p>
-<p><strong>22. Job Status:</strong> checks the status of running job.</p>
-<p><strong>23. Kill Job:</strong> kill running simulation using Job ID.</p>
-<p><strong>24. Refresh:</strong> get the files information of current project on remote machine.</p>
-<p><strong>25. Download All Files:</strong> to downlaod all files from remote machine.</p>
-<p><strong>26. File selection widget:</strong> widget to select relevant files of current project.</p>
-<p><strong>27. Download File:</strong> to download the selected file.</p>
-<p><strong>28. View File:</strong> to download the selected file.</p>
-<p><strong>29. Plot File:</strong> to open litesoph visualisation toolkit.</p>
-<p><strong>30. Back:</strong> get to previous page.</p>
-<p><strong>31. Back to main page:</strong> get back to main page.</p>
-<p><strong>32. Proceed:</strong> to proceed to next task of workflow.</p>
+<p><strong>14. Modify Job Script:</strong> modify job script as the cluster supported format and confirm.</p>
+<p><strong>15. Save Job Script:</strong> to save the generated job script</p>
+<p><strong>16. Run Job:</strong> to run the job using saved job script</p>
+<p><strong>17. View Output:</strong> to view the output log of current simulation in remote machine</p>
+<p><strong>18. Job Status Bar:</strong> shows the status of running job (displays <em>Job Done</em> after completion of job)</p>
+<p><strong>19. Job ID:</strong> to enter the job ID requires to kill simulation</p>
+<p><strong>20. Scratch Space:</strong> maximum space available to run simulation on machine</p>
+<p><strong>21. Tracking Time:</strong> maximum time in minutes to monitor running job</p>
+<p><strong>22. Tracking Frequency:</strong> time interval in minutes to periodically monitor running jobs</p>
+<p><strong>23. Job Status:</strong> checks the status of running job.</p>
+<p><strong>24. Kill Job:</strong> kill running simulation using Job ID.</p>
+<p><strong>25. Refresh:</strong> get the files information of current project on remote machine.</p>
+<p><strong>26. Download All Files:</strong> to downlaod all files from remote machine.</p>
+<p><strong>27. File selection widget:</strong> widget to select relevant files of current project.</p>
+<p><strong>28. Download File:</strong> to download the selected file.</p>
+<p><strong>29. View File:</strong> to download the selected file.</p>
+<p><strong>30. Plot File:</strong> to open litesoph visualisation toolkit.</p>
+<p><strong>31. Back:</strong> get to previous page.</p>
+<p><strong>32. Back to main page:</strong> get back to main page.</p>
+<p><strong>33. Proceed:</strong> to proceed to next task of workflow.</p>
 </section>
 </section>
 
@@ -148,8 +151,8 @@ remote machine which requires captcha authentication for login, passwordless log
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Wed, 19 Jul 2023 16:50:10.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>litesoph.common.project_manager &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -89,7 +92,9 @@
 <span class="k">class</span> <span class="nc">WorkflowSetupError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when unable to creating or opening task.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="ProjectManager"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager">[docs]</a><span class="k">class</span> <span class="nc">ProjectManager</span><span class="p">:</span>
+<div class="viewcode-block" id="ProjectManager">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager">[docs]</a>
+<span class="k">class</span> <span class="nc">ProjectManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This class is responsible for creating, loading and managing</span>
 <span class="sd">    all the workflows in the projects.</span>
 <span class="sd">    </span>
@@ -134,7 +139,9 @@
                                         <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">workflow_info</span>
 
-<div class="viewcode-block" id="ProjectManager.new_workflow"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.new_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">new_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectManager.new_workflow">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.new_workflow">[docs]</a>
+    <span class="k">def</span> <span class="nf">new_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method creates a new workflow info and saves it in the</span>
 <span class="sd">        project.</span>
 <span class="sd">        </span>
@@ -151,8 +158,11 @@
                                                             <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">append_workflow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
     
-<div class="viewcode-block" id="ProjectManager.clone_workflow"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.clone_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">clone_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_info_uuid</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<div class="viewcode-block" id="ProjectManager.clone_workflow">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.clone_workflow">[docs]</a>
+    <span class="k">def</span> <span class="nf">clone_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_info_uuid</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                             <span class="n">traget_workflow_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                             <span class="n">branch_point</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
                             <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
@@ -192,6 +202,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">append_workflow</span><span class="p">(</span><span class="n">cloned_workflow_info</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="nf">_get_workflow_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;task_mode&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">WorkflowManager</span>
@@ -202,7 +213,9 @@
         
         <span class="k">return</span> <span class="n">WorkflowManager</span>
 
-<div class="viewcode-block" id="ProjectManager.start_workflow"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.start_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">start_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">WorkflowManager</span><span class="p">:</span>
+<div class="viewcode-block" id="ProjectManager.start_workflow">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.start_workflow">[docs]</a>
+    <span class="k">def</span> <span class="nf">start_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">WorkflowManager</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method instantiates the workflow manager with the workflow_type and</span>
 <span class="sd">        returns the workflow manager.</span>
 <span class="sd">        </span>
@@ -225,26 +238,36 @@
         <span class="n">workflow_manager</span> <span class="o">=</span> <span class="n">workflow_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">workflow_manager</span></div>
 
-<div class="viewcode-block" id="ProjectManager.open_workflow"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.open_workflow">[docs]</a>    <span class="k">def</span> <span class="nf">open_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkflowManager</span><span class="p">:</span>
+
+<div class="viewcode-block" id="ProjectManager.open_workflow">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.open_workflow">[docs]</a>
+    <span class="k">def</span> <span class="nf">open_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkflowManager</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method opens already existing and defined workflow.&quot;&quot;&quot;</span>
         <span class="n">workflow_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_workflow_info</span><span class="p">(</span><span class="n">workflow_uuid</span><span class="p">)</span>        
         <span class="n">workflow_manager</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_workflow_manager</span><span class="p">(</span><span class="n">workflow_info</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>       
         <span class="n">workflow_manager</span> <span class="o">=</span> <span class="n">workflow_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_info</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span> <span class="o">=</span> <span class="n">workflow_info</span>
         <span class="k">return</span> <span class="n">workflow_manager</span> </div>
+
     
-<div class="viewcode-block" id="ProjectManager.get_workflow_info"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.get_workflow_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_workflow_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectManager.get_workflow_info">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.get_workflow_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_workflow_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns WorkflowInfo object from the uuid.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">workflow</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_list</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">workflow</span><span class="o">.</span><span class="n">uuid</span> <span class="o">==</span> <span class="n">workflow_uuid</span><span class="p">:</span>
                 <span class="k">return</span>  <span class="n">workflow</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;workflow with uuid: </span><span class="si">{</span><span class="n">workflow_uuid</span><span class="si">}</span><span class="s2"> doesn&#39;t exists.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ProjectManager.list"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.list">[docs]</a>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+
+<div class="viewcode-block" id="ProjectManager.list">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.list">[docs]</a>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;returns list of tuples contain label and uuids of all the workflows</span>
 <span class="sd">        in the project.&quot;&quot;&quot;</span>
         <span class="n">workflows</span> <span class="o">=</span> <span class="p">[(</span><span class="n">workflow</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">workflow</span><span class="o">.</span><span class="n">uuid</span><span class="p">)</span> <span class="k">for</span> <span class="n">workflow</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_list</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">workflows</span></div>
+
     
     <span class="k">def</span> <span class="nf">add_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry_file</span><span class="p">):</span>
         <span class="n">geom_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_workflow_info</span><span class="o">.</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;coordinate.xyz&quot;</span>
@@ -276,7 +299,9 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_txt</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ProjectManager.remove"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectManager.remove">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.remove">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_uuid</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This removes a workflow from the project. It will</span>
 <span class="sd">        also delete the corresponding directory. &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">workflow</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_list</span><span class="p">:</span>
@@ -285,13 +310,17 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">workflow_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">workflow</span><span class="p">)</span></div>
 
 
+
     <span class="k">def</span> <span class="nf">_change_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="s2">&quot;changes current working directory&quot;</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ProjectManager.list_available_workflows"><a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.list_available_workflows">[docs]</a>    <span class="k">def</span> <span class="nf">list_available_workflows</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ProjectManager.list_available_workflows">
+<a class="viewcode-back" href="../../../devel/architecture.html#litesoph.common.project_manager.ProjectManager.list_available_workflows">[docs]</a>
+    <span class="k">def</span> <span class="nf">list_available_workflows</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of all the predefined workflow types.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">workflow</span> <span class="k">for</span> <span class="n">workflow</span> <span class="ow">in</span> <span class="n">predefined_workflow</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span></div>
+
 
     <span class="k">def</span> <span class="nf">append_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">workflow_info</span><span class="p">:</span> <span class="n">WorkflowInfo</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">workflow</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">workflow_list</span><span class="p">:</span>
@@ -301,6 +330,7 @@
 
     <span class="k">def</span> <span class="nf">get_predefined_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
+
     
 <span class="k">def</span> <span class="nf">summary_of_current_project</span><span class="p">(</span><span class="n">project_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 
@@ -340,8 +370,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>litesoph.common.task &mdash; LITESOPH 0.1 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -128,7 +131,9 @@
 <span class="sd">    with the rest of the results, without being a fatal ReadError.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="Task"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task">[docs]</a><span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
+<div class="viewcode-block" id="Task">
+<a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task">[docs]</a>
+<span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base-class for all tasks. All the tasks in the litesoph</span>
 <span class="sd">    inherets from this class. This class is interfaced whith </span>
@@ -183,16 +188,22 @@
         <span class="k">if</span> <span class="n">absdir</span> <span class="o">!=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Task.create_template"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.create_template">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Task.create_template">
+<a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.create_template">[docs]</a>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">create_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method creates engine input and stores it in the task info.</span>
 <span class="sd">        Store the engine input in taskinfo.input[&#39;engine_input&#39;][data] </span>
 <span class="sd">        filepath in taskinfo.input[&#39;engine_input&#39;][&#39;path&#39;]&quot;&quot;&quot;</span></div>
+
     
-<div class="viewcode-block" id="Task.write_input"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.write_input">[docs]</a>    <span class="nd">@abstractmethod</span>
+<div class="viewcode-block" id="Task.write_input">
+<a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.write_input">[docs]</a>
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">write_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method creates engine directory and task directory and writes </span>
 <span class="sd">        the engine input to a file.&quot;&quot;&quot;</span>        </div>
+
     
     <span class="k">def</span> <span class="nf">create_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -217,7 +228,9 @@
         <span class="c1"># this function is depricated, should not be used.</span>
         <span class="k">return</span> <span class="kc">True</span>
     
-<div class="viewcode-block" id="Task.create_job_script"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.create_job_script">[docs]</a>    <span class="k">def</span> <span class="nf">create_job_script</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="viewcode-block" id="Task.create_job_script">
+<a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.create_job_script">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_job_script</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the bash script to run the job and &quot;touch Done&quot; command to it, to know when the </span>
 <span class="sd">        command is completed.&quot;&quot;&quot;</span>
         <span class="n">job_script</span> <span class="o">=</span> <span class="p">[]</span>
@@ -226,6 +239,7 @@
         
         <span class="k">return</span> <span class="n">job_script</span></div>
 
+
     <span class="k">def</span> <span class="nf">write_job_script</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_script</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">job_script</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">job_script</span> <span class="o">=</span> <span class="n">job_script</span>
@@ -233,7 +247,9 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bash_file</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_script</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Task.add_proper_path"><a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.add_proper_path">[docs]</a>    <span class="k">def</span> <span class="nf">add_proper_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="Task.add_proper_path">
+<a class="viewcode-back" href="../../../devel/task.html#litesoph.common.Task.add_proper_path">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_proper_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This replaces the local paths to remote paths in the engine input.&quot;&quot;&quot;</span>
         <span class="n">engine_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_info</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;engine_input&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">engine_input</span><span class="p">:</span>
@@ -246,6 +262,7 @@
             <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">template</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">task_info</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;engine_input&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>        
             <span class="bp">self</span><span class="o">.</span><span class="n">write_input</span><span class="p">()</span></div>
+
 
     <span class="k">def</span> <span class="nf">set_submit_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">submit_local</span> <span class="o">=</span> <span class="n">SubmitLocal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -274,6 +291,7 @@
         <span class="k">if</span> <span class="n">check</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">TaskFailed</span><span class="p">(</span><span class="s2">&quot;Job not completed.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
+
 
 <span class="k">def</span> <span class="nf">write2file</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write template to a file.</span>
@@ -374,8 +392,8 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Mon, 10 Apr 2023 00:52:28.
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
       </span></p>
   </div>
 
