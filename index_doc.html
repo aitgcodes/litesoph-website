@@ -16,8 +16,10 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"tex": {"macros": {"br": "{\\mathbf r}", "bk": "{\\mathbf k}", "bG": "{\\mathbf G}"}}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,11 +47,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -92,19 +103,24 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 <h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#python-installation">Python Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#litesoph-installation">LITESOPH Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#example-lsconfig-file">Example lsconfig file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about_LITESOPH.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#id1"><strong>Python</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#engines"><strong>Engines</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#gpaw"><strong>GPAW</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#nwchem"><strong>NWchem</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#octopus"><strong>Octopus</strong></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/algorithm/algorithm.html"><strong>Available Features in LITESOPH</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/algorithm/algorithm.html">Available Features in LITESOPH</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/simulations.html">Simulations of Photo-Induced Properties using LITESOPH</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/simulations.html#absorption-spectrum">Absorption Spectrum</a></li>
 <li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/algorithm/simulations/simulations.html#kohn-sham-decomposition-ksd">Kohn-Sham Decomposition (KSD)</a></li>
@@ -123,14 +139,17 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/independent_tasks/independent_tasks.html"><strong>Independent Tasks Based</strong></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html">Ground State</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html">RT-TDDFT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#delta-kick-inputs">Delta kick Inputs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design-tools">Laser Design tools</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design">Laser design</a></li>
-<li class="toctree-l5"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#masking">Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html">Ground State</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html#basic">Basic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html#convergence">Convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/gs/gs.html#advanced">Advanced</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html">RT-TDDFT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#delta-kick-inputs">Delta kick Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design-tools">Laser Design tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#laser-design">Laser design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#masking">Masking</a></li>
 <li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/independent_tasks/rt_tddft/rt_tddft.html#properties">Properties</a></li>
 </ul>
 </li>
@@ -143,11 +162,17 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="feature_and_implementations/workflow/workflow.html"><strong>Workflows Based</strong></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/spectrum/spectrum.html">Polarized Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/spectrum/spectrum.html">Spectrum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/ksd/ksd.html">Kohn-Sham Decomposition (KSD)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
-<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/laser_masking/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/ksd/ksd.html">KSD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/workflow/ksd/ksd.html#compute-ksd">Compute KSD</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/mo_population/mo_population.html">Molecular Orbital (MO) Population</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="feature_and_implementations/workflow/mo_population/mo_population.html#compute-mo-population">Compute MO Population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/laser_masking/laser_masking.html">Laser-Masking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="feature_and_implementations/workflow/pump_probe/pump_probe.html">Pump-probe</a></li>
 </ul>
 </li>
@@ -169,6 +194,34 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_documentation/visualization_toolkit.html">LITESOPH Visualization Toolkit</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="user_documentation/visualization_toolkit.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_documentation/Parameters.html">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/Parameters.html#charge">Charge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/Parameters.html#multiplicity">Multiplicity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_documentation/Parameters.html#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/gpaw/gpaw.html">TDDFT calculations using GPAW</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/gpaw/gpaw.html#results-for-na8-chain-using-gui-for-gpaw-engine">Results for Na8 Chain using GUI for GPAW Engine</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/gpaw/gpaw.html#spectrum-analysis">Spectrum Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/gpaw/gpaw.html#transition-contribution-map-tcm">Transition Contribution Map (TCM)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/gpaw/gpaw.html#population-evolution">Population Evolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/Octopus_Calculation.html">TDDFT calculations using Octopus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/Octopus_Calculation.html#input-file-description">Input File Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/Octopus_Calculation.html#spectrum-analysis">Spectrum Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/NWChem_Calculation.html">TDDFT calculations using NWChem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/NWChem_Calculation.html#input-file-description">Input File Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/NWChem_Calculation.html#spectrum-analysis">Spectrum Analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -213,11 +266,7 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 <li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.Task.add_proper_path"><code class="docutils literal notranslate"><span class="pre">Task.add_proper_path()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes"><code class="docutils literal notranslate"><span class="pre">TaskTypes</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._generate_next_value_()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">TaskTypes._member_type_</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l6"><a class="reference internal" href="devel/task.html#litesoph.common.task_data.TaskTypes"><code class="docutils literal notranslate"><span class="pre">TaskTypes</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -225,11 +274,7 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="devel/workflow.html">Adding new workflow type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a><ul>
-<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._generate_next_value_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._generate_next_value_()</span></code></a></li>
-<li class="toctree-l5"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes._member_type_"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes._member_type_</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.WorkflowTypes"><code class="docutils literal notranslate"><span class="pre">WorkflowTypes</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="devel/workflow.html#litesoph.common.workflows_data.predefined_workflow"><code class="docutils literal notranslate"><span class="pre">predefined_workflow</span></code></a></li>
 </ul>
 </li>
@@ -328,8 +373,30 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FAQs/FAQ.html#how-to-enable-passwordless-ssh">How to enable passwordless SSH?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#v1-1-beta">V1.1 (Beta)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release_notes.html#workflow-mode-enhancements">Workflow Mode Enhancements:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_notes.html#task-mode-updates">Task Mode Updates:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_notes.html#user-interface-and-usability-improvements">User Interface and Usability Improvements:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_notes.html#documentation-and-support">Documentation and Support:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release_notes.html#future-updates">Future Updates:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Team Litesoph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="people.html#investigators"><strong>Investigators</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="people.html#current-developers"><strong>Current Developers</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="people.html#past-contributors"><strong>Past contributors</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -346,7 +413,7 @@ using three engines: <a class="reference external" href="https://wiki.fysik.dtu.
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 
