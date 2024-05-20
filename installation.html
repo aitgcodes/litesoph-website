@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation Guide &mdash; LITESOPH 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=2709fde1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Features" href="feature_and_implementations/features_and_implementation.html" />
+    <link rel="prev" title="About LITESOPH" href="about_LITESOPH.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            LITESOPH
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1"><strong>Python</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#engines"><strong>Engines</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gpaw"><strong>GPAW</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nwchem"><strong>NWchem</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#octopus"><strong>Octopus</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel/devel.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Team Litesoph</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">LITESOPH</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Link to this heading"></a></h1>
+<p>Before installing LITESOPH, the following modules or packages are required:</p>
+<blockquote>
+<div><p><strong>Essentials</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/">python</a> 3.7.6 or later</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/tkinter.html">tkinter</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/click/">click</a></p></li>
+<li><p><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a></p></li>
+<li><p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/">scipy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/matplotlib/">matplotlib</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/paramiko/">paramiko</a></p></li>
+<li><p><a class="reference external" href="https://www.ssh.com/academy/ssh/scp">scp</a></p></li>
+<li><p><a class="reference external" href="https://rsync.samba.org/">rsync</a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Optional Requirements</strong></p>
+<blockquote>
+<div><p><strong>Visualization tools</strong>: <a class="reference external" href="https://www.ks.uiuc.edu/Research/vmd/">VMD</a> , <a class="reference external" href="https://jp-minerals.org/vesta/en/">vesta</a> , <a class="reference external" href="https://imagemagick.org/">imagemagick</a> , <a class="reference external" href="https://www.blender.org/">blender</a>
+<strong>Compression tools</strong>: lz4, zstd, lzop, gzip, bzip2, p7zip, xz, pigz, plzip, pbzip2, lbzip2</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>Installation</strong></dt><dd><p>Some very basic information. If you never used Litesoph before, maybe it is best to start here, otherwise you can just skip and go to the next sections.</p>
+</dd>
+</dl>
+<section id="id1">
+<h2><strong>Python</strong><a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>We currently only support python versions from  3.7 to 3.10, hence we recommend to check the python version installed in your machine</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>If the output is not in the given range, please reinstall the python with the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python&lt;version_number&gt;
+</pre></div>
+</div>
+<p>After the check, just run the following command in the main directory of litesoph source</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
+</pre></div>
+</div>
+<p><em>Note: Post-Installation, ensure that you add Python &lt;version_number&gt; to PATH to make the Python executable accessible from the command line.</em></p>
+</section>
+<section id="engines">
+<h2><strong>Engines</strong><a class="headerlink" href="#engines" title="Link to this heading"></a></h2>
+<p>Running computational codes can often pose challenges, especially due to their heavy computational requirements, often necessitating access to High-Performance Computing (HPC) resources. However, not everyone has easy access to such resources. This is where Litesophs comes in to bridge the gap.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>However, Litesoph requires seperate installation of the the underlying engines if one wants to run the calculations locally. If you want to run on a remote server where litesoph has been already deployed, please skip to the final section about getting litesoph source code</strong></p>
+</div>
+<p>We’ve compiled the instllation guide for all the three engines for ease of access :</p>
+<section id="gpaw">
+<h3><strong>GPAW</strong><a class="headerlink" href="#gpaw" title="Link to this heading"></a></h3>
+<p>GPAW relies on the Python library atomic simulation environment (ASE), so you need to install ASE first. GPAW itself is written mostly in the Python programming language, but there are also some C-code used for:</p>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>Requirements</strong></dt><dd><ul class="simple">
+<li><p>Python 3.8 or later</p></li>
+<li><p>ASE</p></li>
+<li><p>numpy</p></li>
+<li><p>scipy</p></li>
+<li><p><a class="reference external" href="http://www.tddft.org/programs/libxc/">LibXC</a></p></li>
+<li><p>C compiler</p></li>
+<li><p><a class="reference external" href="https://www.netlib.org/blas/">BLAS</a> library</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>Installation Using sudo</strong></dt><dd><p>If you are installing GPAW on you personal PC, or have the root access to the workstation, using sudo is the best way for installing GPAW</p>
+</dd>
+</dl>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>gpaw
+</pre></div>
+</div>
+<p><strong>Insallation Using PIP</strong></p>
+<blockquote>
+<div><p>The simplest way to install GPAW is using pip and the GPAW package from the Python package index (PyPI):</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>gpaw
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>Note : If you install GPAW using this , you must also install the PAW dataset seperately</em></p>
+<p>Install the datasets into the folder &lt;dir&gt; using this command:</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpaw<span class="w"> </span>install-data<span class="w"> </span>&lt;dir&gt;
+</pre></div>
+</div>
+</section>
+<section id="nwchem">
+<h3><strong>NWchem</strong><a class="headerlink" href="#nwchem" title="Link to this heading"></a></h3>
+<p>Aims to provide its users with computational chemistry tools that are scalable both in their ability to treat large scientific computational chemistry problems efficiently and in their use of available parallel computing resources from high-performance parallel supercomputers to conventional workstation clusters.</p>
+<p><strong>Insallation</strong></p>
+<p>To install Nwchem in your local machine,</p>
+<p><strong>Using Sudo</strong></p>
+<p>Input the following command in your terminal</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>instal<span class="w"> </span>nwchem
+</pre></div>
+</div>
+<p><strong>Source Compilation</strong></p>
+<p>If you don’t have access to root, you can install Nwchem using the source code.
+The source code can be downloaded from <a class="reference external" href="https://nwchemgit.github.io/Download.html">https://nwchemgit.github.io/Download.html</a> along with the compilation instructions</p>
+</section>
+<section id="octopus">
+<h3><strong>Octopus</strong><a class="headerlink" href="#octopus" title="Link to this heading"></a></h3>
+<p>Octopus is a scientific program aimed at the ab initio virtual experimentation on a hopefully ever-increasing range of system types. Electrons are described quantum-mechanically within density-functional theory (DFT), in its time-dependent form (TDDFT) when doing simulations in time.</p>
+<p>Proceeed to download any version of octopus from <a class="reference external" href="https://octopus-code.org/documentation/13/releases/">https://octopus-code.org/documentation/13/releases/</a></p>
+<p>We recommend using spack for installation.</p>
+<p><strong>Installation</strong></p>
+<blockquote>
+<div><p><strong>Using spack</strong></p>
+<ul class="simple">
+<li><p>Clone the github repository of SPACK</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/spack/spack.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>Change directory</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>spack/bin
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>spack<span class="w"> </span>install<span class="w"> </span>octopus
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sit back and let octopus compile.</p></li>
+<li><p>After the build, move final build to path variable. (Directory of build would be printed after the build)</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mv<span class="w"> </span>path/to/octopus<span class="w"> </span>~/octopus
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p>Now add octopus to path like <a class="reference external" href="https://stackoverflow.com/a/14638025">this</a></p></li>
+</ul>
+<p><strong>Installation using source</strong></p>
+<p>Besides the compiler, you will also need:</p>
+<ul class="simple">
+<li><p>make: most computers have it installed, otherwise just grab and install the GNU make.</p></li>
+<li><p>cpp: The C preprocessor is heavily used in Octopus to preprocess Fortran code. It is used for both C (from the CPP variable) and Fortran (FCCPP). GNU cpp is the most convenient but others may work too. For more info, see Preprocessors.</p></li>
+<li><p>Libxc: The library of exchange and correlation functionals. It used to be a part of Octopus, but since version 4.0.0 it is a standalone library and needs to be installed independently. For more information, see the libxc page. Octopus 4.0.0 and 4.0.1 require version 1.1.0 (not 1.2.0 or 1.0.0). Octopus 4.1.2 requires version 2.0.x or 2.1.x, and won’t compile with 2.2.x. (Due to bugfixes from libxc version 2.0 to 2.1, there will be small discrepancies in the testsuite for functionals/03-xc.gga_x_pbea.inp and periodic_systems/07-tb09.test). Octopus 5.0.0 supports libxc versions 2.0.x, 2.1.x and 2.2.x. Please note: The Libxc testsuite prior to 2.1 will report some errors in most cases. This is not something to worry about.</p></li>
+<li><p>FFTW: We have relied on this great library to perform Fast Fourier Transforms (FFTs). You may grab it from the <a class="reference external" href="https://www.fftw.org/">FFTW site</a>. You require FFTW version 3.</p></li>
+<li><p>LAPACK/BLAS: Our policy is to rely on these two libraries as much as possible on these libraries for linear-algebra operations. If you are running Linux, there is a fair chance they are already installed in your system. The same goes to the more heavy-weight machines (alphas, IBMs, SGIs, etc.). Otherwise, just grab the source from netlib site.</p></li>
+<li><p>GSL: Finally someone had the nice idea of making a public scientific library! GSL still needs to grow, but it is already quite useful and impressive. Octopus uses splines, complex numbers, special functions, etc. from GSL, so it is a must! If you don’t have it already installed in your system, you can obtain GSL from the GSL site. You will need version 1.9 or higher. Version 4.0 of Octopus (and earlier) can only use GSL 1.14 (and earlier). A few tests will fail if you use GSL 1.15 or later. Version 5.0.0 of Octopus (and earlier) can only use GSL 1.16 or earlier, due to a bug in our configure script.</p></li>
+<li><p>Perl: During the build process Octopus runs several scripts in this language. It’s normally available in every modern Unix system.</p></li>
+</ul>
+<p>To build octopus from source, visit <a class="reference external" href="https://octopus-code.org/documentation/13/manual/installation/building_from_scratch/">octopus-code.org</a></p>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="getting-the-source-code-of-litesoph">
+<h1>Getting the source code of LITESOPH<a class="headerlink" href="#getting-the-source-code-of-litesoph" title="Link to this heading"></a></h1>
+<p>You can get the source from a zip-file or from Git:</p>
+<p><strong>zip-file:</strong> You can get the source as a zip-file for the latest stable release (<a class="reference download external" download="" href="https://github.com/LITESOPH/litesoph/archive/refs/heads/main.zip"><code class="xref download docutils literal notranslate"><span class="pre">litesoph-main.zip</span></code></a>)</p>
+<p><strong>git clone:</strong> Alternatively, you can get the source for the latest stable release from github</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>https://github.com/aitgcodes/litesoph.git
+</pre></div>
+</div>
+<p>Install it using the following command</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>&lt;path-to-litesoph&gt;
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h1>
+<p>In software development, configuration files play a crucial role in customizing the behavior of applications or modules.
+A configuration file is a plain text file that contains parameters and settings that define how a program should operate. These settings can range from file paths and connection strings to more complex configurations like feature toggles or system settings.</p>
+<p>Understanding the Config.py File:</p>
+<p>Within our module, we utilize a config.py file to manage various settings and paths crucial for its functionality. Let’s delve into each section of this configuration file:</p>
+<p><strong>1</strong>. [path]:</p>
+<p>This section deals with defining paths related to the litesoph’s operation. Specifically, it contains keys such as lsproject and lsroot. These keys represent important directories or locations within the project structure. For instance, lsproject might denote the path to a specific project associated with the litesoph, while lsroot indicates the installation path of the litesoph itself.</p>
+<p><strong>2</strong>. [visualization_tools]:</p>
+<p>In this section, we specify paths to visualization tools essential for the litesoph’s functionality. Keys like vmd and vesta represent paths to tools such as VMD (Visual Molecular Dynamics) and VESTA, respectively. These tools are crucial for visualizing molecular structures and conducting analyses, making their paths vital for seamless integration with  litesoph.</p>
+<p><strong>3</strong>. [engine]:</p>
+<p>The [engine] section focuses on defining paths related to computational engines utilized by Litesoph. Keys like gpaw, nwchem, and octopus represent paths to binaries or executables of computational engines like GPAW, NWChem, and Octopus, respectively. These engines play a pivotal role in performing computations and simulations within litesoph.</p>
+<p><strong>4</strong>. [programs]:</p>
+<p>This section is dedicated to specifying paths related to external programs or dependencies required by the litesoph. The key python typically denotes the path to the Python interpreter. Ensuring correct paths for such programs is essential for the proper execution of litesoph’s functionalities, especially when invoking external processes or scripts.</p>
+<p><strong>5</strong>. [mpi]:</p>
+<p>Lastly, the [mpi] section deals with paths relevant to Message Passing Interface (MPI) implementations, which are commonly used for parallel computing tasks. Keys like mpirun, gpaw_mpi, octopus_mpi, and nwchem_mpi represent paths to MPI-related executables or configurations. These paths are crucial for enabling parallelism and distributed computing capabilities within the litesoph.</p>
+<p>To create <a class="reference internal" href="#lsconfig"><span class="std std-ref">lsconfig file</span></a>:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>config<span class="w"> </span>-c
+</pre></div>
+</div>
+</div></blockquote>
+<dl>
+<dt>To edit lsconfig file:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>config<span class="w"> </span>-e
+</pre></div>
+</div>
+</dd>
+</dl>
+</section>
+<section id="example-lsconfig-file">
+<span id="lsconfig"></span><h1>Example lsconfig file<a class="headerlink" href="#example-lsconfig-file" title="Link to this heading"></a></h1>
+<p>Here is an example of lsconfig file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[path]</span>
+<span class="go">lsproject = &lt;litesoph project path&gt;</span>
+<span class="go">lsroot = &lt;installation path of litesoph&gt;</span>
+
+<span class="go">[visualization_tools]</span>
+<span class="go">vmd = &lt;path to vmd || e.g. /usr/local/bin/vmd ||can be obtained using :command:`which vmd` &gt;</span>
+<span class="go">vesta = &lt;path to vesta || e.g. /usr/local/bin/vesta||can be obtained using :command:`which vesta` &gt;</span>
+
+<span class="go">[engine]</span>
+<span class="go">gpaw = &lt;path of gpaw||can be obtained using :command:`which gpaw`&gt;</span>
+<span class="go">nwchem =&lt;binary path of nwchem||can be obtained using :command:`which nwchem`&gt;</span>
+<span class="go">octopus =&lt;binary path of octopus ||can be obtained using :command:`which octopus`&gt;</span>
+
+<span class="go">[programs]</span>
+<span class="go">python = &lt;path to python||can be obtained using :command:`which python`&gt;</span>
+
+<span class="go">[mpi]</span>
+<span class="go">mpirun = &lt;path to mpirun || e.g. /usr/local/bin/mpirun ||can be obtained using :command:`which mpirun`&gt;</span>
+<span class="go">gpaw_mpi = &lt;path to mpirun through which gpaw is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
+<span class="go">octopus_mpi =&lt;path to mpirun through which octopus is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
+<span class="go">nwchem_mpi =&lt;path to mpirun through which nwchem is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<span id="id2"></span><h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<p>To start gui application, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>gui
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about_LITESOPH.html" class="btn btn-neutral float-left" title="About LITESOPH" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feature_and_implementations/features_and_implementation.html" class="btn btn-neutral float-right" title="Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, LITESOPH members and team.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

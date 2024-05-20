@@ -16,7 +16,7 @@
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -46,10 +46,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#usage">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../features_and_implementation.html">Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../algorithm/algorithm.html"><strong>Available Features in LITESOPH</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../algorithm/algorithm.html">Available Features in LITESOPH</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../independent_tasks.html"><strong>Independent Tasks Based</strong></a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Ground State</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ground State</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic">Basic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#convergence">Convergence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced">Advanced</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../rt_tddft/rt_tddft.html">RT-TDDFT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../compute_spectrum/compute_spectrum.html">Compute Spectrum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing_and_visualization/post_processing_and_visualization.html">Post processing and visualization</a></li>
@@ -59,9 +70,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -93,7 +107,8 @@
   <section id="ground-state">
 <span id="gs"></span><h1>Ground State<a class="headerlink" href="#ground-state" title="Link to this heading"></a></h1>
 <p>For Ground State Calculations, there are three windows for input parameters.</p>
-<p><strong>Basic</strong></p>
+<section id="basic">
+<h2>Basic<a class="headerlink" href="#basic" title="Link to this heading"></a></h2>
 <p>The basic input parameters for ground state DFT Calculations are as follows:</p>
 <a class="reference internal image-reference" href="../../../_images/basic_updated.png"><img alt="Spectrum" src="../../../_images/basic_updated.png" style="width: 800px;" /></a>
 <p><strong>1. Exchange correlation:</strong> An exchange-correlation functional for all atoms.</p>
@@ -110,7 +125,9 @@ Simulation box will be chosen (automatically) such that the minimum distance bet
 <p class="admonition-title">Note</p>
 <p>All the input parameters will be collected to generate input if <strong>Restart Option</strong> is chosen. Make sure to change only the relevant parameters such as: Convergence criteria, Maximum Iteration.</p>
 </div>
-<p><strong>Convergence</strong></p>
+</section>
+<section id="convergence">
+<h2>Convergence<a class="headerlink" href="#convergence" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../../_images/convergence.png"><img alt="Spectrum" src="../../../_images/convergence.png" style="width: 800px;" /></a>
 <p>Parameters related to the convergnece of electronic energies:</p>
 <p><strong>1. Maximum Iteration:</strong> Maximum number of iterations in a scf cycle.</p>
@@ -118,9 +135,12 @@ Simulation box will be chosen (automatically) such that the minimum distance bet
 <p><strong>3. Density Convergence (in au):</strong> Convergence threshold in au for charge density.</p>
 <p><strong>4. Smearing:</strong> Gaussian spreading for brillouin zone integration .</p>
 <p><strong>5. Mixing:</strong> Mixing factor for self consistency.</p>
-<p><strong>Advanced</strong></p>
+</section>
+<section id="advanced">
+<h2>Advanced<a class="headerlink" href="#advanced" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../../_images/advanced.png"><img alt="Spectrum" src="../../../_images/advanced.png" style="width: 800px;" /></a>
 <p><strong>1. Number of Extra States:</strong> Number of unoccupied states</p>
+</section>
 </section>
 
 
@@ -135,7 +155,7 @@ Simulation box will be chosen (automatically) such that the minimum distance bet
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 
