@@ -16,12 +16,12 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=2709fde1"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Features" href="feature_and_implementations/features_and_implementation.html" />
+    <link rel="next" title="Installation Guide" href="installation.html" />
     <link rel="prev" title="Welcome to LITESOPH’s Documentation!" href="index.html" /> 
 </head>
 
@@ -45,22 +45,21 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">About LITESOPH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-installation">Python Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#litesoph-installation">LITESOPH Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-lsconfig-file">Example lsconfig file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature_and_implementations/features_and_implementation.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -96,21 +95,25 @@ applications (photovoltaics, water-splitting catalysts, solar fuels, etc.), opto
 photochemistry and photobiology. The toolkit consists of several Python-based layers driven by popular
 and open-source TDDFT codes like OCTOPUS, GPAW and NWChem.</p>
 <p>The project is currently funded by <a class="reference external" href="https://www.meity.gov.in/">MeitY</a> through the National Supercomputing Mission’s “Applications for Materials and Computational Chemistry” initiative.</p>
+</section>
 <section id="engines-interfaced-with-litesoph">
-<span id="engines"></span><h2>Engines Interfaced with LITESOPH<a class="headerlink" href="#engines-interfaced-with-litesoph" title="Link to this heading"></a></h2>
-<p>There are currently three engines implemented in <span class="xref std std-ref">LITESOPH</span>. The details of these engines with their Installation Instruction are given below:</p>
-<p id="gpaw"><a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/index.html">GPAW</a>    (version 20.1.0 or later) is a density-functional theory (DFT) <a class="reference external" href="https://www.python.org/">python</a> code based on the projector-augmented wave (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/introduction_to_paw.html#introduction-to-paw">PAW</a>) method and the atomic simulation environment (<a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a>). The wave functions can be described with:</p>
-<ul class="simple">
+<h1>Engines Interfaced with LITESOPH<a class="headerlink" href="#engines-interfaced-with-litesoph" title="Link to this heading"></a></h1>
+<p>There are currently three engines implemented in LITESOPH. The details of these engines with their Installation Instruction are given below:</p>
+<p><a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/index.html">GPAW</a>    (versions &gt;=22 and &lt;24 are recommended) is a density-functional theory (DFT) <a class="reference external" href="https://www.python.org/">python</a> code based on the projector-augmented wave (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/introduction_to_paw.html#introduction-to-paw">PAW</a>) method and the atomic simulation environment (<a class="reference external" href="https://wiki.fysik.dtu.dk/ase/">ASE</a>). The wave functions can be described with:</p>
+<ul>
 <li><p>Plane-waves (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/basic.html#manual-mode">pw</a>)</p></li>
 <li><p>Real-space uniform grids, multigrid methods and the finite-difference approximation (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/basic.html#manual-stencils">fd</a>)</p></li>
-<li><p>Atom-centered basis-functions (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/lcao/lcao.html#lcao">lcao</a>)</p></li>
+<li><p>Atom-centered basis-functions (<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/documentation/lcao/lcao.html#lcao">lcao</a>)</p>
+<blockquote>
+<div><p>Note: Before installing this engine, see <a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/index.html">GPAW</a>  and its installation instruction  for details.</p>
+</div></blockquote>
+</li>
 </ul>
-<p>Before installing this engine, see <a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/index.html">GPAW</a>  and its <a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/install.html">installation instruction</a>  for details.</p>
-<p id="octopus"><a class="reference external" href="https://octopus-code.org/wiki/Main_Page">Octopus</a> (version 11.4) is a scientific program aimed at the ab initio virtual experimentation on a hopefully ever-increasing range of system types. Electrons are described quantum-mechanically within density-functional theory (DFT), in its time-dependent form (TDDFT) when doing simulations in time. Nuclei are described classically as point particles. Electron-nucleus interaction is described within the pseudopotential approximation.</p>
+<p><a class="reference external" href="https://octopus-code.org/wiki/Main_Page">Octopus</a> (version 11.4) is a scientific program aimed at the ab initio virtual experimentation on a hopefully ever-increasing range of system types. Electrons are described quantum-mechanically within density-functional theory (DFT), in its time-dependent form (TDDFT) when doing simulations in time. Nuclei are described classically as point particles. Electron-nucleus interaction is described within the pseudopotential approximation.</p>
 <p>For optimal execution performance, Octopus is parallelized using MPI and OpenMP and can scale to tens of thousands of processors. It also has support for graphical processing units (GPUs) through OpenCL and CUDA.</p>
 <p>Octopus is free software, released under the GPL license, so you are free to download it, use it and modify it.
-Before installing this engine, see <a class="reference external" href="https://octopus-code.org/wiki/Main_Page">Octopus</a>  and its <a class="reference external" href="https://octopus-code.org/wiki/Manual:Installation">installation instruction</a> for details.</p>
-<p id="nwchem"><a class="reference external" href="https://nwchemgit.github.io/">NWChem</a> (version 7.0.0 or later) aims to provide its users with computational chemistry tools that are scalable both in their ability to treat large scientific computational chemistry problems efficiently and in their use of available parallel computing resources from high-performance parallel supercomputers to conventional workstation clusters. NWChem software can handle:</p>
+Before installing this engine, see <a class="reference external" href="https://octopus-code.org/wiki/Main_Page">Octopus</a>  and its Installation Instruction for details.</p>
+<p><a class="reference external" href="https://nwchemgit.github.io/">NWChem</a> (version 7.0.0 or later) aims to provide its users with computational chemistry tools that are scalable both in their ability to treat large scientific computational chemistry problems efficiently and in their use of available parallel computing resources from high-performance parallel supercomputers to conventional workstation clusters. NWChem software can handle:</p>
 <ul class="simple">
 <li><p>Biomolecules, nanostructures, and solid-state</p></li>
 <li><p>From quantum to classical, and all combinations</p></li>
@@ -119,106 +122,7 @@ Before installing this engine, see <a class="reference external" href="https://o
 <li><p>Scaling from one to thousands of processors</p></li>
 <li><p>Properties and relativistic effects</p></li>
 </ul>
-<p>Before installing this engine, see <a class="reference external" href="https://nwchemgit.github.io/">NWChem</a>  and its <a class="reference external" href="https://nwchemgit.github.io/Download.html">installation instruction</a> for details.</p>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
-<p>Before installing LITESOPH, the following modules or packages are required:</p>
-<blockquote>
-<div><p><strong>Essentials</strong></p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="https://www.w3schools.com/python/">Python</a> version &gt;= 3.7.6 and &lt; 3.11.0</p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/Pillow/">Pillow</a> version &lt;= 9.5.0</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/tkinter.html">tkinter</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/click/">click</a></p></li>
-<li><p><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a></p></li>
-<li><p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/">scipy</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/matplotlib/">matplotlib</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/paramiko/">paramiko</a></p></li>
-<li><p><a class="reference external" href="https://www.ssh.com/academy/ssh/scp">scp</a></p></li>
-<li><p><a class="reference external" href="https://rsync.samba.org/">rsync</a></p></li>
-</ul>
-</div></blockquote>
-<p><strong>Optional Requirements</strong></p>
-<blockquote>
-<div><p><strong>Visualization tools</strong>: <a class="reference external" href="https://www.ks.uiuc.edu/Research/vmd/">VMD</a> , <a class="reference external" href="https://jp-minerals.org/vesta/en/">vesta</a> , <a class="reference external" href="https://imagemagick.org/">imagemagick</a> , <a class="reference external" href="https://www.blender.org/">blender</a> , <a class="reference external" href="https://jp-minerals.org/vesta/en/">vesta</a></p>
-<p><strong>Compression tools</strong>: lz4, zstd, lzop, gzip, bzip2, p7zip, xz, pigz, plzip, pbzip2, lbzip2</p>
-</div></blockquote>
-</div></blockquote>
-</section>
-<section id="getting-the-source-code-of-litesoph">
-<h2>Getting the source code of LITESOPH<a class="headerlink" href="#getting-the-source-code-of-litesoph" title="Link to this heading"></a></h2>
-<p>You can get the source from a zip-file or from Git:</p>
-<p><strong>zip-file:</strong> You can get the source as a zip-file for the latest stable release (<a class="reference download external" download="" href="https://github.com/LITESOPH/litesoph/archive/refs/heads/main.zip"><code class="xref download docutils literal notranslate"><span class="pre">litesoph-main.zip</span></code></a>)</p>
-<p><strong>git clone:</strong> Alternatively, you can get the source for the latest stable release from github</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>main<span class="w"> </span>https://github.com/aitgcodes/litesoph.git
-</pre></div>
-</div>
-</section>
-<section id="python-installation">
-<h2>Python Installation<a class="headerlink" href="#python-installation" title="Link to this heading"></a></h2>
-<p>Use the following command to install python (version &gt;= 3.7.6 and &lt; 3.11) using <a class="reference external" href="https://www.anaconda.com">conda</a> :</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">python</span><span class="o">=</span>&lt;version&gt;<span class="w"> </span><span class="c1">#Specify version as per requirements</span>
-</pre></div>
-</div>
-</section>
-<section id="litesoph-installation">
-<h2>LITESOPH Installation<a class="headerlink" href="#litesoph-installation" title="Link to this heading"></a></h2>
-<p>After installing the above requirements and Engines, you are ready to install LITESOPH using the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>&lt;path-to-litesoph&gt;<span class="w"> </span><span class="c1">#Find the path to litesoph using &quot;which litesoph&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
-<p>To create <a class="reference internal" href="#lsconfig"><span class="std std-ref">lsconfig file</span></a>:</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>config<span class="w"> </span>-c
-</pre></div>
-</div>
-</div></blockquote>
-<dl>
-<dt>To edit lsconfig file:</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>config<span class="w"> </span>-e
-</pre></div>
-</div>
-</dd>
-</dl>
-</section>
-<section id="example-lsconfig-file">
-<span id="lsconfig"></span><h2>Example lsconfig file<a class="headerlink" href="#example-lsconfig-file" title="Link to this heading"></a></h2>
-<p>Here is an example of lsconfig file.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[path]</span>
-<span class="go">lsproject = &lt;litesoph project path&gt;</span>
-<span class="go">lsroot = &lt;installation path of litesoph&gt;</span>
-
-<span class="go">[visualization_tools]</span>
-<span class="go">vmd = &lt;path to vmd || e.g. /usr/local/bin/vmd ||can be obtained using :command:`which vmd` &gt;</span>
-<span class="go">vesta = &lt;path to vesta || e.g. /usr/local/bin/vesta||can be obtained using :command:`which vesta` &gt;</span>
-
-<span class="go">[engine]</span>
-<span class="go">gpaw = &lt;path of gpaw||can be obtained using :command:`which gpaw`&gt;</span>
-<span class="go">nwchem =&lt;binary path of nwchem||can be obtained using :command:`which nwchem`&gt;</span>
-<span class="go">octopus =&lt;binary path of octopus ||can be obtained using :command:`which octopus`&gt;</span>
-
-<span class="go">[programs]</span>
-<span class="go">python = &lt;path to python||can be obtained using :command:`which python`&gt;</span>
-
-<span class="go">[mpi]</span>
-<span class="go">mpirun = &lt;path to mpirun || e.g. /usr/local/bin/mpirun ||can be obtained using :command:`which mpirun`&gt;</span>
-<span class="go">gpaw_mpi = &lt;path to mpirun through which gpaw is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
-<span class="go">octopus_mpi =&lt;path to mpirun through which octopus is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
-<span class="go">nwchem_mpi =&lt;path to mpirun through which nwchem is compiled|| e.g. /usr/local/bin/mpirun&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="usage">
-<span id="id11"></span><h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<p>To start gui application, run:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>litesoph<span class="w"> </span>gui
-</pre></div>
-</div>
-</section>
+<p>Before installing this engine, see <a class="reference external" href="https://nwchemgit.github.io/">NWChem</a>  and its installation instruction for details.</p>
 </section>
 
 
@@ -226,14 +130,14 @@ Before installing this engine, see <a class="reference external" href="https://o
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to LITESOPH’s Documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="feature_and_implementations/features_and_implementation.html" class="btn btn-neutral float-right" title="Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 

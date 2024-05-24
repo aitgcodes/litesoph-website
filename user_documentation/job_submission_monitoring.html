@@ -16,7 +16,7 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -46,6 +46,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="user_documentation_index.html">User Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="create_open_project.html">Starting LITESOPH</a></li>
@@ -58,11 +64,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="visualization_toolkit.html">LITESOPH Visualization Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Parameters.html">Parameters</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -105,7 +115,7 @@
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<a class="reference internal image-reference" href="../_images/ls-job-submission2.png"><img alt="job_submission_monitoring" src="../_images/ls-job-submission2.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="../_images/job_submission.png"><img alt="job_submission_monitoring" src="../_images/job_submission.png" style="width: 1000px;" /></a>
 <p><strong>1 &amp; 2</strong>: Selection between non-queue (bash) and queue (qsub) job submission. User must select <strong>1</strong> for bash based and <strong>2</strong> for queue based job submission.</p>
 <p><strong>3. Host IP address:</strong> requires IP address of remote machine.</p>
 <p><strong>4. Port:</strong> require port number of remote machine.</p>
@@ -117,26 +127,22 @@ remote machine which requires captcha authentication for login, passwordless log
 <p><strong>10. Submit command:</strong> <em>bash</em> is default when <strong>option 1 (Command line execution)</strong> is selected. But when <strong>option 2 (Submit through queue)</strong>, user must submit the scheduler submit command. e.g. qsub for PBS machines and sbatch for SLURM machines.</p>
 <p><strong>11. Stat command &amp; 12. Kill command</strong> <em>(optional)</em>: If user require to kill running job, user must provide scheduler’s corresponding commands for checking running process and killing process. e.g. qstat, qdel for PBS machines and qstat and scancel for SLURM machines.</p>
 <p><strong>13. Generate Job Script:</strong> to generate job script after entering correct login parameters</p>
-<p><strong>14. Modify Job Script:</strong> modify job script as the cluster supported format and confirm.</p>
-<p><strong>15. Save Job Script:</strong> to save the generated job script</p>
-<p><strong>16. Run Job:</strong> to run the job using saved job script</p>
-<p><strong>17. View Output:</strong> to view the output log of current simulation in remote machine</p>
-<p><strong>18. Job Status Bar:</strong> shows the status of running job (displays <em>Job Done</em> after completion of job)</p>
-<p><strong>19. Job ID:</strong> to enter the job ID requires to kill simulation</p>
-<p><strong>20. Scratch Space:</strong> maximum space available to run simulation on machine</p>
-<p><strong>21. Tracking Time:</strong> maximum time in minutes to monitor running job</p>
-<p><strong>22. Tracking Frequency:</strong> time interval in minutes to periodically monitor running jobs</p>
-<p><strong>23. Job Status:</strong> checks the status of running job.</p>
-<p><strong>24. Kill Job:</strong> kill running simulation using Job ID.</p>
-<p><strong>25. Refresh:</strong> get the files information of current project on remote machine.</p>
-<p><strong>26. Download All Files:</strong> to downlaod all files from remote machine.</p>
-<p><strong>27. File selection widget:</strong> widget to select relevant files of current project.</p>
-<p><strong>28. Download File:</strong> to download the selected file.</p>
-<p><strong>29. View File:</strong> to download the selected file.</p>
-<p><strong>30. Plot File:</strong> to open litesoph visualisation toolkit.</p>
-<p><strong>31. Back:</strong> get to previous page.</p>
-<p><strong>32. Back to main page:</strong> get back to main page.</p>
-<p><strong>33. Proceed:</strong> to proceed to next task of workflow.</p>
+<p><strong>14. Save Job Script:</strong> to save the generated job script</p>
+<p><strong>15. Run Job:</strong> to run the job using saved job script</p>
+<p><strong>16. View Output:</strong> to view the output log of current simulation in remote machine</p>
+<p><strong>17. Job Status Bar:</strong> shows the status of running job (displays <em>Job Done</em> after completion of job)</p>
+<p><strong>18. Job ID:</strong> to enter the job ID requires to kill simulation</p>
+<p><strong>19. Job Status:</strong> checks the status of running job.</p>
+<p><strong>20. Kill Job:</strong> kill running simulation using Job ID.</p>
+<p><strong>21. Refresh:</strong> get the files information of current project on remote machine.</p>
+<p><strong>22. Download All Files:</strong> to downlaod all files from remote machine.</p>
+<p><strong>23. File selection widget:</strong> widget to select relevant files of current project.</p>
+<p><strong>24. Download File:</strong> to download the selected file.</p>
+<p><strong>25. View File:</strong> to download the selected file.</p>
+<p><strong>26. Plot File:</strong> to open litesoph visualisation toolkit.</p>
+<p><strong>27. Back:</strong> get to previous page.</p>
+<p><strong>28. Back to main page:</strong> get back to main page.</p>
+<p><strong>29. Proceed:</strong> to proceed to next task of workflow.</p>
 </section>
 </section>
 
@@ -152,7 +158,7 @@ remote machine which requires captcha authentication for login, passwordless log
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 

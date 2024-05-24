@@ -16,12 +16,12 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Polarized Spectrum" href="spectrum/spectrum.html" />
+    <link rel="next" title="Spectrum" href="spectrum/spectrum.html" />
     <link rel="prev" title="Compute TAS" href="../independent_tasks/post_processing_and_visualization/compute_tas.html" /> 
 </head>
 
@@ -46,24 +46,33 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html#usage">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../features_and_implementation.html">Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../algorithm/algorithm.html"><strong>Available Features in LITESOPH</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/algorithm.html">Available Features in LITESOPH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../independent_tasks/independent_tasks.html"><strong>Independent Tasks Based</strong></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Workflows Based</strong></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="spectrum/spectrum.html">Polarized Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spectrum/spectrum.html">Spectrum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ksd/ksd.html">Kohn-Sham Decomposition (KSD)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ksd/ksd.html">KSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
-<li class="toctree-l3"><a class="reference internal" href="laser_masking/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="laser_masking/laser_masking.html">Laser-Masking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pump_probe/pump_probe.html">Pump-probe</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -95,11 +104,17 @@
 <h1><strong>Workflows Based</strong><a class="headerlink" href="#workflows-based" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="spectrum/spectrum.html">Polarized Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectrum/spectrum.html">Spectrum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ksd/ksd.html">Kohn-Sham Decomposition (KSD)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
-<li class="toctree-l1"><a class="reference internal" href="laser_masking/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ksd/ksd.html">KSD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ksd/ksd.html#compute-ksd">Compute KSD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mo_population/mo_population.html">Molecular Orbital (MO) Population</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mo_population/mo_population.html#compute-mo-population">Compute MO Population</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="laser_masking/laser_masking.html">Laser-Masking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pump_probe/pump_probe.html">Pump-probe</a></li>
 </ul>
 </div>
@@ -110,14 +125,14 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../independent_tasks/post_processing_and_visualization/compute_tas.html" class="btn btn-neutral float-left" title="Compute TAS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="spectrum/spectrum.html" class="btn btn-neutral float-right" title="Polarized Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spectrum/spectrum.html" class="btn btn-neutral float-right" title="Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 

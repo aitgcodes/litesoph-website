@@ -15,7 +15,7 @@
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -43,11 +43,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feature_and_implementations/features_and_implementation.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -136,7 +145,7 @@
 <span class="k">class</span> <span class="nc">Task</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base-class for all tasks. All the tasks in the litesoph</span>
-<span class="sd">    inherets from this class. This class is interfaced whith </span>
+<span class="sd">    inherets from this class. This class is interfaced with </span>
 <span class="sd">    SubmitLocal and SubmitNetwork class.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -157,7 +166,6 @@
     <span class="n">BASH_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ls_job_script_</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1">.sh&#39;</span>
     <span class="n">job_script_first_line</span> <span class="o">=</span> <span class="s2">&quot;#!/bin/bash&quot;</span>
     <span class="n">remote_job_script_last_line</span> <span class="o">=</span> <span class="s2">&quot;touch Done&quot;</span>
-
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lsconfig</span><span class="p">,</span> 
                 <span class="n">task_info</span><span class="p">:</span> <span class="n">TaskInfo</span><span class="p">,</span> 
@@ -244,7 +252,7 @@
         <span class="k">if</span> <span class="n">job_script</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">job_script</span> <span class="o">=</span> <span class="n">job_script</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bash_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">BASH_filename</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bash_file</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bash_file</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_script</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Task.add_proper_path">
@@ -273,9 +281,6 @@
 
     <span class="k">def</span> <span class="nf">connect_to_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">submit_network</span> <span class="o">=</span> <span class="n">SubmitNetwork</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">run_job_network</span><span class="p">():</span>
-        <span class="k">pass</span>
     
     <span class="k">def</span> <span class="nf">read_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span> <span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -339,7 +344,7 @@
             <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_load_block</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">cd_path</span><span class="p">:</span>
-        <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cd </span><span class="si">{</span><span class="n">cd_path</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">)</span>
+        <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cd </span><span class="si">{</span><span class="n">cd_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">job_script</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;touch Start_</span><span class="si">{</span><span class="n">job_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         
     <span class="k">if</span> <span class="n">engine_cmd</span><span class="p">:</span>
@@ -375,14 +380,6 @@
 <span class="s2">cd $PBS_O_WORKDIR</span>
 <span class="s2">   &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">head_job_script</span>
-
-
-
-
-
-
-  
-
 </pre></div>
 
            </div>
@@ -393,7 +390,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kohn-Sham Decomposition (KSD) &mdash; LITESOPH 0.1 documentation</title>
+  <title>KSD &mdash; LITESOPH 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -16,7 +16,7 @@
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -46,24 +46,36 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#usage">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../features_and_implementation.html">Features</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../algorithm/algorithm.html"><strong>Available Features in LITESOPH</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../algorithm/algorithm.html">Available Features in LITESOPH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../independent_tasks/independent_tasks.html"><strong>Independent Tasks Based</strong></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../workflow.html"><strong>Workflows Based</strong></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">Polarized Spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spectrum/spectrum.html">Spectrum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../averaged_spectrum/averaged_spectrum.html">Averaged Spectrum</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Kohn-Sham Decomposition (KSD)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">KSD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#compute-ksd">Compute KSD</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../mo_population/mo_population.html">Molecular Orbital (MO) Population</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../laser_masking/laser_masking.html">Laser Masking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../laser_masking/laser_masking.html">Laser-Masking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pump_probe/pump_probe.html">Pump-probe</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../devel/devel.html">Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -82,7 +94,7 @@
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../features_and_implementation.html">Features</a></li>
           <li class="breadcrumb-item"><a href="../workflow.html"><strong>Workflows Based</strong></a></li>
-      <li class="breadcrumb-item active">Kohn-Sham Decomposition (KSD)</li>
+      <li class="breadcrumb-item active">KSD</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/feature_and_implementations/workflow/ksd/ksd.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,8 +104,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="kohn-sham-decomposition-ksd">
-<span id="ksd"></span><h1>Kohn-Sham Decomposition (KSD)<a class="headerlink" href="#kohn-sham-decomposition-ksd" title="Link to this heading"></a></h1>
+  <section id="ksd">
+<span id="id1"></span><h1>KSD<a class="headerlink" href="#ksd" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Compatible Engines: GPAW, Octopus</p>
@@ -103,7 +115,20 @@
 <p><strong>1.</strong> Start the workflow with ground state calculation. See <a class="reference internal" href="../../independent_tasks/gs/gs.html#gs"><span class="std std-ref">Ground State</span></a>.</p>
 <p><strong>2.</strong> After the ground state calculation is done, proceed to RT-TDDFT calculation. See <a class="reference internal" href="../../independent_tasks/rt_tddft/rt_tddft.html#rt-tddft"><span class="std std-ref">RT-TDDFT</span></a></p>
 <p><strong>3.</strong> After RT-TDDFT calculation is done, proceed to compute spectrum. See <a class="reference internal" href="../../independent_tasks/compute_spectrum/compute_spectrum.html#compute-spectrum"><span class="std std-ref">Compute Spectrum</span></a>.</p>
-<p><strong>4.</strong> After spectrum is computed, proceed to compute KSD. See <a class="reference internal" href="compute_ksd/compute_ksd.html#compute-ksd"><span class="std std-ref">Compute KSD</span></a></p>
+<p><strong>4.</strong> After spectrum is computed, proceed to compute KSD. See <a class="reference internal" href="#compute-ksd"><span class="std std-ref">Compute KSD</span></a></p>
+<section id="compute-ksd">
+<span id="id2"></span><h2>Compute KSD<a class="headerlink" href="#compute-ksd" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Compatible Engines: GPAW, Octopus</p>
+</div>
+<a class="reference internal image-reference" href="../../../_images/compute-ksd.png"><img alt="Spectrum" src="../../../_images/compute-ksd.png" style="width: 800px;" /></a>
+<p>To perform Kohn Sham Decomposition (KSD), the following parameters are used:</p>
+<p><strong>1. List of frequencies (eV):</strong> Input excitation energies (eV) to be targeted. For each frequency
+the KSD is performed and plotted seperately.</p>
+<p><strong>2. Axis limit:</strong> Higher limit of both X-axis (occupied energy) and
+Y-axis (unoccupied energy) for plotting. The origin is set as (0,0).</p>
+</section>
 </section>
 
 
@@ -118,7 +143,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 

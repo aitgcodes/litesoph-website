@@ -16,8 +16,10 @@
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../_static/documentation_options.js?v=2709fde1"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script>window.MathJax = {"tex": {"macros": {"br": "{\\mathbf r}", "bk": "{\\mathbf k}", "bG": "{\\mathbf G}"}}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -46,8 +48,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html">About LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about_LITESOPH.html#engines-interfaced-with-litesoph">Engines Interfaced with LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#getting-the-source-code-of-litesoph">Getting the source code of LITESOPH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#example-lsconfig-file">Example lsconfig file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_and_implementations/features_and_implementation.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_documentation/user_documentation_index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="devel.html">Development</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="developer_workflow.html">Development workflow</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="devel.html#development-topics">Development topics</a><ul class="current">
@@ -64,6 +73,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQs/FAQ.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Bugs.html">Bugs!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../people.html">Team Litesoph</a></li>
 </ul>
 
         </div>
@@ -110,7 +121,7 @@ base is described below.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p>The code for our GPAW tasks: <a href="#id2"><span class="problematic" id="id3">:git:`litesoph.engines.gpaw.gpaw_task.py`</span></a></p></li>
+<li><p>The code for our GPAW tasks: <span class="math notranslate nohighlight">\(litesoph.engines.gpaw.gpaw_task.py\)</span></p></li>
 </ul>
 </div>
 <section id="description-of-base-classes">
@@ -121,7 +132,7 @@ base is described below.</p>
 <dt class="sig sig-object py" id="litesoph.common.Task">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lsconfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependent_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task.html#Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.Task" title="Link to this definition"></a></dt>
 <dd><p>Base-class for all tasks. All the tasks in the litesoph
-inherets from this class. This class is interfaced whith
+inherets from this class. This class is interfaced with
 SubmitLocal and SubmitNetwork class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -171,22 +182,6 @@ command is completed.</p>
 <dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">litesoph.common.task_data.</span></span><span class="sig-name descname"><span class="pre">TaskTypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/litesoph/common/task_data.html#TaskTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#litesoph.common.task_data.TaskTypes" title="Link to this definition"></a></dt>
 <dd><p>An enumeration.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes._generate_next_value_">
-<span class="sig-name descname"><span class="pre">_generate_next_value_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#litesoph.common.task_data.TaskTypes._generate_next_value_" title="Link to this definition"></a></dt>
-<dd><p>Generate the next value when not given.</p>
-<p>name: the name of the member
-start: the initial start value or None
-count: the number of existing members
-last_value: the last value assigned or None</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="litesoph.common.task_data.TaskTypes._member_type_">
-<span class="sig-name descname"><span class="pre">_member_type_</span></span><a class="headerlink" href="#litesoph.common.task_data.TaskTypes._member_type_" title="Link to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -205,7 +200,7 @@ last_value: the last value assigned or None</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2024, LITESOPH members and team.
-      <span class="lastupdated">Last updated on Thu, 01 Feb 2024 12:59:01.
+      <span class="lastupdated">Last updated on Mon, 20 May 2024 09:06:43.
       </span></p>
   </div>
 
